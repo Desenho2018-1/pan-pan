@@ -1,0 +1,5 @@
+FROM maven:latest
+RUN mkdir /code
+WORKDIR /code
+ADD ./pan-pan-backend /code
+RUN mvn dependency:copy-dependencies

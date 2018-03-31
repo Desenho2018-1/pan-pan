@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile-backend
+    working_dir: /code
+    command: mvn spring-boot:run
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile-frontend
+    working_dir: /code
+    command: npm start
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: "spring"
+      MYSQL_USER: "spring"
+      MYSQL_PASSWORD: "spring123"
+      MYSQL_ROOT_PASSWORD: "root666"
+    ports:
+    - "3306:3306"
