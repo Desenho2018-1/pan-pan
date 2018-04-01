@@ -1,0 +1,13 @@
+.User {
+  text-align: center;
+}
+
+.User-form {
+  padding: 20px;
+}
+
+table, td, tr, th {
+  padding: 10px;
+  border: 2px solid black;
+  border-collapse: collapse;
+}
