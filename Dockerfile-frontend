@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:9
 RUN mkdir /code
 RUN npm install -g create-react-app
 WORKDIR /code
