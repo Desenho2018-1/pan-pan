@@ -2,11 +2,12 @@ version: '3'
 
 services:
   api:
+    container_name: api
     build:
       context: .
       dockerfile: Dockerfile-backend
-    working_dir: /code
     command: mvn spring-boot:run
+    working_dir: /code
     ports:
       - "8080:8080"
     depends_on:
@@ -15,6 +16,7 @@ services:
       - ./pan-pan-backend:/code
 
   front:
+    container_name: front
     build:
       context: .
       dockerfile: Dockerfile-frontend
@@ -27,11 +29,16 @@ services:
     volumes:
       - ./pan-pan-frontend:/code
 
-
   db:
-    image: mysql:latest
+    container_name: db
+    build:
+      context: .
+      dockerfile: Dockerfile-database
+    volumes:
+      - ./mysql/:/var/lib/mysql
     environment:
       MYSQL_DATABASE: "spring"
+      MYSQL_HOST: "db"
       MYSQL_USER: "spring"
       MYSQL_PASSWORD: "spring123"
       MYSQL_ROOT_PASSWORD: "root666"
