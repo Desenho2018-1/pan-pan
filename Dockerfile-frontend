@@ -3,4 +3,4 @@ RUN mkdir /code
 RUN npm install -g create-react-app
 WORKDIR /code
 ADD ./pan-pan-frontend /code
-RUN npm install
+RUN npm -g install
