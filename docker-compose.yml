@@ -14,7 +14,7 @@ services:
       - db
     volumes:
       - ./pan-pan-backend:/code
-
+      
   front:
     container_name: front
     build:
@@ -28,6 +28,7 @@ services:
       - api
     volumes:
       - ./pan-pan-frontend:/code
+      - /code/node_modules
 
   db:
     container_name: db
