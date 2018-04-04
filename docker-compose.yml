@@ -12,7 +12,9 @@ services:
       - "8080:8080"
     depends_on:
       - db
-
+    volumes:
+      - ./pan-pan-backend:/code
+      
   front:
     container_name: front
     build:
@@ -24,6 +26,9 @@ services:
       - "3000:3000"
     depends_on:
       - api
+    volumes:
+      - ./pan-pan-frontend:/code
+      - /code/node_modules
 
   db:
     container_name: db
