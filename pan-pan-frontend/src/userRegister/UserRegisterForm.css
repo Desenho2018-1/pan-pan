@@ -1,0 +1,56 @@
+
+/*ClassesNames from react*/
+.UserRegisterForm{
+  text-align: center;
+
+}
+
+.user-register-back {
+  background-color: #BED2BD;
+  height: 700PX;
+
+}
+
+.user-header {
+  background-color: #738671;
+  height: 10px;
+  padding: 30px;
+  text-align: left;
+}
+
+
+/*ids*/
+
+.label-text-font{
+  font-size: 20px;
+}
+#label-format{
+  margin-top: 60px;
+  margin-right: 120px;
+}
+#label-format-camp{
+  margin-top: 10px;
+  margin-right: 120px;
+}
+#label-format-camp-instrument{
+  margin-top: 10px;
+  margin-right: 70px;
+}
+#label-format-repite-password{
+  margin-top: 10px;
+  margin-right: 50px;
+}
+
+#input-text-format{
+  margin-top: -13px;
+  margin-left: 525px;
+}
+#registerForm{
+  background-color: #BED2BD;
+}
+#button-register{
+  margin-top: 20px;
+  margin-left: 53px;
+  background-color: #4A505F;
+
+}
