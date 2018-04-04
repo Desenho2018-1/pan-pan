@@ -3,8 +3,35 @@ import React, { Component } from 'react';
 import './UserRegisterForm.css'
 
 class UserRegisterForm extends Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
+      this.state = {
+          name: '',
+          email:'',
+          password:'',
+          instrument:'',
+          city:'',
+          state:''
+      }
+  }
+
+  handleNameChange(event){
+        this.setState({name: event.target.value});
+  }
+  handleCityChange(event){
+    this.setState({city: event.target.value});
+  }
+  handleStateChange(event){
+    this.setState({State: event.target.value});
+  }
+  handleEmailChange(event){
+    this.setState({email: event.target.value});
+  }
+  handleInstrumentChange(event){
+    this.setState({instrument: event.target.value});
+  }
+  handlePasswordChange(event){
+    this.setState({password: event.target.value});
   }
   render(){
     var html =
@@ -14,42 +41,55 @@ class UserRegisterForm extends Component{
                 </head>
             <div className="UserRegisterForm">
                 <header className="user-header">
-                  Pan-Pan
+                  <font id="pan-pan-header" face="Norwester"><b>Pan-Pan</b></font>
                 </header>
                     <div class="form-group">
-                    <form id="registerForm">
+                    <form id="registerForm" onSubmit={this.userInput}>
 
                       <div id="label-format">
                         <label class="label-text-font"><font face="Norwester"><b>Nome:</b></font></label>
                       </div>
                       <div id="input-text-format" >
-                          <input type="text" class= "form-control col-lg-4" placeholder="Seu nome" name="name"></input>
+                          <input type="text" class="form-control col-lg-4" required="required "placeholder="Seu nome" name="name" value={this.state.name}  onChange={(event) => this.handleNameChange(event)}></input>
                         </div>
                       <div id="label-format-camp">
-                        <label  class="label-text-font" ><font face="Norwester"><b>E-mail:</b></font></label>
+                        <label  class="label-text-font" ><font face="Norwester" ><b>E-mail:</b></font></label>
                       </div>
                       <div id="input-text-format">
-                        <input type="text" class= "form-control col-lg-4" placeholder="Seu email" name="email"></input>
+                        <input type="text" class= "form-control col-lg-4" placeholder="Seu email" required="required" name="email" onChange={(event) => this.handleEmailChange(event)}></input>
+                      </div>
+                      <div id="label-format-camp">
+                        <label class="label-text-font"><font face="Norwester"><b>Cidade:</b></font></label>
+                      </div>
+                      <div id="input-text-format">
+                        <input type="text" class= "form-control col-lg-4" placeholder="Qual seu Instrumento?" required="required" name="instrument" onChange={(event) => this.handleInstrumentChange(event)}></input>
+                      </div>
+                      <div id="label-format-camp">
+                        <label class="label-text-font"><font face="Norwester"><b>Estado:</b></font></label>
+                      </div>
+                      <div id="input-text-format">
+                        <input type="text" class= "form-control col-lg-4" placeholder="Qual seu cidade?" required="required" name="city" onChange={(event) => this.handleCityChange(event)}></input>
                       </div>
                       <div id="label-format-camp-instrument">
                         <label class="label-text-font"><font face="Norwester"><b>Instrumento:</b></font></label>
                       </div>
                       <div id="input-text-format">
-                        <input type="text" class= "form-control col-lg-4" placeholder="Qual seu Instrumento?"name="instrument"></input>
+                        <input type="text" class= "form-control col-lg-4" placeholder="Qual sua estado?" required="required" name="state" onChange={(event) => this.handleStateChange(event)}></input>
                       </div>
                       <div id="label-format-camp">
                         <label class="label-text-font"><font face="Norwester"><b>Senha:</b></font></label>
                       </div>
                       <div id="input-text-format">
-                        <input type="text" class= "form-control col-lg-4" placeholder="Insira uma senha" name="password"></input>
+                        <input type="password" class= "form-control col-lg-4" placeholder="Insira uma senha" required="required" name="password" onChange={(event) => this.handlePasswordChange(event)}></input>
                       </div>
+
                       <div id="label-format-repite-password">
                         <label class="label-text-font" ><font face="Norwester"><b>Repita a senha:</b></font></label>
                       </div>
                       <div id="input-text-format">
-                        <input type="text" class= "form-control col-lg-4"placeholder="Repita sua Senha" name="repitePassword"></input>
+                        <input type="password" class= "form-control col-lg-4"placeholder="Repita sua Senha" name="repitePassword" required="required"  ></input>
                       </div>
-                      <button id="button-register" type="submit" class="btn btn-secondary btn-lg">Cadastrar</button>
+                      <button id="button-register" type="submit" class="btn btn-secondary btn-lg" value="register">Cadastrar</button>
                  </form>
                </div>
                </div>
