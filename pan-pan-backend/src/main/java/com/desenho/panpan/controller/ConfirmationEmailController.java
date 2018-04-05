@@ -23,10 +23,6 @@ public class ConfirmationEmailController{
     @Autowired
     private JavaMailSender emailSender;
     
-    @GetMapping(value = "/verdades")
-    public String verdades() {
-    	return "PABLO SEU FODIDO";
-    }
     
     @GetMapping(value = "/send")
     public void sendConfirmationEmail(/**User user*/){
