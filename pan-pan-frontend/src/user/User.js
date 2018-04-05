@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import axios from 'axios'
-import './User.css';
+import React, { Component } from "react";
+import axios from "axios";
+import "./User.css";
 
 class User extends Component {
   constructor(props) {
     super(props);
-    this.state = {new_user: [],
-                  current_users: []};
+    this.state = {newUser: [],
+                  currentUsers: []};
     this.data = ''
 
     this.submitForm = this.submitForm.bind(this);
@@ -17,24 +17,24 @@ class User extends Component {
 
   submitForm(event) {
     event.preventDefault();
-    const data_form = new FormData(event.target);
+    const dataForm = new FormData(event.target);
 
-    const data_user = {
-          name: data_form.get('name'),
-          teamName: data_form.get('teamName'),
-          salary: data_form.get('salary')
+    const dataUser = {
+          name: dataForm.get('name'),
+          teamName: dataForm.get('teamName'),
+          salary: dataForm.get('salary')
     }
 
-    axios.post('http://localhost:8080/users/add', data_user)
+    axios.post('http://localhost:8080/users/add', dataUser)
       .then(response => console.log(response.data))
 
   }
 
   listUsers(){
     axios.get('http://localhost:8080/users/all')
-      .then(response => this.setState({current_users: response.data}))
+      .then(response => this.setState({currentUsers: response.data}))
 
-    var users = this.state.current_users.map(function(user){
+    var users = this.state.currentUsers.map(function(user){
         return <tr key={user.id}>
                 <td>{user.id}</td>
                 <td>{user.name}</td>
