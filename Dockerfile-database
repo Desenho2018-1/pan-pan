@@ -1,8 +1,0 @@
-FROM mysql:5
-
-COPY wait-for-mysql.sh /wait-for-mysql.sh
-
-RUN chmod +x wait-for-mysql.sh
-
-CMD ["/wait-for-mysql.sh","mysqld"]
-

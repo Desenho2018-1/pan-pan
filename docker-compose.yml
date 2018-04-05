@@ -5,7 +5,7 @@ services:
     container_name: api
     build:
       context: .
-      dockerfile: Dockerfile-backend
+      dockerfile: scripts/Dockerfile-backend
     command: mvn spring-boot:run
     working_dir: /code
     ports:
@@ -19,7 +19,7 @@ services:
     container_name: front
     build:
       context: .
-      dockerfile: Dockerfile-frontend
+      dockerfile: scripts/Dockerfile-frontend
     working_dir: /code
     command: npm start
     ports:
@@ -34,7 +34,7 @@ services:
     container_name: db
     build:
       context: .
-      dockerfile: Dockerfile-database
+      dockerfile: scripts/Dockerfile-database
     volumes:
       - ./mysql/:/var/lib/mysql
     environment:
@@ -44,4 +44,4 @@ services:
       MYSQL_PASSWORD: "spring123"
       MYSQL_ROOT_PASSWORD: "root666"
     ports:
-    - "3306:3306"
+    - "3306"
