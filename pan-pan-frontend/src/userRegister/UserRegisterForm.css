@@ -7,7 +7,7 @@
 
 .user-register-back {
   background-color: #BED2BD;
-  height: 900PX;
+  height: 950px;
 
 }
 
@@ -25,7 +25,7 @@
 
 /*ids*/
 #label-format{
-  margin-top: 60px;
+  margin-top: 0px;
   margin-right: 195px;
 }
 #label-format-camp{
@@ -72,6 +72,14 @@
   margin-top: 20px;
   margin-left: 0px;
   background-color: #4A505F;
+
+}
+#label-register-title{
+  font-size: 50px;
+  margin-top: 40px;
+}
+#register-title{
+
 }
 
 #pan-pan-header{
