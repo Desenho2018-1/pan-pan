@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import axios from 'axios'
-import './UserRegisterForm.css'
+import React, { Component } from "react";
+import axios from "axios";
+import "./UserRegisterForm.css";
 
 class UserRegisterForm extends Component{
   constructor(props){
@@ -23,20 +23,20 @@ class UserRegisterForm extends Component{
 
   submitForm(event){
     event.preventDefault();
-    const data_form = new FormData(event.target);
+    const dataForm = new FormData(event.target);
 
-    const data_user = {
-          name: data_form.get('name'),
-          email: data_form.get('email'),
-          birthday: data_form.get('birthday'),
-          password: data_form.get('password'),
-          instrument: data_form.get('instrument'),
-          city: data_form.get('city'),
-          state: data_form.get('state'),
-          username: data_form.get('username')
+    const dataUser = {
+          name: dataForm.get('name'),
+          email: dataForm.get('email'),
+          birthday: dataForm.get('birthday'),
+          password: dataForm.get('password'),
+          instrument: dataForm.get('instrument'),
+          city: dataForm.get('city'),
+          state: dataForm.get('state'),
+          username: dataForm.get('username')
     }
 
-    axios.post('', data_user)
+    axios.post('', dataUser)
       .then(response => console.log(response.data))
 
   }
