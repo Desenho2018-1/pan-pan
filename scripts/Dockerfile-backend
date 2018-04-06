@@ -1,5 +1,4 @@
 FROM maven:3
-RUN mkdir /code
 WORKDIR /code
-ADD ./pan-pan-backend /code
+COPY ./pan-pan-backend /code
 RUN mvn dependency:copy-dependencies

@@ -1,5 +1,4 @@
 FROM node:9
-RUN mkdir /code
 WORKDIR /code
 COPY ./pan-pan-frontend /code
 RUN npm install -g create-react-app
