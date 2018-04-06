@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.desenho.panpan.model.VerificationToken;
 import com.desenho.panpan.repository.UserJpaRepository;
-import com.desenho.panpan.repository.VerificationTokenJpaRepository;
+import com.desenho.panpan.repository.VerificationTokenRepository;
 
 
 @RestController
@@ -23,7 +23,7 @@ public class ConfirmationEmailController{
     private static final String CONFIRM_EMAIL_URL = "/email/confirm?token=";
 
     @Autowired
-    private VerificationTokenJpaRepository verificationTokenJpaRepository;
+    private VerificationTokenRepository verificationTokenJpaRepository;
     
     @Autowired
     private JavaMailSender emailSender;

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public interface VerificationTokenJpaRepository extends JpaRepository<VerificationToken, Long>{
+public interface VerificationTokenRepository extends JpaRepository<VerificationToken, Long>{
 	
 	VerificationToken findByToken(String token);
 }
