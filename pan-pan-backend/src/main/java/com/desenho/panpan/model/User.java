@@ -1,5 +1,7 @@
 package com.desenho.panpan.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,10 +23,13 @@ public class User {
     private ArrayList<String> instruments;
 
     private String role;
+
+    @JsonProperty
     private Boolean active;
 
     public User() {
-        super();
+        setActive(Boolean.FALSE);
+        setRole("User");
     }
 
 

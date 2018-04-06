@@ -11,7 +11,6 @@ class App extends Component {
 
     var html =
       <div className="App">
-        
       </div>;
 
     return html;
