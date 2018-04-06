@@ -25,6 +25,8 @@ public class User {
 
     public User() {
         super();
+        setActive(Boolean.FALSE);
+        setRole("User");
     }
 
 

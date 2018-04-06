@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.desenho.panpan.model.User;
 import com.desenho.panpan.model.VerificationToken;
-import com.desenho.panpan.repository.UserJpaRepository;
+import com.desenho.panpan.repository.UserRepository;
 import com.desenho.panpan.repository.VerificationTokenRepository;
 
 
@@ -23,38 +24,23 @@ public class ConfirmationEmailController{
     private static final String CONFIRM_EMAIL_URL = "/email/confirm?token=";
 
     @Autowired
-    private VerificationTokenRepository verificationTokenJpaRepository;
+    private VerificationTokenRepository verificationTokenRepository;
+    
+    @Autowired
+    private UserRepository userRepository;
     
     @Autowired
     private JavaMailSender emailSender;
     
-    
-    @GetMapping(value = "/send")
-    public void sendConfirmationEmail(/**User user*/){
-        SimpleMailMessage message = new SimpleMailMessage();
-        
-        String confirmationLink = createConfirmationLink(/**user*/);
-        String messageBody = CONFIRMATION_MESSAGE + confirmationLink;
-        //String receiverEmail = user.getEmail();
-        String receiverEmail = "rodrigo.redcode@gmail.com";
-
-        message.setSubject(MESSAGE_SUBJECT);
-        message.setText(messageBody);
-        message.setFrom(SENDER_EMAIL);
-        message.setTo(receiverEmail);
-
-        emailSender.send(message);
-    }
-    
     @GetMapping(value = "/confirm", params = "token")
     public String confirmRegister(@RequestParam String token) {
-    	VerificationToken verificationToken = verificationTokenJpaRepository.findByToken(token);
-    	
+    	VerificationToken verificationToken = verificationTokenRepository.findByToken(token);
+
     	if(verificationToken != null){
     		if(!verificationToken.hasExpired()) {
-    			//User user = verificationToken.getUser();
-    			//user.setEnalbled(true)
-    			//userJpaRepository.update(user)
+    			User user = verificationToken.getUser();
+    			user.setActive(true);
+    			userRepository.save(user);
     		}else {
     			return "Token has expired";
     		}
@@ -65,17 +51,25 @@ public class ConfirmationEmailController{
     	return "Done";
     }
 
-    public String createConfirmationLink(/**User user*/){
-        VerificationToken verificationToken = new VerificationToken(/*user*/);
-        verificationTokenJpaRepository.save(verificationToken);
+    public void sendConfirmationEmail(User user){
+    	SimpleMailMessage message = new SimpleMailMessage();
+    	
+    	String confirmationLink = createConfirmationLink(user);
+    	String messageBody = CONFIRMATION_MESSAGE + confirmationLink;
+    	String receiverEmail = user.getEmail();
+    	
+    	message.setSubject(MESSAGE_SUBJECT);
+    	message.setText(messageBody);
+    	message.setFrom(SENDER_EMAIL);
+    	message.setTo(receiverEmail);
+    	
+    	emailSender.send(message);
+    }
+    
+    public String createConfirmationLink(User user){
+        VerificationToken verificationToken = new VerificationToken(user);
+        verificationTokenRepository.save(verificationToken);
         String confirmationLink = BASE_URL + CONFIRM_EMAIL_URL + verificationToken.getToken();
         return confirmationLink;
     }
 }
-
-/** 
- *  Atualizações de diagramas: Controler de email no diagrama de classes,
- *  model de verificationToken, adicionar etapa de email no diagrama de sequência
-*/
-
-// TO-DO: ver como salva o token relacionado com o usuário no banco

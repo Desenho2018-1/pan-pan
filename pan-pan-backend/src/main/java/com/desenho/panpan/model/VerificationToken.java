@@ -6,10 +6,14 @@ import java.util.Date;
 import java.util.UUID;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+
+import com.desenho.panpan.model.User;
 
 @Entity
 public class VerificationToken {
@@ -21,9 +25,9 @@ public class VerificationToken {
      
     private String token;
    
-    //@OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
-    //@JoinColumn(nullable = false, name = "user_id")
-    //private User user;
+    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "user_id")
+    private User user;
      
     private Date expiryDate;
     
@@ -35,9 +39,9 @@ public class VerificationToken {
 		return token;
 	}
 	
-//	public String getUser() {
-//		return user;
-//	}
+	public User getUser() {
+		return user;
+	}
 	
 	public Boolean hasExpired() {
 		Date curDate = new Date();
@@ -60,9 +64,13 @@ public class VerificationToken {
         return new Date(cal.getTime().getTime());
     }
 	
-	public VerificationToken(/**User user */) {
+	public VerificationToken() {
+		super();
+	}
+	
+	public VerificationToken(User user) {
 		this.token = UUID.randomUUID().toString();
 		this.expiryDate = calculateExpiryDate(EXPIRATION);
-		//this.user = user;
+		this.user = user;
 	}
 }
