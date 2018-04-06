@@ -34,6 +34,20 @@ public class VerificationToken {
 	public String getToken() {
 		return token;
 	}
+	
+//	public String getUser() {
+//		return user;
+//	}
+	
+	public Boolean hasExpired() {
+		Date curDate = new Date();
+		
+		if(expiryDate.before(curDate)) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 
 	public Date getExpiryDate() {
 		return expiryDate;
