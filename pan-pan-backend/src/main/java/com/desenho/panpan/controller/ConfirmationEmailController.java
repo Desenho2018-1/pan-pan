@@ -6,17 +6,25 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.UUID;
+import com.desenho.panpan.model.VerificationToken;
+import com.desenho.panpan.repository.UserJpaRepository;
+import com.desenho.panpan.repository.VerificationTokenJpaRepository;
 
 
 @RestController
 @RequestMapping("/email")
 public class ConfirmationEmailController{
-    private final String MESSAGE_SUBJECT = "[Pan Pan] Confirmação de cadastro";
-    private final String CONFIRMATION_MESSAGE = "Clique no link para completar seu registro!";
-    private final String SENDER_EMAIL = "no-reply@panpan.com";
+    private static final String MESSAGE_SUBJECT = "[Pan Pan] Confirmação de cadastro";
+    private static final String CONFIRMATION_MESSAGE = "Clique no link para completar seu registro!";
+    private static final String SENDER_EMAIL = "no-reply@panpan.com";
+    private static final String BASE_URL = "http://localhost:8080";
+    private static final String CONFIRM_EMAIL_URL = "/email/confirm?token=";
 
+    @Autowired
+    private VerificationTokenJpaRepository verificationTokenJpaRepository;
+    
     @Autowired
     private JavaMailSender emailSender;
     
@@ -37,18 +45,32 @@ public class ConfirmationEmailController{
 
         emailSender.send(message);
     }
+    
+    @GetMapping(value = "/confirm", params = "token")
+    public String confirmRegister(@RequestParam String token) {
+    	VerificationToken verificationToken = verificationTokenJpaRepository.findByToken(token);
+    	
+    	if(verificationToken != null){
+    		if(!verificationToken.hasExpired()) {
+    			//User user = verificationToken.getUser();
+    			//user.setEnalbled(true)
+    			//userJpaRepository.update(user)
+    		}else {
+    			return "Token has expired";
+    		}
+    	}else {
+    		return "Invalid Token";
+    	}
+    	
+    	return "Done";
+    }
 
     public String createConfirmationLink(/**User user*/){
-        String verificationToken = generateVerificationToken();
-        String confirmationLink = "teste" + verificationToken;
+        VerificationToken verificationToken = new VerificationToken(/*user*/);
+        verificationTokenJpaRepository.save(verificationToken);
+        String confirmationLink = BASE_URL + CONFIRM_EMAIL_URL + verificationToken.getToken();
         return confirmationLink;
     }
-
-    public String generateVerificationToken(){
-        String token = UUID.randomUUID().toString();
-        return token;
-    }
-
 }
 
 /** 
