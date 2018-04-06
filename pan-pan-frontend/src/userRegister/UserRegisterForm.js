@@ -84,9 +84,11 @@ class UserRegisterForm extends Component{
     }
 
     axios.post('http://localhost:8080/user/signup', dataUser)
-      .then(response => alert(response.data))
-
-    window.location.reload()  
+      .then(response => {
+        if (!alert("Cadastro realizado com sucesso")) {
+          window.location.reload();
+        }
+      })
 
   }
 
