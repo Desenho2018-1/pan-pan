@@ -29,6 +29,7 @@ class UserRegisterForm extends Component{
     const dataForm = new FormData(event.target);
 
     const dataUser = {
+
           name: dataForm.get('name'),
           email: dataForm.get('email'),
           birthday: dataForm.get('birthday'),
@@ -37,6 +38,7 @@ class UserRegisterForm extends Component{
           city: dataForm.get('city'),
           state: dataForm.get('state'),
           username: dataForm.get('username')
+
     }
 
     axios.post('', dataUser)
