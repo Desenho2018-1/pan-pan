@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./UserRegisterForm.css";
+import "../base/base.css"
 
 class UserRegisterForm extends Component{
   constructor(props){
@@ -43,12 +44,10 @@ class UserRegisterForm extends Component{
 
   render(){
     var html =
-          <body className="user-register-back">
-                <head>
-                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
-                </head>
+          <body className="base-body">
             <div className="UserRegisterForm">
-                <header className="user-header">
+                <header className="base-header">
+                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
                   <font id="pan-pan-header" face="Norwester"><b>Pan-Pan</b></font>
                 </header>
                     <div class="form-group">
