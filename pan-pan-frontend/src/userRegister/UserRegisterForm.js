@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./UserRegisterForm.css";
 import "../base/base.css"
+import HeaderPage from '../headerPage/HeaderPage.js'
+
 
 class UserRegisterForm extends Component{
   constructor(props){
@@ -46,11 +48,8 @@ class UserRegisterForm extends Component{
     var html =
           <body className="base-body">
             <div className="UserRegisterForm">
-                <header className="base-header">
-                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
-                  <font id="pan-pan-header" face="Norwester"><b>Pan-Pan</b></font>
-                </header>
-                    <div class="form-group">
+              <HeaderPage userName='josue'/>
+                <div class="form-group">
                     <form id="registerForm" onSubmit={this.submitForm}>
                       <label id="label-register-title"><font face= "Norwester"><b>Cadastro</b> </font></label>
                       <div id="label-format">
