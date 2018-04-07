@@ -2,6 +2,15 @@
   font-size: 25px;
 }
 
-#user-name{
-  margin-left: 400px;
+#user-name-div{
+  margin-top: -45px;
+  margin-left: 1100px;
+}
+
+#user-name-label{
+  font-size: 30px;
+}
+
+#pan-pan-div{
+  margin-top: -10px;
 }

@@ -8,6 +8,6 @@ import UserLoginForm from './userLogin/UserLoginForm'
 import registerServiceWorker from './registerServiceWorker';
 
 
-ReactDOM.render(<UserRegisterForm />, document.getElementById('root'));
+ReactDOM.render(<UserLoginForm />, document.getElementById('root'));
 
 registerServiceWorker();
