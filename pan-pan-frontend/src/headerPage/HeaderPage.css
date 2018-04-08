@@ -1,3 +1,10 @@
+.base-header {
+  background-color: #738671;
+  height: 10px;
+  padding: 30px;
+  text-align: left;
+}
+
 #pan-pan-header{
   font-size: 25px;
 }

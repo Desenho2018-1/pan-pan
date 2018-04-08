@@ -1,66 +1,65 @@
 
 /*ClassesNames from react*/
 .UserRegisterForm{
-  text-align: center;
-
+  font-family: 'Lato', sans-serif;
 }
 
-.label-text-font{
-  font-size: 20px;
-}
 
 /*ids*/
 #label-format{
-  margin-top: 0px;
-  margin-right: 195px;
+  margin-left: -14%;
 }
 #label-format-camp{
   margin-top: 10px;
-  margin-right: 195px;
+  margin-left: -14%;
 }
 
 #label-format-age{
   margin-top: 10px;
-  margin-right: 85px;
+  margin-left: -20%;
 }
 
 #label-format-camp-instrument{
   margin-top: 10px;
-  margin-right: 145px;
+  margin-left: -24%;
 }
 #label-format-state-instrument{
   margin-top: 10px;
-  margin-right: 185px;
+  margin-left: -28%;
 }
 #label-format-camp-city{
   margin-top: 10px;
-  margin-right: 185px;
+  margin-left: -28%;
 }
 
 #label-format-camp-username{
   margin-top: 10px;
-  margin-right: 155px;
+  margin-left: -26%;
 }
 
 #label-format-repite-password{
   margin-top: 10px;
-  margin-right: 120px;
+  margin-left: -23%;
 }
 
-#input-text-format{
-  margin-top: -13px;
-  margin-left: 525px;
-}
+
 #registerForm{
   background-color: #BED2BD;
 }
 #button-register{
-  margin-top: 20px;
+  margin-top: 30px;
   margin-left: 0px;
   background-color: #4A505F;
 
 }
 #label-register-title{
+
   font-size: 50px;
   margin-top: 40px;
+
+}
+
+
+#pan-pan-header{
+  font-size: 45px;
 }
