@@ -3,7 +3,7 @@ import axios from "axios";
 import '../base/base.css';
 import './UserLoginForm.css'
 import HeaderPage from '../headerPage/HeaderPage.js'
-
+import LabelPage from '../labelsPage/LabelPage.js'
 
 class UserLoginForm extends Component{
   constructor(props){
@@ -39,16 +39,16 @@ class UserLoginForm extends Component{
                 <div class="form-group">
                  <form id="user-login-form" onSubmit={this.loginUser}>
                   <div id="label-format-camp">
-                    <label  class="label-text-font" ><font face="Norwester" ><b>E-mail:</b></font></label>
+                    <LabelPage label='E-mail:'/>
                   </div>
-                  <div id="input-text-format">
+                  <div id="text-input">
                     <input type="text" class= "form-control col-lg-4" onChange={this.handleEmail} value={this.state.email} placeholder="Seu email" required="required" name="email"></input>
                   </div>
                   <div id="label-format-camp">
-                    <label class="label-text-font"><font face="Norwester"><b>Senha:</b></font></label>
+                    <LabelPage label='Senha:'/>
                   </div>
-                  <div id="input-text-format">
-                    <input type="password" class= "form-control col-lg-4" onChange={this.handlePassword} value={this.state.password} placeholder="Insira uma senha" required="required" name="password"></input>
+                  <div id="text-input">
+                    <input type="password" id="" class= "form-control col-lg-4" onChange={this.handlePassword} value={this.state.password} placeholder="Insira uma senha" required="required" name="password"></input>
                   </div>
                       <button id="button-register" type="submit" class="btn btn-secondary btn-lg" value="register">Entrar</button>
                   </form>

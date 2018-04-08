@@ -1,4 +1,7 @@
 
+#text-input{
+  margin-left: 520px;
+}
 #user-login-form{
   text-align: center;
 
@@ -11,7 +14,7 @@
 
 #label-format-camp{
   margin-top: 10px;
-  margin-right: 195px;
+  margin-right: 12px;
 }
 
 #user-login-form{
