@@ -11,8 +11,6 @@ class User extends Component {
 
     this.submitForm = this.submitForm.bind(this);
     this.listUsers = this.listUsers.bind(this);
-
-
   }
 
   submitForm(event) {
@@ -47,34 +45,34 @@ class User extends Component {
   }
 
   render() {
-    var html =
-        <div className="User">
-          <form className="User-form" onSubmit={this.submitForm}>
-            <label>Name:</label>
-            <input id="name" type="text" name="name"/><br/>
-            <label>Team:</label>
-            <input id="teamName" type="text" name="teamName"/><br/>
-            <label>Salary:</label>
-            <input id="salary" type="text" name="salary"/><br/>
+    return (
+      <div className="User">
+        <form className="User-form" onSubmit={this.submitForm}>
+        <label>Name:</label>
+        <input id="name" type="text" name="name"/><br/>
+        <label>Team:</label>
+        <input id="teamName" type="text" name="teamName"/><br/>
+        <label>Salary:</label>
+        <input id="salary" type="text" name="salary"/><br/>
 
-            <input type="submit" value="Register" />
-          </form>
+        <input type="submit" value="Register" />
+      </form>
 
-          <table className="App-table" align="center">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Team Name</th>
-                <th>Salary</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.listUsers()}
-            </tbody>
-          </table>
-        </div>
-    return html;
+      <table className="App-table" align="center">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Team Name</th>
+            <th>Salary</th>
+          </tr> 
+        </thead>
+        <tbody>
+          {this.listUsers()}
+        </tbody>
+      </table>
+    </div>
+    );
   }
 }
 
