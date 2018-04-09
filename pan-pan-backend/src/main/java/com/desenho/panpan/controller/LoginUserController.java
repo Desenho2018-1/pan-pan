@@ -5,7 +5,7 @@ import com.desenho.panpan.model.User;
 import com.desenho.panpan.repository.UserRepository;
 
 
-public class LoginUserControler{
+public class LoginUserController{
 
 
 }
