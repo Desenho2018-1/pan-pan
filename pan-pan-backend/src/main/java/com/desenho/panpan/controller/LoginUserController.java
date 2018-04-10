@@ -7,5 +7,4 @@ import com.desenho.panpan.repository.UserRepository;
 
 public class LoginUserController{
 
-
 }

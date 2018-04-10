@@ -1,8 +1,11 @@
 
 #text-input{
+
   margin-left: 40%;
+
 }
 #user-login-form{
+
   text-align: center;
 
 }
@@ -18,14 +21,20 @@
 }
 
 #user-login-form{
+
   margin-top: 25px;
+
 }
 
 #title-login{
-  margin-top: 40px;
-  margin-left: 605px;
+  margin-top: 5%;
+  margin-left: 45%;
 }
 
 #title-login-label{
   font-size: 35px;
+}
+
+#button-register{
+  margin-left: -1%
 }

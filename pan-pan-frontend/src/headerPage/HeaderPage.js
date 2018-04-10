@@ -8,6 +8,7 @@ class HeaderPage extends Component{
       };
     }
     render(){
+
       return (
           <header className="base-header">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
@@ -18,7 +19,7 @@ class HeaderPage extends Component{
             <div id="user-name-label"><font id="pan-pan-header" face="Norwester"><b>Oi,   </b><b>{this.state.userName}!</b></font></div>
             </div>
           </header>
-          )
+        )
     }
 }
 
