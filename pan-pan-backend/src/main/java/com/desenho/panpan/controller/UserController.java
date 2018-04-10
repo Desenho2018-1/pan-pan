@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.desenho.panpan.repository.UserRepository;
 import com.desenho.panpan.model.User;
 import com.desenho.panpan.controller.ConfirmationEmailController;
+import com.desenho.panpan.exception.InvalidRequestException;
 
 @RestController
 @RequestMapping(value="/user")
@@ -43,7 +44,7 @@ public class UserController {
         confirmationEmailController.sendConfirmationEmail(user);
         return "Done\n";
       }else{
-        return "form";
+        throw new InvalidRequestException("Invalid user", bindingResult);
       }
 
     }

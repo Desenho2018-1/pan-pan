@@ -88,7 +88,13 @@ class UserRegisterForm extends Component{
         if (!alert("Cadastro realizado com sucesso")) {
           window.location.reload();
         }
-      })
+      }).catch(function (error) {
+    if (error.response) {
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    }
+  });
 
   }
 
