@@ -1,8 +1,10 @@
 package com.desenho.panpan.controller;
 
 import java.util.List;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +22,7 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
-    
+
     @Autowired
     private ConfirmationEmailController confirmationEmailController;
 
@@ -35,9 +37,14 @@ public class UserController {
     }
 
     @PostMapping(value = "/signup")
-    public String add(@RequestBody final User user){
-      userRepository.save(user);
-      confirmationEmailController.sendConfirmationEmail(user);
-      return "Done\n";
+    public String add(@RequestBody @Valid final User user, BindingResult bindingResult){
+      if (!bindingResult.hasErrors()){
+        userRepository.save(user);
+        confirmationEmailController.sendConfirmationEmail(user);
+        return "Done\n";
+      }else{
+        return "form";
+      }
+
     }
 }
