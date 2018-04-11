@@ -18,6 +18,7 @@ import com.desenho.panpan.controller.ConfirmationEmailController;
 @RequestMapping(value="/user")
 public class UserController {
 
+
     @Autowired
     private UserRepository userRepository;
 

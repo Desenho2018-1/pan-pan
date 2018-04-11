@@ -3,6 +3,7 @@ import '../base/base.css';
 import './UserLoginForm.css';
 import HeaderPage from '../headerPage/HeaderPage';
 import LabelPage from '../labelsPage/LabelPage';
+import axios from "axios";
 
 class UserLoginForm extends Component {
   constructor(props) {
@@ -11,23 +12,37 @@ class UserLoginForm extends Component {
       email: '',
       password: '',
     };
+
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
     this.loginUser = this.loginUser.bind(this);
+
   }
 
   loginUser(event) {
     event.preventDefault();
-    console.log(this.state.email);
-    console.log(this.state.password);
+    const dataForm = new FormData(event.target);
+    const dataUser = {
+
+          email: dataForm.get('email'),
+          password: dataForm.get('password'),
+
+    }
+
+    axios.post('http://localhost:8080/user/login', dataUser)
+      .then(function(response){
+        console.log(response.data['email'],response.data['password'])
+      })
   }
 
   handleEmail(event) {
     this.setState({ email: event.target.value });
   }
+
   handlePassword(event) {
     this.setState({ password: event.target.value });
   }
+
   render() {
     return (
       <body className="base-body">

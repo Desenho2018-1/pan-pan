@@ -29,6 +29,7 @@ class User extends Component {
   }
 
   listUsers(){
+
     axios.get('http://localhost:8080/users/all')
       .then(response => this.setState({currentUsers: response.data}))
 
@@ -65,7 +66,7 @@ class User extends Component {
             <th>Name</th>
             <th>Team Name</th>
             <th>Salary</th>
-          </tr> 
+          </tr>
         </thead>
         <tbody>
           {this.listUsers()}
