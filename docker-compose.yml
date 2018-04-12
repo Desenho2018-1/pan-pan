@@ -28,7 +28,6 @@ services:
       - api
     volumes:
       - ./pan-pan-frontend:/code
-      - /code/node_modules
 
   db:
     container_name: db
