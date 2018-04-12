@@ -31,9 +31,9 @@ class UserLoginForm extends Component {
 
     }
 
-    axios.post('http://localhost:8080/user/login', dataUser)
+    axios.post('http://localhost:8080/login/login', dataUser)
       .then(function(response){
-        console.log(response.data['email'],response.data['password'])
+        console.log(response.data)
       })
   }
 
@@ -74,9 +74,7 @@ class UserLoginForm extends Component {
             <div id="text-input">
               <input type="password" id="" className="form-control col-lg-4" onChange={this.handlePassword} value={this.state.password} placeholder="Insira uma senha" required="required" name="password" />
             </div>
-            <Link to="/user/register">
               <button id="button-register" type="submit" className="btn btn-secondary btn-lg" value="register">Entrar</button>
-            </Link>
           </form>
         </div>
       </body>
