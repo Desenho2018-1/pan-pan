@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import axios from "axios";
 import "./UserRegisterForm.css";
 import "../base/base.css"
 import HeaderPage from '../headerPage/HeaderPage.js'
 import LabelPage from '../labelsPage/LabelPage.js'
+
 
 class UserRegisterForm extends Component{
   constructor(props){
@@ -167,8 +169,9 @@ class UserRegisterForm extends Component{
                 <div id="input-text-format">
                   <input type="password" className= "form-control col-lg-4"placeholder="Repita sua Senha" name="repitePassword" required="required"  ></input>
                 </div>
-                <button id="button-register" type="submit" className="btn btn-secondary btn-lg" value="register">Cadastrar</button>
-
+                <Link to="/user/login">
+                  <button id="button-register" type="submit" className="btn btn-secondary btn-lg" value="register">Cadastrar</button>
+                </Link>
              </form>
            </div>
         </div>

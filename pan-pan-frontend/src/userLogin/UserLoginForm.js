@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../base/base.css';
 import './UserLoginForm.css';
 import HeaderPage from '../headerPage/HeaderPage';
 import LabelPage from '../labelsPage/LabelPage';
+
 
 class UserLoginForm extends Component {
   constructor(props) {
@@ -57,7 +59,9 @@ class UserLoginForm extends Component {
             <div id="text-input">
               <input type="password" id="" className="form-control col-lg-4" onChange={this.handlePassword} value={this.state.password} placeholder="Insira uma senha" required="required" name="password" />
             </div>
-            <button id="button-register" type="submit" className="btn btn-secondary btn-lg" value="register">Entrar</button>
+            <Link to="/user/register">
+              <button id="button-register" type="submit" className="btn btn-secondary btn-lg" value="register">Entrar</button>
+            </Link>
           </form>
         </div>
       </body>
