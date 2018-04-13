@@ -1,0 +1,5 @@
+script:
+        - docker-compose up -f docker-compose.yml
+        - docker-compose -f docker-compose.yml exec api mvn clean test
+        - npm test
+
