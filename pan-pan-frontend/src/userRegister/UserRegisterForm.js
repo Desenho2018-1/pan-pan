@@ -52,7 +52,6 @@ class UserRegisterForm extends Component{
 
     var date = new Date(year, month, day);
 
-    console.log(date);
     return date;
   }
 
