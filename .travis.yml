@@ -1,6 +1,6 @@
 script:
-        - docker-compose up -d
-        - docker-compose -f docker-compose.yml exec api mvn clean test
+	- docker-compose up -d
+	- docker-compose -f docker-compose.yml exec api mvn clean test
 	- cd pan-pan-frontend
-        - npm test
+	- npm test
 
