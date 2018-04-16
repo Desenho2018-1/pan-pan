@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.desenho.panpan.model.User;
 import com.desenho.panpan.model.VerificationToken;
 import com.desenho.panpan.repository.UserRepository;
@@ -25,13 +24,13 @@ public class ConfirmationEmailController{
 
     @Autowired
     private VerificationTokenRepository verificationTokenRepository;
-    
+
     @Autowired
     private UserRepository userRepository;
-    
+
     @Autowired
     private JavaMailSender emailSender;
-    
+
     @GetMapping(value = "/confirm", params = "token")
     public String confirmRegister(@RequestParam String token) {
     	VerificationToken verificationToken = verificationTokenRepository.findByToken(token);
@@ -47,25 +46,25 @@ public class ConfirmationEmailController{
     	}else {
     		return "Invalid Token";
     	}
-    	
+
     	return "Done";
     }
 
     public void sendConfirmationEmail(User user){
     	SimpleMailMessage message = new SimpleMailMessage();
-    	
+
     	String confirmationLink = createConfirmationLink(user);
     	String messageBody = CONFIRMATION_MESSAGE + confirmationLink;
     	String receiverEmail = user.getEmail();
-    	
+
     	message.setSubject(MESSAGE_SUBJECT);
     	message.setText(messageBody);
     	message.setFrom(SENDER_EMAIL);
     	message.setTo(receiverEmail);
-    	
+
     	emailSender.send(message);
     }
-    
+
     public String createConfirmationLink(User user){
         VerificationToken verificationToken = new VerificationToken(user);
         verificationTokenRepository.save(verificationToken);

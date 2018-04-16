@@ -1,0 +1,12 @@
+.base-body {
+  background-color: #BED2BD;
+  height: 950px;
+
+}
+
+.base-header {
+  background-color: #738671;
+  height: 10px;
+  padding: 30px;
+  text-align: left;
+}
