@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import axios from "axios";
 import "./UserRegisterForm.css";
+import "../base/base.css"
+import HeaderPage from '../headerPage/HeaderPage.js'
+import LabelPage from '../labelsPage/LabelPage.js'
+
 
 class UserRegisterForm extends Component{
   constructor(props){
@@ -101,78 +106,77 @@ class UserRegisterForm extends Component{
     var html =
       <div className="user-register-back">
         <div className="UserRegisterForm">
-          <header className="user-header">
-            <b>Pan-Pan</b>
-          </header>
+          <HeaderPage userName=''/>
+
 
           <div className="form-group" align="center">
             <form id="registerForm" onSubmit={this.submitForm}>
               <label id="label-register-title"><b>Cadastro</b></label>
-
                 <div id="label-format">
-                  <label className="label-text-font"><b>Nome:</b></label>
+                  <LabelPage  label='Name:' />
                 </div>
                 <div id="input-text-format">
                     <input type="text" className="form-control col-lg-4" required="required "placeholder="Seu nome" name="name"  ></input>
                 </div>
 
                 <div id="label-format-camp">
-                  <label  className="label-text-font" ><b>E-mail:</b></label>
+                  <LabelPage  label='Email:' />
                 </div>
                 <div id="input-text-format">
                   <input type="text" className= "form-control col-lg-4" placeholder="Seu email" required="required" name="email"></input>
                 </div>
 
                 <div id="label-format-age">
-                  <label  className="label-text-font" ><b>Data de Nascimento</b></label>
+                  <LabelPage  label='Data de Nascimento' />
                 </div>
                 <div id="input-text-format">
                   <input type="text" className= "form-control col-lg-4" placeholder="**/**/****" required="required" name="birthday"></input>
                 </div>
 
                 <div id="label-format-camp-instrument">
-                  <label className="label-text-font"><b>Instrumetos:</b></label>
+                  <LabelPage  label='Instrumentos:' />
                 </div>
                 <div id="input-text-format">
                   <input type="text" className= "form-control col-lg-4" placeholder="Qual seu Instrumento?" required="required" name="instrument" ></input>
                 </div>
 
                 <div id="label-format-state-instrument">
-                  <label className="label-text-font"><b>Estado:</b></label>
+                  <LabelPage  label='Estado:' />
                 </div>
                 <div id="input-text-format">
                   <input type="text" className= "form-control col-lg-4" placeholder="Qual sua estado?" required="required" name="state"></input>
                 </div>
 
                 <div id="label-format-camp-city">
-                  <label className="label-text-font"><b>Cidade:</b></label>
+                  <LabelPage  label='Cidade' />
                 </div>
                 <div id="input-text-format">
                   <input type="text" className= "form-control col-lg-4" placeholder="Qual seu cidade?" required="required" name="city"></input>
                 </div>
 
                 <div id="label-format-camp-username">
-                  <label className="label-text-font"><b>UserName:</b></label>
+                    <LabelPage  label='UserName:' />
                 </div>
                 <div id="input-text-format">
                   <input type="text" className= "form-control col-lg-4" placeholder="Insira um apelido" required="required" name="username"></input>
                 </div>
 
                 <div id="label-format-camp">
-                  <label className="label-text-font"><b>Senha:</b></label>
+                  <LabelPage  label='Senha:' />
                 </div>
                 <div id="input-text-format">
                   <input type="password" className= "form-control col-lg-4" placeholder="Insira uma senha" required="required" name="password"></input>
                 </div>
 
                 <div id="label-format-repite-password">
-                  <label className="label-text-font" ><b>Repita a senha:</b></label>
+                    <LabelPage  label='Repita a senha:' />
                 </div>
                 <div id="input-text-format">
                   <input type="password" className= "form-control col-lg-4"placeholder="Repita sua Senha" name="repitePassword" required="required"  ></input>
                 </div>
-                <button id="button-register" type="submit" className="btn btn-secondary btn-lg" value="register">Cadastrar</button>
-
+                <Link to="/user/login">
+                  <button id="button-register" type="submit" className="btn btn-secondary btn-lg" value="register">Cadastrar</button>
+                </Link>
              </form>
            </div>
         </div>

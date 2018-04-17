@@ -53,6 +53,10 @@ public class User {
         setRole("User");
     }
 
+    public User(String email, String password){
+        this.email = email;
+        this.password = password;
+    }
 
     @Id
     @GeneratedValue

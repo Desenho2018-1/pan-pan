@@ -21,6 +21,7 @@ import com.desenho.panpan.exception.InvalidRequestException;
 @RequestMapping(value="/user")
 public class UserController {
 
+
     @Autowired
     private UserRepository userRepository;
 
