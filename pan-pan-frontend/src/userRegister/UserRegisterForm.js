@@ -57,7 +57,6 @@ class UserRegisterForm extends Component{
 
     var date = new Date(year, month, day);
 
-    console.log(date);
     return date;
   }
 
@@ -93,7 +92,13 @@ class UserRegisterForm extends Component{
         if (!alert("Cadastro realizado com sucesso")) {
           window.location.reload();
         }
-      })
+      }).catch(function (error) {
+    if (error.response) {
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    }
+  });
 
   }
 

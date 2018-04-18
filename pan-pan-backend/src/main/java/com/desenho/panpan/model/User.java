@@ -1,8 +1,8 @@
 package com.desenho.panpan.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -10,13 +10,33 @@ import java.util.Date;
 public class User {
 
     private Long id;
+
+    @NotNull
+    @Size(min=2, max=30)
     private String firstName;
+
+    @NotNull
+    @Size(min=2, max=30)
     private String lastName;
+
+    @NotNull
+    @Size(min=2, max=30)
     private String username;
+
+    @NotNull
+    @Past
     private Date birthdate;
+
+    @Email
     private String email;
+
+    @NotNull
     private String password;
+
+    @NotNull
     private String state;
+
+    @NotNull
     private String city;
 
     @ElementCollection
