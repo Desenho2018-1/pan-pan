@@ -7,6 +7,7 @@ import './index.css';
 import UserRegisterForm from './userRegister/UserRegisterForm';
 import UserLoginForm from './userLogin/UserLoginForm';
 import registerServiceWorker from './registerServiceWorker';
+import BandCreationForm from './bandCreation/BandCreationForm';
 
 const Home = () => (
   <div>
@@ -20,11 +21,13 @@ const App = () => (
       <Link to="/">Home</Link>
       <Link to="/user/register">Register</Link>
       <Link to="/user/login">Login</Link>
+      <Link to="/band/creation">Band Creation</Link>
     </div>
     <div>
       <Route path="/" component={Home} />
       <Route path="/user/register" component={UserRegisterForm} />
       <Route path="/user/login" component={UserLoginForm} />
+      <Route path="/band/creation" component={BandCreationForm} />
     </div>
   </div>
 );
