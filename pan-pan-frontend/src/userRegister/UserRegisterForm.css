@@ -4,34 +4,14 @@
   font-family: 'Lato', sans-serif;
 }
 
-.user-register-back {
-  background-color: #BED2BD;
-  height: 950px;
-
-}
-
-.user-header {
-  font-family: 'Oswald', sans-serif;
-  background-color: #738671;
-  height: 10px;
-  padding: 30px;
-  text-align: left;
-  font-size: 20px;
-}
-
-
-.label-text-font{
-  font-size: 20px;
-}
-
 
 /*ids*/
 #label-format{
-  margin-left: -29%;
+  margin-left: -14%;
 }
 #label-format-camp{
   margin-top: 10px;
-  margin-left: -29%;
+  margin-left: -14%;
 }
 
 #label-format-age{
@@ -41,7 +21,7 @@
 
 #label-format-camp-instrument{
   margin-top: 10px;
-  margin-left: -25%;
+  margin-left: -24%;
 }
 #label-format-state-instrument{
   margin-top: 10px;
@@ -59,11 +39,9 @@
 
 #label-format-repite-password{
   margin-top: 10px;
-  margin-left: -24%;
+  margin-left: -23%;
 }
 
-#input-text-format{
-}
 
 #registerForm{
   background-color: #BED2BD;
@@ -75,13 +53,12 @@
 
 }
 #label-register-title{
+
   font-size: 50px;
   margin-top: 40px;
-}
-
-#register-title{
 
 }
+
 
 #pan-pan-header{
   font-size: 45px;

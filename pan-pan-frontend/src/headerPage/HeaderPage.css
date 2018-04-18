@@ -1,0 +1,25 @@
+.base-header {
+  background-color: #738671;
+  height: 10px;
+  padding: 30px;
+  text-align: left;
+}
+
+#pan-pan-header{
+  font-size: 25px;
+}
+
+#user-name-div{
+  margin-top: -4%;
+  margin-left: 90%;
+}
+
+#user-name-label{
+  font-size: 30px;
+}
+
+#pan-pan-div{
+
+  margin-top: -10px;
+
+}
