@@ -1,10 +1,11 @@
-package com.desenho.panpan;
+package panpan.main;
 
-import com.desenho.panpan.model.User;
-import com.desenho.panpan.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import panpan.model.User;
+import panpan.repository.UserRepository;
 
 @Component
 public class DatabaseLoader implements CommandLineRunner {

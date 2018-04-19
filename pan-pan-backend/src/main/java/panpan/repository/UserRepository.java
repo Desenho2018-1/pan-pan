@@ -1,8 +1,9 @@
-package com.desenho.panpan.repository;
+package panpan.repository;
 
-import com.desenho.panpan.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
+
+import panpan.model.User;
 
 @Component
 public interface UserRepository extends CrudRepository<User, Long> {

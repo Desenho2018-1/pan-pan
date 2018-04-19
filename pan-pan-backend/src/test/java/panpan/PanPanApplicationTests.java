@@ -1,4 +1,4 @@
-package com.desenho.panpan;
+package panpan;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
