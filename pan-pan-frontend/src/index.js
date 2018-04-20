@@ -5,11 +5,13 @@ import registerServiceWorker from './registerServiceWorker';
 
 //Insert here the new pages
 import SignupForm from './components/User/signup/SignupForm';
-import HomePage from './pages/HomePage/HomePage';
+import HomePage from './pages/HomePage';
+import CreateBandPage from './pages/CreateBandPage';
 
 const Routes = () =>(
   <div>
     <Route exact path="/" component={HomePage} />
+    <Route exact path="/band/create" component={CreateBandPage}/>
     <Route path="/user/signup" component={SignupForm} />
   </div>
 )
