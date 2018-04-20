@@ -3,6 +3,7 @@ package com.desenho.panpan.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import javax.persistence.ManyToOne;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -10,6 +11,10 @@ import java.util.Date;
 public class User {
 
     private Long id;
+    
+    @ManyToOne
+    @JoinColumn(name="band_id")
+    private Band band;
 
     @NotNull
     @Size(min=2, max=30)
