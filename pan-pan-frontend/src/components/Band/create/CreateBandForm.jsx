@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
+import './CreateBandForm.css'
 
 export default class CreateBandForm extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            
+            file: null,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFileChange = this.handleFileChange.bind(this);        
     }
 
     handleSubmit(event){
@@ -15,11 +17,13 @@ export default class CreateBandForm extends Component {
         const bandData = {
             bandName: formData.get('band-name'),
             bandStyle: formData.get('band-style'),
-            /* add logic to imagePath coming from button*/
-            imagePath: "",                        
+            image: this.state.file,                       
         }
-        alert(bandData.bandName);
         /* send json to the API*/
+    }
+
+    handleFileChange(event){
+        this.setState({file:event.target.files[0]})
     }
 
     render() {
@@ -45,10 +49,10 @@ export default class CreateBandForm extends Component {
                     </div>
                     <div id="buttons-section">
                         <div className="single-btn-section">
-                            <input type="button" onclick="" value="Selecionar imagem"/>
+                            <input type="file" accept="image/*" onChange={this.handleFileChange}/>
                         </div>
                         <div className="single-btn-section">
-                            <input type="submit" onclick="" value="Cadastrar"/>
+                            <input type="submit" value="Cadastrar"/>
                         </div>
                     </div>
                 </form>
