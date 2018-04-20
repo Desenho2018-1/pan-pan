@@ -1,43 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, BrowserRouter, Link } from 'react-router-dom';
-
-import './index.css';
-
-import UserRegisterForm from './userRegister/UserRegisterForm';
-import UserLoginForm from './userLogin/UserLoginForm';
+import { Route, BrowserRouter, Link} from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 import BandCreationForm from './bandCreation/BandCreationForm';
 
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-);
+//Insert here the new pages
+import SignupForm from './components/User/signup/SignupForm';
+import HomePage from './pages/HomePage';
+import CreateBandPage from './pages/CreateBandPage';
 
-const App = () => (
+const Routes = () =>(
   <div>
-    <div>
-      <Link to="/">Home</Link>
-      <Link to="/user/register">Register</Link>
-      <Link to="/user/login">Login</Link>
-      <Link to="/band/creation">Band Creation</Link>
-    </div>
-    <div>
-      <Route path="/" component={Home} />
-      <Route path="/user/register" component={UserRegisterForm} />
-      <Route path="/user/login" component={UserLoginForm} />
-      <Route path="/band/creation" component={BandCreationForm} />
-    </div>
+    <Route exact path="/" component={HomePage} />
+    <Route exact path="/band/create" component={CreateBandPage}/>
+    <Route path="/user/signup" component={SignupForm} />
   </div>
-);
+)
 
 const Router = () => (
   <BrowserRouter>
-    <App />
+    <Routes />
   </BrowserRouter>
 );
 
-ReactDOM.render(<Router />, document.getElementById('root'));
-
+ReactDOM.render(<Router />, document.getElementById('content'));
 registerServiceWorker();

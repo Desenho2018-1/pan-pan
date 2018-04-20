@@ -1,6 +1,7 @@
 import { Model } from 'react-axiom';
 
-class User extends Model {
+
+export default class User extends Model {
   static defaultState(){
     return {
       firstName: '',
@@ -15,5 +16,3 @@ class User extends Model {
     };
   }
 }
-
-export default User
