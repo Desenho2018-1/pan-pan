@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.desenho.panpan.repository.UserRepository;
 import com.desenho.panpan.model.User;
-import com.desenho.panpan.controller.ConfirmationEmailController;
 import com.desenho.panpan.exception.InvalidRequestException;
 
 @RestController
@@ -25,24 +24,10 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private ConfirmationEmailController confirmationEmailController;
-
-    @GetMapping(value = "/all")
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
-
-    @GetMapping(value = "/{name}")
-    public User findByFirstName(@PathVariable final String name){
-        return userRepository.findByFirstName(name);
-    }
-
     @PostMapping(value = "/signup")
     public String add(@RequestBody @Valid final User user, BindingResult bindingResult){
       if (!bindingResult.hasErrors()){
         userRepository.save(user);
-        confirmationEmailController.sendConfirmationEmail(user);
         return "Done\n";
       }else{
         throw new InvalidRequestException("Invalid user", bindingResult);
