@@ -1,4 +1,4 @@
-package com.greglturnquist.payroll;
+package com.panpan;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

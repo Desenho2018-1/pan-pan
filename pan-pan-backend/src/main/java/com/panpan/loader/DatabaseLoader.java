@@ -1,8 +1,11 @@
-package com.greglturnquist.payroll;
+package com.panpan.loader;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import com.panpan.model.User;
+import com.panpan.repository.UserRepository;
 @Component
 public class DatabaseLoader implements CommandLineRunner {
 

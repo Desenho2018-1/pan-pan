@@ -1,4 +1,4 @@
-package com.greglturnquist.payroll;
+package com.panpan.model;
 
 import java.util.ArrayList;
 import java.util.Date;
