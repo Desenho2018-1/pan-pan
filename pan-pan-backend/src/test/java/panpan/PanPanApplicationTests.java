@@ -53,7 +53,7 @@ public class PanPanApplicationTests {
 	    ResponseEntity<Band> bandGetResponse =
 	      template.getForEntity(USER_ENDPOINT + "/1/band", Band.class);
 	    assertEquals("band is incorrect",
-	      libraryGetResponse.getBody().getName(), this.BAND_NAME);
+	      bandGetResponse.getBody().getName(), this.BAND_NAME);
 	}
 
 }
