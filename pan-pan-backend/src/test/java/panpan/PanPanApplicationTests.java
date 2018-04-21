@@ -19,7 +19,7 @@ import org.json.JSONException;
 
 import static org.junit.Assert.assertEquals;
 
-import com.desenho.panpan.PanPanApplication;
+import panpan.PanPanApplication;
 import com.desenho.panpan.model.User;
 import com.desenho.panpan.model.Band;
 
@@ -30,18 +30,18 @@ public class PanPanApplicationTests {
 	private TestRestTemplate template;
 
 	private static String USER_ENDPOINT = "http://localhost:8080/user/";
-	private static String USER_ENDPOINT = "http://localhost:8080/band/";
+	private static String BAND_ENDPOINT = "http://localhost:8080/band/";
 
 	private static String USER_MAIL = "adoniranbarbosa@gmail.com";
 	private static String BAND_NAME = "Demônios da Garoa";
 
 	@Test
 	public void whenSaveBandWIthOneMember_thenCorrect() {
-	    User user = new User(USER_MAIL, "password");
-	    template.postForEntity(USER_ENDPOINT, user, User.class);
+	    User user = new User(this.USER_MAIL, "password");
+	    template.postForEntity(this.USER_ENDPOINT, user, User.class);
 
-	    Band band = new Band(BAND_NAME);
-	    template.postForEntity(BAND_ENDPOINT, band, Band.class);
+	    Band band = new Band(this.BAND_NAME);
+	    template.postForEntity(this.BAND_ENDPOINT, band, Band.class);
 
 	    HttpHeaders requestHeaders = new HttpHeaders();
 	    requestHeaders.add("Content-Type", "text/uri-list");
@@ -50,10 +50,10 @@ public class PanPanApplicationTests {
 	    template.exchange(USER_ENDPOINT + "/1/band",
 	      HttpMethod.PUT, bandHttpEntity, String.class);
 
-	    ResponseEntity<Library> bandGetResponse =
+	    ResponseEntity<Band> bandGetResponse =
 	      template.getForEntity(USER_ENDPOINT + "/1/band", Band.class);
 	    assertEquals("band is incorrect",
-	      libraryGetResponse.getBody().getName(), BAND_NAME);
+	      bandGetResponse.getBody().getName(), this.BAND_NAME);
 	}
 
 }
