@@ -24,4 +24,7 @@ hs_err_pid*
 
 #mysql files
 
+pan-pan-backend/node_modules/
+pan-pan-backend/assas/
+pan-pan-backend/assas2/
 mysql/
