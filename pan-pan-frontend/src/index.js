@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter, Link} from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
-import BandCreationForm from './bandCreation/BandCreationForm';
 
 //Insert here the new pages
 import SignupForm from './components/User/signup/SignupForm';
