@@ -1,6 +1,5 @@
 package com.panpan.controller;
 
-import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,35 +17,23 @@ import com.panpan.controller.ConfirmationEmailController;
 import com.panpan.exception.InvalidRequestException;
 
 @RestController
-@RequestMapping(value="/user")
+@RequestMapping(value = "api/users")
 public class UserController {
 
+	@Autowired
+	private UserRepository userRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+	@Autowired
+	private ConfirmationEmailController confirmationEmailController;
 
-    @Autowired
-    private ConfirmationEmailController confirmationEmailController;
-
-    @GetMapping(value = "/all")
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
-
-    @GetMapping(value = "/{name}")
-    public User findByFirstName(@PathVariable final String name){
-        return userRepository.findByFirstName(name);
-    }
-
-    @PostMapping(value = "/signup")
-    public String add(@RequestBody @Valid final User user, BindingResult bindingResult){
-      if (!bindingResult.hasErrors()){
-        userRepository.save(user);
-        confirmationEmailController.sendConfirmationEmail(user);
-        return "Done\n";
-      }else{
-        throw new InvalidRequestException("Invalid user", bindingResult);
-      }
-
-    }
+	@PostMapping(value = "/signup")
+	public String add(@RequestBody @Valid final User user, BindingResult bindingResult) {
+		if (!bindingResult.hasErrors()) {
+			userRepository.save(user);
+			confirmationEmailController.sendConfirmationEmail(user);
+			return "Done\n";
+		} else {
+			throw new InvalidRequestException("Invalid user", bindingResult);
+		}
+	}
 }
