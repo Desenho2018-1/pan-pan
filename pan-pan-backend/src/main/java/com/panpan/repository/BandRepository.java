@@ -1,10 +1,9 @@
 package com.panpan.repository;
 
 import com.panpan.model.Band;
-import org.springframework.stereotype.Component;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Component
-public interface BandRepository extends CrudRepository<Band, Long>{
+
+public interface BandRepository extends JpaRepository<Band, Long>{
 
 }
