@@ -4,6 +4,7 @@ import './SignupForm.css';
 import InputMask from 'react-input-mask';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
+import User from '../models/User';
 
 const STATES = [
   { label: 'Acre', value: 'AC' },
@@ -47,9 +48,7 @@ const INSTRUMENTS = [
 export default class SignupForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {new_user: [],
-                  current_users: [],
-                  selectedInstrumentsOption: '',
+    this.state = {selectedInstrumentsOption: '',
                   selectedStateOption:'',
                   };
 
@@ -59,19 +58,42 @@ export default class SignupForm extends Component {
 
   submitForm(event) {
     event.preventDefault();
-    const data_form = new FormData(event.target);
+    const signupForm = new FormData(event.target);
+    let user_obj = new User();
 
-    const data_user = {
-          name: data_form.get('name'),
-          instruments: data_form.get('instruments'),
+    for (var [key, value] of signupForm.entries()) {
+      if (key == 'name') {
+        let names = value.split(" ");
+        let firstName = names.reverse().pop()
+        let lastName = names.reverse().join(" ");
+
+        user_obj.setState({
+          firstName:firstName,
+          lastName:lastName
+        });
+      }
+      else
+      if (key == 'instruments') {
+        let instruments = [];
+        for (let instrument of this.state.selectedInstrumentsOption) {
+          instruments.push(instrument.value);
+        }
+        user_obj.setState({instruments:instruments});
+      }else
+        if (key == 'birthdate') {
+          let date = value.replace(/\//g,'-');
+          let birthdate = new Date(date);
+          user_obj.setState({birthdate:birthdate});
+        }
+        else {
+          user_obj.setState({[key]:value});
+        }
     }
 
-    console.log(data_user);
+    console.log(user_obj);
 
-    //
-    // axios.post('http://localhost:8080/users/add', data_user)
-    //   .then(response => console.log(response.data))
-
+    axios.post('http://localhost:8080/api/users', user_obj.state)
+      .then(response => console.log(response.data))
   }
 
   handleChange = (type, selectedOption) => {
