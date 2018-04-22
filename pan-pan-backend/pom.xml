@@ -11,7 +11,7 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>panpan</groupId>
+	<groupId>com.panpan</groupId>
 	<artifactId>react-and-spring-data-rest-basic</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
