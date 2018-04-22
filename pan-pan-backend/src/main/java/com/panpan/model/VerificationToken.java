@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.panpan.model.User;
 
 import lombok.Data;
@@ -24,7 +25,7 @@ public class VerificationToken {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private @Id Long id;
     private Date expiryDate;
-    private String token;
+    private @JsonIgnore String token;
     private static final int EXPIRATION = 60 * 24;
 
     @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
