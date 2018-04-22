@@ -1,0 +1,15 @@
+.page-header{
+    text-align: center;
+  }
+  
+.form-container{
+width: 50%;
+margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+.form-container{
+    width: 100%;
+    margin: 0 auto;
+}
+}
