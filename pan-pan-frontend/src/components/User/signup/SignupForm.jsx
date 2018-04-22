@@ -62,7 +62,7 @@ export default class SignupForm extends Component {
     let user_obj = new User();
 
     for (var [key, value] of signupForm.entries()) {
-      if (key == 'name') {
+      if (key === 'name') {
         let names = value.split(" ");
         let firstName = names.reverse().pop()
         let lastName = names.reverse().join(" ");
@@ -73,15 +73,15 @@ export default class SignupForm extends Component {
         });
       }
       else
-      if (key == 'instruments') {
+      if (key === 'instruments') {
         let instruments = [];
         for (let instrument of this.state.selectedInstrumentsOption) {
           instruments.push(instrument.value);
         }
         user_obj.setState({instruments:instruments});
       }else
-        if (key == 'birthdate') {
-          let date = value.replace(/\//g,'-');
+        if (key === 'birthdate') {
+          let date = value.split("/").reverse().join('-');
           let birthdate = new Date(date);
           user_obj.setState({birthdate:birthdate});
         }
@@ -90,17 +90,15 @@ export default class SignupForm extends Component {
         }
     }
 
-    console.log(user_obj);
-
-    axios.post('http://localhost:8080/api/users', user_obj.state)
+    axios.post('http://localhost:8080/api/users/signup', user_obj.state)
       .then(response => console.log(response.data))
   }
 
   handleChange = (type, selectedOption) => {
-    if (type == 'instruments') {
+    if (type === 'instruments') {
         this.setState({selectedInstrumentsOption:selectedOption})
     }
-    else if (type == 'states') {
+    else if (type === 'states') {
       this.setState({selectedStateOption:selectedOption})
     }
   }
@@ -169,7 +167,7 @@ export default class SignupForm extends Component {
 
           <div className="form-group">
             <label>Senha:</label>
-          <input type="text" className="form-control" name="password" id="password" placeholder="Insira uma senha"/>
+          <input type="password" className="form-control" name="password" id="password" placeholder="Insira uma senha"/>
           </div>
 
           <div className="form-group">
@@ -178,7 +176,7 @@ export default class SignupForm extends Component {
           </div>
 
 
-          <div className="form-group" className="submit-btn">
+          <div className="form-group submit-btn" >
             <button type="submit" className="btn btn-primary">Cadastrar</button>
           </div>
 

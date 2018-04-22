@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
 import './PageHeader.css'
 
 export default class PageHeader extends Component{
-  constructor(props){
-    super(props);
-    }
 
   render(){
     return (
@@ -17,12 +13,12 @@ export default class PageHeader extends Component{
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="#">Pan-Pan</a>
+            <a className="navbar-brand" href="/">Pan-Pan</a>
           </div>
 
           <div className="collapse navbar-collapse" id="navbar-menu">
             <ul className="nav navbar-nav">
-              <li className="active"><a href="#">Home</a></li>
+              <li className="active"><a href="/">Home</a></li>
             </ul>
           </div>
 

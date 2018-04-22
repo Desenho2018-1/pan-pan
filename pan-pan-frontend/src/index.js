@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, BrowserRouter, Link} from 'react-router-dom';
+import { Route, BrowserRouter} from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
 //Insert here the new pages
