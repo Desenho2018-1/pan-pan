@@ -9,84 +9,41 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.*;
 import java.util.Date;
+import lombok.Data;
 
 import com.panpan.model.User;
 
+@Data
 @Entity
 public class Band {
-  @Id
-  @GeneratedValue
-  private int id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-  @NotNull
-  @OneToMany(mappedBy = "band")
-  private List<User> members;
+    @NotNull
+    @OneToMany(mappedBy = "band")
+    private List<User> members;
 
-  @NotNull
-  @Size(min=2, max=50)
-  private String genre;
+    @NotNull
+    @Size(min=2, max=50)
+    private String genre;
 
-  @NotNull
-  private Date creationDate;
+    @NotNull
+    private Date creationDate;
 
-  @NotNull
-  @Size(min=2, max=50)
-  private String name;
+    @NotNull
+    @Size(min=2, max=50)
+    private String name;
 
-  @NotNull
-  @Size(min=2, max=50)
-  private String city;
+    public Band(){}
 
-  public Band(String name){
-    this.members = new ArrayList<User>();
-    setName(name);
-  }
-
-  public int getId() {
-    return this.id;
-  }
-
-  public String getCity() {
-    return this.city;
-  }
-
-  public void setCity(String city){
-    this.city = city;
-  }
-
-  public void setGenre(String genre) {
-    this.genre = genre;
-  }
-
-  public String getGenre() {
-    return this.genre;
-  }
-
-  public void setCreationDate(Date creationDate) {
-      this.creationDate = creationDate;
-  }
-
-  public void setMembers(List<User> members) {
-    this.members = members;
-  }
-
-  public List<User> getMembers() {
-    return this.members;
-  }
-
-  public Date getCreationDate() {
-    return this.creationDate;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-  public String getName(){
-    return this.name;
-  }
-
-  public void addMember(User member) {
-    this.members.add(member);
-  }
+    public Band(String name, String genre){
+        ArrayList<User> members = new ArrayList<User>();
+        members.add(new User("Frodo", "Baggins"));
+        setMembers(members);
+        setName(name);
+        setGenre(genre);
+        setCreationDate(new Date());
+    }
 
 }

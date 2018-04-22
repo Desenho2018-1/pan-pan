@@ -1,6 +1,6 @@
 package panpan.controller;
 
-//import javax.validation.Valid;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,19 +14,24 @@ import com.panpan.repository.BandRepository;
 import com.panpan.model.Band;
 import com.panpan.exception.InvalidRequestException;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 @RestController
-@RequestMapping(value="/band")
+@CrossOrigin(origins = "*")
+@RequestMapping(value="/api/bands")
 public class BandController {
+
   @Autowired
   private BandRepository bandRepository;
 
-  @PostMapping(value = "/create")
-  public String add(@RequestBody /*@Valid*/ final Band band, BindingResult bindingResult){
+  @PostMapping(value = "/")
+  public String add(@RequestBody @Valid final Band band, BindingResult bindingResult){
     if (!bindingResult.hasErrors()){
       bandRepository.save(band);
       return "Done\n";
     }else{
-      throw new InvalidRequestException("Invalid band", bindingResult);
+      return "not done";
+      //throw new InvalidRequestException("Invalid band", bindingResult);
     }
 
   }

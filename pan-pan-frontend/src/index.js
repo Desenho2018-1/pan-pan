@@ -5,7 +5,6 @@ import registerServiceWorker from './registerServiceWorker';
 
 //Insert here the new pages
 
-import HomePage from './pages/HomePage';
 import CreateBandPage from './pages/CreateBandPage';
 import SignupPage from './pages/SignupPage';
 import HomePage from './pages/HomePage';

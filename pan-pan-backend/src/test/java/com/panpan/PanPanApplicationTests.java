@@ -34,13 +34,14 @@ public class PanPanApplicationTests {
 
 	private static String USER_MAIL = "adoniranbarbosa@gmail.com";
 	private static String BAND_NAME = "Demônios da Garoa";
+	private static String BAND_GENRE = "Forró";
 
 	@Test
 	public void whenSaveBandWIthOneMember_thenCorrect() {
 	    User user = new User(this.USER_MAIL, "password");
 	    template.postForEntity(this.USER_ENDPOINT, user, User.class);
 
-	    Band band = new Band(this.BAND_NAME);
+	    Band band = new Band(this.BAND_NAME, this.BAND_GENRE);
 	    template.postForEntity(this.BAND_ENDPOINT, band, Band.class);
 
 	    HttpHeaders requestHeaders = new HttpHeaders();
