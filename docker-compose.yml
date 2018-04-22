@@ -21,7 +21,7 @@ services:
       context: .
       dockerfile: scripts/Dockerfile-frontend
     working_dir: /code
-    command: npm start
+    command: bash -c "npm install && npm start"
     ports:
       - "3000:3000"
     depends_on:
