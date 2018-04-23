@@ -36,7 +36,7 @@ public class PanPanApplicationTests {
 	private static String BAND_NAME = "Demônios da Garoa";
 
 	@Test
-	public void whenSaveBandWIthOneMember_thenCorrect() {
+	public void whenSaveBandWithOneMemberThenCorrect() {
 	    User user = new User(USER_MAIL, "password");
 	    template.postForEntity(USER_ENDPOINT, user, User.class);
 
