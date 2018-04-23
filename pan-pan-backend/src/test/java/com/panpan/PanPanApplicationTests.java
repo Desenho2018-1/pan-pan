@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 
 import static org.junit.Assert.assertEquals;
 
+
 import com.panpan.PanPanApplication;
 import com.panpan.model.User;
 import com.panpan.model.Band;
@@ -24,20 +25,19 @@ public class PanPanApplicationTests {
 	@Autowired
 	private TestRestTemplate template;
 
-	private static String USER_ENDPOINT = "http://localhost:8080/user/";
-	private static String BAND_ENDPOINT = "http://localhost:8080/band/";
+	private static String USER_ENDPOINT = "http://localhost:8080/api/users/";
+	private static String BAND_ENDPOINT = "http://localhost:8080/api/bands/";
 
 	private static String USER_MAIL = "adoniranbarbosa@gmail.com";
 	private static String BAND_NAME = "Demônios da Garoa";
-	private static String BAND_GENRE = "Forró";
-
+	private static String BAND_GENRE = "Death Eletrofunk Melódico Gospel";
 	@Test
 	public void whenSaveBandWithOneMemberThenCorrect() {
 	    User user = new User(USER_MAIL, "password");
 	    template.postForEntity(USER_ENDPOINT, user, User.class);
 
-	    Band band = new Band(this.BAND_NAME, this.BAND_GENRE);
-	    template.postForEntity(this.BAND_ENDPOINT, band, Band.class);
+	    Band band = new Band(BAND_NAME, BAND_GENRE);
+	    template.postForEntity(BAND_ENDPOINT, band, Band.class);
 
 	    HttpHeaders requestHeaders = new HttpHeaders();
 	    requestHeaders.add("Content-Type", "text/uri-list");
@@ -49,7 +49,7 @@ public class PanPanApplicationTests {
 	    ResponseEntity<Band> bandGetResponse =
 	      template.getForEntity(USER_ENDPOINT + "/1/band", Band.class);
 	    assertEquals("band is incorrect",
-	      bandGetResponse.getBody().getName(), this.BAND_NAME);
+	      bandGetResponse.getBody().getName(), BAND_NAME);
 	}
 
 }
