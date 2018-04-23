@@ -4,7 +4,6 @@ import { Route, BrowserRouter} from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
 //Insert here the new pages
-
 import CreateBandPage from './pages/CreateBandPage';
 import SignupPage from './pages/SignupPage';
 import HomePage from './pages/HomePage';
