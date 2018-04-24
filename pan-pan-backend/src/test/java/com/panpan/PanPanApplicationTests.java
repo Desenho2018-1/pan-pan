@@ -20,36 +20,45 @@ import com.panpan.model.User;
 import com.panpan.model.Band;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = PanPanApplication.class, webEnvironment = WebEnvironment.DEFINED_PORT)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class PanPanApplicationTests {
 	@Autowired
 	private TestRestTemplate template;
 
-	private static String USER_ENDPOINT = "http://localhost:8080/api/users/";
-	private static String BAND_ENDPOINT = "http://localhost:8080/api/bands/";
+	private static String USER_ENDPOINT = "http://localhost:8080/api/users";
+	private static String BAND_ENDPOINT = "http://localhost:8080/api/bands";
 
-	private static String USER_MAIL = "adoniranbarbosa@gmail.com";
+  private static String USER_MAIL = "adoniranbarbosa@gmail.com";
+  private static String USER_NAME = "User";
 	private static String BAND_NAME = "Demônios da Garoa";
 	private static String BAND_GENRE = "Death Eletrofunk Melódico Gospel";
 	@Test
 	public void whenSaveBandWithOneMemberThenCorrect() {
-	    User user = new User(USER_MAIL, "password");
-	    template.postForEntity(USER_ENDPOINT, user, User.class);
+      User user = new User(USER_NAME, USER_MAIL, "password");
+      
+	    ResponseEntity<User> postResponse =  template.postForEntity(USER_ENDPOINT, user, User.class);
+
+      System.out.println("Post Response " + postResponse);
 
 	    Band band = new Band(BAND_NAME, BAND_GENRE);
 	    template.postForEntity(BAND_ENDPOINT, band, Band.class);
 
 	    HttpHeaders requestHeaders = new HttpHeaders();
 	    requestHeaders.add("Content-Type", "text/uri-list");
-	    HttpEntity<String> bandHttpEntity
+
+      HttpEntity<String> bandHttpEntity
 	      = new HttpEntity<>(BAND_ENDPOINT + "/1", requestHeaders);
-	    template.exchange(USER_ENDPOINT + "/1/band",
-	      HttpMethod.PUT, bandHttpEntity, String.class);
+
+      ResponseEntity<String> putResponse = template.exchange(USER_ENDPOINT + "/1/band",
+        HttpMethod.PUT, bandHttpEntity, String.class);
+        
+        System.out.println("Put Response " + putResponse);
 
 	    ResponseEntity<Band> bandGetResponse =
 	      template.getForEntity(USER_ENDPOINT + "/1/band", Band.class);
-	    assertEquals("band is incorrect",
-	      bandGetResponse.getBody().getName(), BAND_NAME);
+      
+      assertEquals("band is incorrect",
+         bandGetResponse.getBody().getName(), BAND_NAME);
 	}
 
 }

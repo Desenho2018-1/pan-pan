@@ -46,4 +46,10 @@ public class User {
     	this.setFirstName(name);
     	this.setEmail((email));
     }
+
+    public User(String name, String email, String password) {
+      this.setFirstName(name);
+      this.setEmail(email);
+      this.setPassword(password);
+    }
 }
