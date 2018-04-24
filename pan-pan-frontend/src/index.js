@@ -1,27 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter} from 'react-router-dom';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
 import registerServiceWorker from './registerServiceWorker';
+import routes from './routes.js'
 
-//Insert here the new pages
+const store = createStore(
+  (state = {}) => state,
+  applyMiddleware(thunk)
 
-import CreateBandPage from './pages/CreateBandPage';
-import SignupPage from './pages/SignupPage';
-import HomePage from './pages/HomePage';
-
-const Routes = () =>(
-  <div>
-    <Route exact path="/" component={HomePage} />
-    <Route exact path="/band/create" component={CreateBandPage}/>
-    <Route path="/user/signup" component={SignupPage} />
-  </div>
 )
 
 const Router = () => (
   <BrowserRouter>
-    <Routes />
+    {routes}
   </BrowserRouter>
 );
 
-ReactDOM.render(<Router />, document.getElementById('content'));
+ReactDOM.render(
+  <Provider store={store}>
+    <Router />
+  </Provider>, document.getElementById('content'));
 registerServiceWorker();

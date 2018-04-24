@@ -45,7 +45,7 @@ const INSTRUMENTS = [
 	{ label: 'Bateria', value: 'drums' },
 ];
 
-export default class SignupForm extends Component {
+export default class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {selectedInstrumentsOption: '',

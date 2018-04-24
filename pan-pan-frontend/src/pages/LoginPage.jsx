@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import PageHeader from '../components/PageHeader/PageHeader';
-import SignupForm from '../components/User/signup/SignupForm'
+import LoginForm from '../components/User/login/LoginForm'
 
-export default class SignupPage extends Component{
+export default class LoginPage extends Component{
 
   render(){
     return (
       <div>
         <PageHeader />
-        <SignupForm />
+        <LoginForm />
       </div>
       )
     }

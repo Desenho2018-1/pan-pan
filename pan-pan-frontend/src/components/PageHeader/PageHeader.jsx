@@ -1,9 +1,30 @@
 import React, { Component } from "react";
 import './PageHeader.css'
+import User from '../User/models/User'
+import { Link } from 'react-router-dom';
 
 export default class PageHeader extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {};
 
+    this.isLogged = this.isLogged.bind(this);
+  }
+
+  isLogged(){
+    let sessionUser = sessionStorage.getItem('user');
+
+    if (sessionUser) {
+      let user = new User(JSON.parse(sessionUser))
+      return 'Welcome ' + user.name + ' !';
+    }else{
+      return <Link to="/user/login">Login</Link>;
+    }
+
+
+  }
   render(){
+
     return (
       <nav className="navbar navbar-inverse">
         <div className="container-fluid">
@@ -18,7 +39,7 @@ export default class PageHeader extends Component{
 
           <div className="collapse navbar-collapse" id="navbar-menu">
             <ul className="nav navbar-nav">
-              <li className="active"><a href="/">Home</a></li>
+              <li className="active">{this.isLogged()}</li>
             </ul>
           </div>
 
