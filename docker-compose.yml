@@ -9,7 +9,7 @@ services:
     command: mvn spring-boot:run
     working_dir: /code
     ports:
-      - "8080:8080"
+      - 8080:8080
     depends_on:
       - db
     volumes:
@@ -23,7 +23,7 @@ services:
     working_dir: /code
     command: bash -c "npm install && npm start"
     ports:
-      - "3000:3000"
+      - 3000:3000
     depends_on:
       - api
     volumes:
@@ -44,4 +44,4 @@ services:
       MYSQL_PASSWORD: "spring123"
       MYSQL_ROOT_PASSWORD: "root666"
     ports:
-    - "3306:3306"
+    - "3306"
