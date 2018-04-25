@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "create-react-class": "^15.6.3",
     "moment": "^2.22.1",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-axiom": "^0.3.3",
     "react-dom": "^16.3.1",
@@ -16,20 +17,31 @@
     "react-select": "^1.2.1",
     "redux": "^4.0.0",
     "redux-react-session": "^2.3.1",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "shortid": "^2.2.8"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "cross-env CI=true react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "babel-jest": "^22.4.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "cross-env": "^5.1.4",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.10.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.7.0"
+    "eslint-plugin-react": "^7.7.0",
+    "jest": "^22.4.3",
+    "react-test-renderer": "^16.3.1"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   }
 }
