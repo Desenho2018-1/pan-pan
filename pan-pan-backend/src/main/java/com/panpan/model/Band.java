@@ -24,6 +24,9 @@ public class Band {
     @OneToMany(mappedBy = "band")
     private List<User> members;
 
+    @OneToMany(mappedBy = "band")
+    private List<Setlist> setlists;
+
     @NotNull
     @Size(min=2, max=50)
     private String genre;
