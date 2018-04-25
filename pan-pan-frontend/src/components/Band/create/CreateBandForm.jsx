@@ -12,17 +12,18 @@ export default class CreateBandForm extends Component {
             file: null,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleFileChange = this.handleFileChange.bind(this);        
+        this.handleFileChange = this.handleFileChange.bind(this);
     }
 
     handleSubmit(event){
+      event.preventDefault();
 	const formData = new FormData(event.target);
         const data = {
             name: formData.get('band-name'),
             genre: formData.get('band-style'),
 	        members: [],
 	        creationDate: new Date(),
-            //image: this.state.file,                       
+            //image: this.state.file,
         }
         axios.post('http://localhost:8080/api/bands/', data)
         .then(response =>{
