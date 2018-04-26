@@ -9,6 +9,7 @@ import './SignupForm.css';
 import User from '../models/User';
 import { STATES } from '../../Utils/consts/States.js';
 import { INSTRUMENTS } from '../../Utils/consts/Instruments.js';
+import Loading from '../../Utils/loading/Loading';
 
 
 class SignupForm extends Component {
@@ -64,6 +65,7 @@ class SignupForm extends Component {
         this.props.userSignupRequest(user.state)
         .then(
             () => {
+                this.props.deleteFlashLoading()
                 this.props.addFlashMessage({
                     type: 'success',
                     text: 'Cadastro realizado com sucesso. Bem vindo!'
@@ -86,9 +88,7 @@ class SignupForm extends Component {
 
         return (
             <div className="container">
-
                 <h1 className="page-header"> Signup </h1>
-
                 <form className="form-container" onSubmit={this.submitForm}>
                     <div className="form-group">
                         <label>Nome:</label>
@@ -164,6 +164,7 @@ class SignupForm extends Component {
 SignupForm.propTypes = {
     userSignupRequest: PropTypes.func.isRequired,
     addFlashMessage: PropTypes.func.isRequired,
+    deleteFlashLoading: PropTypes.func.isRequired,
 }
 
 export default SignupForm;
