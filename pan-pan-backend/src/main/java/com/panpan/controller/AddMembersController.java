@@ -10,20 +10,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.panpan.model.Band;
+import com.panpan.repository.BandRepository;
 import com.panpan.repository.VerificationTokenRepository;
 
 import antlr.collections.List;
 
-@RequestMapping("/addMember")
 @RestController
+@RequestMapping("/addMember")
 public class AddMembersController {
 
+	
 	@Autowired
-	private BandRepository bandRepository;
+    private BandRepository bandRepository;
 
-	@GetMapping("/idband")
-	public Band findBand(long idBand) {
+	@PostMapping("/idband")
+	public Band findBandById(long idBand) {
 		
-		return null;
+		Band band = bandRepository.findBandById(3);
+		return band;
 	}
 }

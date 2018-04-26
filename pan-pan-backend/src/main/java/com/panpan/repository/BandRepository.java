@@ -8,4 +8,5 @@ import org.springframework.stereotype.Component;
 public interface BandRepository extends JpaRepository<Band, Long>{
 
   Band findBandById(long id);
+
 }
