@@ -1,40 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, BrowserRouter, Link } from 'react-router-dom';
-
-import './index.css';
-
-import UserRegisterForm from './userRegister/UserRegisterForm';
-import UserLoginForm from './userLogin/UserLoginForm';
+import { BrowserRouter} from 'react-router-dom';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, compose } from 'redux';
 import registerServiceWorker from './registerServiceWorker';
+import routes from './routes.js'
 
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
+import rootReducer from './rootReducer'
+
+const store = createStore(
+    rootReducer,
+    compose(
+        applyMiddleware(thunk),
+        window.devToolsExtension ? window.devToolsExtension() : f => f
+    )
 );
 
-const App = () => (
-  <div>
-    <div>
-      <Link to="/">Home</Link>
-      <Link to="/user/register">Register</Link>
-      <Link to="/user/login">Login</Link>
-    </div>
-    <div>
-      <Route path="/" component={Home} />
-      <Route path="/user/register" component={UserRegisterForm} />
-      <Route path="/user/login" component={UserLoginForm} />
-    </div>
-  </div>
-);
 
 const Router = () => (
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+    <BrowserRouter>
+        {routes}
+    </BrowserRouter>
 );
 
-ReactDOM.render(<Router />, document.getElementById('root'));
-
+ReactDOM.render(
+    <Provider store={store}>
+        <Router />
+    </Provider>, document.getElementById('content'));
 registerServiceWorker();

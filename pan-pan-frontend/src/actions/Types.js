@@ -1,0 +1,6 @@
+export const ADD_FLASH_MESSAGE = 'ADD_FLASH_MESSAGE';
+export const DELETE_FLASH_MESSAGE = 'DELETE_FLASH_MESSAGE';
+export const ADD_FLASH_LOADING = 'ADD_FLASH_LOADING';
+export const DELETE_FLASH_LOADING = 'DELETE_FLASH_LOADING';
+export const LOG_IN = 'LOG_IN';
+export const LOG_OUT = 'LOG_OUT';

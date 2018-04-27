@@ -16,6 +16,8 @@ env:
    - NODE_VERSION=9
 
 before_script:
+   - sudo service mysql stop
+   - while sudo lsof -Pi :3306 -sTCP:LISTEN -t; do sleep 1; done
    - docker-compose up -d --build
 
 script:
