@@ -27,13 +27,17 @@ export default class AddMemberForm extends Component{
       console.log(this.state.nameUser);
       axios.get('http://localhost:8080/user/'+this.state.nameUser)
       .then(response => this.setState({currentUsers: response.data}))
-  }
+   }
     showUserName(){
-        return (
-          <div>{this.state.currentUsers.firstName}</div>
-          )
-  }
-
+        var html='';
+        if(this.state.currentUsers.firstName != null){
+           html = <div>{this.state.currentUsers.firstName} <button type="button" class="btn btn-success">Adicionar</button>
+                    </div>
+        }else{
+            html =''
+        }
+        return html;
+    }
   render (){
     var html =
               <div className="container">
@@ -43,7 +47,7 @@ export default class AddMemberForm extends Component{
                           <label>Nome:</label>
                           <input  value={this.state.nameUser}  onChange={this.setUserName}  type="text" className="form-control" name="band-name" required="required" placeholder="Sua banda"/>
                       </div>
-                      <input type="submit" value="Procura"  />
+                      <button type="submit" class="btn btn-info" value="Procura"  >Procura</button>
                   </form>
                   {this.showUserName()}
               </div>
