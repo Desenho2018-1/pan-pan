@@ -7,12 +7,11 @@ export default class AddMemberForm extends Component{
     super(props);
       this.state = {
         nameUser: '',
-        currentUsers:[]
+        currentUsers:''
       }
 
       this.submitForm = this.submitForm.bind(this);
       this.getUserName = this.getUserName.bind(this);
-      this.listUsers = this.listUsers.bind(this);
       this.setUserName = this.setUserName.bind(this);
     }
     submitForm(event) {
@@ -27,39 +26,26 @@ export default class AddMemberForm extends Component{
     getUserName(){
       console.log(this.state.nameUser);
       axios.get('http://localhost:8080/user/'+this.state.nameUser)
-      .then(response=>console.log(response.data));
-
-    }
-
-    listUsers(){
-        axios.get('http://localhost:8080/user/all')
-          .then(response => this.setState({currentUsers: response.data}))
-
-        var users = this.state.currentUsers.map(function(user){
-
-
-        return(
-              <tr key={user.id}>
-                <td>{user.firstName}</td>
-                <td>{user.email}</td>
-              </tr>
-            )
-    });
-    return users;
-
+      .then(response => this.setState({currentUsers: response.data}))
+  }
+    showUserName(){
+        return (
+          <div>{this.state.currentUsers.firstName}</div>
+          )
   }
 
   render (){
     var html =
               <div className="container">
                   <h1 className="page-title">Procure o Membro para adicionar a banda</h1>
-                  <form id="form-container" onSubmit={this.submitForm}>
+                  <form id="form-container" onSubmit={this.submitForm} >
                       <div className="form-group">
                           <label>Nome:</label>
                           <input  value={this.state.nameUser}  onChange={this.setUserName}  type="text" className="form-control" name="band-name" required="required" placeholder="Sua banda"/>
                       </div>
-                      <input type="submit" value="Procura" />
+                      <input type="submit" value="Procura"  />
                   </form>
+                  {this.showUserName()}
               </div>
     return html;
   }
