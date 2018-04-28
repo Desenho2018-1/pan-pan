@@ -1,0 +1,18 @@
+.home-page{
+    background-image: url('../imgs/show.jpg');
+    width: 100%;
+    min-height: 1000px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.home-page .navbar {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.home-page .container{
+    color: red;
+    text-align: center;
+}
