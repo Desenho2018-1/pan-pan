@@ -35,8 +35,10 @@ export default class PageHeader extends Component{
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-
-                        <a className="navbar-brand" href="/">Pan-Pan</a>
+                        <div class="head">
+                          <img src={require("../../assets/imgs/panis.png")} alt="logo" />
+                          <a className="navbar-brand" href="/"> <font color="black">Pan-Pan</font></a>
+                        </div>
                     </div>
 
                     <div className="collapse navbar-collapse" id="navbar-menu">
