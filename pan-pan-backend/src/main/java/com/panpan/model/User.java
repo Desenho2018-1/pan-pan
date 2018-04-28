@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ElementCollection;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 import javax.validation.constraints.*;
@@ -50,7 +49,6 @@ public class User {
     @NotNull
     private String city;
 
-    @ElementCollection
     private ArrayList<String> instruments;
 
     private String role;
