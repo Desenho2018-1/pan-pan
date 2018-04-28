@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.*;
-import java.util.Calendar;
 import java.util.Date;
 import lombok.Data;
 

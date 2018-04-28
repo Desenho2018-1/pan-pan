@@ -9,6 +9,6 @@ import com.panpan.model.User;
 @RepositoryRestController
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	User findByFirstName(@Param("name") String name);
+	User findByFirstName(@Param("firstName") String firstName);
 
 }
