@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.*;
+import java.util.Calendar;
 import java.util.Date;
 import lombok.Data;
 
@@ -37,9 +38,9 @@ public class Band {
 
     public Band(){}
 
-    public Band(String name, String genre){
+    public Band(String name, String genre, User user){
         ArrayList<User> members = new ArrayList<User>();
-        members.add(new User("Frodo", "Baggins"));
+        members.add(user);
         setMembers(members);
         setName(name);
         setGenre(genre);

@@ -8,8 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
-import javax.validation.constraints.*;
-
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Email;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -31,11 +33,11 @@ public class User {
 
     @NotNull
     @Size(min=2, max=30)
-    private String username;
+    private String userName;
 
     @NotNull
     @Past
-    private Date birthdate;
+    private Date birthDate;
 
     @Email
     private String email;
