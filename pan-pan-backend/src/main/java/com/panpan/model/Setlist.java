@@ -8,23 +8,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
 @Data
 @Entity
 public class Setlist {
-    public @Id @GeneratedValue Long Id;
+    
+    @Id
+    @GeneratedValue
+    public Long Id;
     private String name;
     private ArrayList<Song> songs;
 
     @ManyToOne
-    @JoinColumn(name = "band_id")
+    @JsonIgnore
+    @NotNull
     private Band band;
 
     public Setlist() {}
 
-    public Setlist(String name, ArrayList<Song> songs) {
+    public Setlist(Band band, String name, ArrayList<Song> songs) {
+        this.band = band;
         this.name = name;
         this.songs = songs;
     }

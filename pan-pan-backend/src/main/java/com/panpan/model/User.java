@@ -17,8 +17,10 @@ import com.panpan.model.Band;
 @Data
 @Entity
 public class User {
-
-    private @Id @GeneratedValue Long id;
+    
+    @Id 
+    @GeneratedValue
+    private  Long id;
     private String firstName;
     private String lastName;
     private String username;
