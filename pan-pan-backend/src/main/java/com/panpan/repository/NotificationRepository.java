@@ -2,9 +2,9 @@ package com.panpan.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
-import com.panpan.model.EmailNotification;
+import com.panpan.model.Notification;
 
 @RepositoryRestController
-public interface EmailNotificationRepository extends JpaRepository<EmailNotification, Long> {
+public interface NotificationRepository extends JpaRepository<Notification, Long> {
 
 }
