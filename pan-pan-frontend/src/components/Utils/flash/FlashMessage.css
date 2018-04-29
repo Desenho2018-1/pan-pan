@@ -1,0 +1,27 @@
+.flashmessage .modal {
+    display:block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.flashmessage .modal-body{
+    font-size: 10px;
+}
+
+.flashmessage .modal-success{
+    background-color: #428bca;
+}
+
+.flashmessage .modal-error{
+    background-color: #d9534f;
+}
+
+.flashmessage .modal-dialog{
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+
+@keyframes fade-in {
+    from {opacity: 0.0;}
+    to {opacity: 1;}
+}
