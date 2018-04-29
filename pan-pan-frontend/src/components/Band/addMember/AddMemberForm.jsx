@@ -13,6 +13,7 @@ export default class AddMemberForm extends Component{
       this.submitForm = this.submitForm.bind(this);
       this.getUserName = this.getUserName.bind(this);
       this.setUserName = this.setUserName.bind(this);
+      this.setMemberOnBand = this.setMemberOnBand.bind(this);
     }
     submitForm(event) {
       event.preventDefault();
@@ -28,10 +29,15 @@ export default class AddMemberForm extends Component{
       axios.get('http://localhost:8080/user/'+this.state.nameUser)
       .then(response => this.setState({currentUsers: response.data}))
    }
+   setMemberOnBand(){
+     axios.get('http://localhost:8080/addMember/'+3+'/'+this.state.nameUser)
+              .then(response => console.log(response.data));
+
+   }
     showUserName(){
         var html='';
         if(this.state.currentUsers.firstName != null){
-           html = <div>{this.state.currentUsers.firstName} <button type="button" class="btn btn-success">Adicionar</button>
+           html = <div>{this.state.currentUsers.firstName} <button onClick={this.setMemberOnBand} type="button" class="btn btn-success">Adicionar</button>
                     </div>
         }else{
             html =''

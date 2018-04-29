@@ -24,8 +24,6 @@ public class UserController {
     @CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping(value = "/{name}")
 	public User findNameUser(@PathVariable String name) {
-    	System.out.println("entrei aqui");
-    	System.out.println("o nome que deu foi esse:"+name);
-	    return userRepository.findByFirstName(name);
+    	return userRepository.findByFirstName(name);
 	}
  }
