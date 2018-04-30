@@ -69,9 +69,10 @@ public class User implements Observer {
 	}
 
 	@Override
-	public void update(Notification n) {
+	public Notification update(Notification n) {
 		Notification clone = n.clone();
 		clone.setOwner(this);
 		notifications.add(clone);
+		return clone;
 	}
 }

@@ -37,8 +37,8 @@ public class Notification implements Cloneable {
 	private User owner;
 
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "band_activity_id")
-	private BandActivity band;
+	@JoinColumn(name = "band_id")
+	private Band band;
 
 	private Boolean isRead;
 	private String url;
@@ -47,7 +47,7 @@ public class Notification implements Cloneable {
 	public Notification() {
 	}
 	@Autowired
-	public Notification(BandActivity band, User creator, String shortText, String url) {
+	public Notification(Band band, User creator, String shortText, String url) {
 		this.setCreator(creator);
 		this.setBand(band);
 		this.setShortText(shortText);
