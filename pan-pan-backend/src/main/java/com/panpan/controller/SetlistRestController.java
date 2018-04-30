@@ -3,8 +3,6 @@ package com.panpan.controller;
 import java.net.URI;
 import java.util.Collection;
 
-import javax.transaction.Transactional;
-
 import com.panpan.model.Setlist;
 import com.panpan.repository.BandRepository;
 import com.panpan.repository.SetlistRepository;
@@ -52,8 +50,13 @@ class SetlistRestController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{setlistId}")
-    ResponseEntity<?> add(@PathVariable("bandId") Long bandId, @PathVariable("setlistId") Long setlistId) {
+    ResponseEntity<?> delete(@PathVariable("bandId") Long bandId, @PathVariable("setlistId") Long setlistId) {
         this.setlistRepository.deleteById(setlistId);
         return ResponseEntity.accepted().build();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{setlistId}")
+    Setlist readSetlist(@PathVariable("setlistId") Long setlistId) {
+        return this.setlistRepository.findById(setlistId).get();
     }
 }
