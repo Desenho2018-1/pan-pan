@@ -18,7 +18,7 @@ const createSetlist = async (setlistName) => {
 const CreateSetlistPage = () => (
   <div>
     <PageHeader />
-    <button onClick={createSetlist('Mamãe')} >
+    <button onClick={() => createSetlist('Mamãe')} >
       Oh my god!
     </button>
   </div>

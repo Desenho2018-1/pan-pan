@@ -12,6 +12,7 @@ public class PanPanConfiguration extends RepositoryRestConfigurerAdapter {
         config.getCorsRegistry()
                 .addMapping("/**")
                 .allowedOrigins("http://localhost:3000")
+                .allowedHeaders("*")
                 .allowedMethods("GET", "POST");
     }
 }
