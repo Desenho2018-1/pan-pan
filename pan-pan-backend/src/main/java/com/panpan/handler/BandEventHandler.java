@@ -7,7 +7,6 @@ import org.springframework.data.rest.core.annotation.HandleAfterCreate;
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 import org.springframework.stereotype.Component;
 
-import com.panpan.controller.NotificationController;
 import com.panpan.model.Band;
 import com.panpan.model.Notification;
 import com.panpan.model.User;

@@ -27,7 +27,7 @@ public class DatabaseLoader implements CommandLineRunner {
 	public void run(String... strings) throws Exception {
 		User user1 = new User("Teste", "pablodiegoss@hotmail.com");
 		Band band1 = new Band(user1,"TestName", "TestGenre");
-		Notification n1 = new Notification(band1.getActivity(),user1, "A", "B");
+		Notification n1 = new Notification(band1,user1, "A", "B");
 		n1.setOwner(user1);
 		this.repository.save(user1);
 		//this.repository3.save(band1);

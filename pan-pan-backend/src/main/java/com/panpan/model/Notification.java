@@ -1,7 +1,5 @@
 package com.panpan.model;
 
-import java.util.List;
-import java.util.ArrayList;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,18 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Transient;
-import javax.validation.constraints.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Date;
 import lombok.Data;
 
 import com.panpan.model.User;
-import com.panpan.repository.NotificationRepository;
 
 @Data
 @Entity
