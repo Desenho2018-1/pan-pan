@@ -72,8 +72,6 @@ public class User implements Observer {
 	public void update(Notification n) {
 		Notification clone = n.clone();
 		clone.setOwner(this);
-		NotificationController controller = new NotificationController();
-		clone = controller.createNotificationForUser(clone);
 		notifications.add(clone);
 	}
 }

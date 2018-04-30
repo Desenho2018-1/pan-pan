@@ -28,14 +28,15 @@ public class Notification implements Cloneable {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@ManyToOne
+	
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "creator_id")
 	private User creator;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "owner_id")
 	private User owner;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "band_activity_id")
 	private BandActivity band;
 

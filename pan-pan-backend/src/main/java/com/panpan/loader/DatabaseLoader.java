@@ -30,7 +30,7 @@ public class DatabaseLoader implements CommandLineRunner {
 		Notification n1 = new Notification(band1.getActivity(),user1, "A", "B");
 		n1.setOwner(user1);
 		this.repository.save(user1);
-		this.repository3.save(band1);
+		//this.repository3.save(band1);
 		//this.repository2.save(new VerificationToken(user1));
 		//this.repository4.save(n1);
 	}

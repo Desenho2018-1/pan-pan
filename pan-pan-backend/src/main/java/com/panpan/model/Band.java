@@ -41,15 +41,15 @@ public class Band {
     @Size(min=2, max=50)
     private String name;
 
-    public Band(){}
+    public Band(){
+    	activity = new BandActivity();
+    }
 
     public Band(User u,String name, String genre){
         ArrayList<User> members = new ArrayList<User>();
         members.add(u);
         activity = new BandActivity();
         activity.addObserver(u);
-        NotificationController controller = new NotificationController();
-        controller.createNotificationForBand(activity.createNotification(u, "AAA", "uashusdh"));
         setMembers(members);
         setName(name);
         setGenre(genre);
