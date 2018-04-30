@@ -1,14 +1,12 @@
-import React, { Component } from 'react'
-import CreateBandForm from '../components/Band/create/CreateBandForm'
-import PageHeader from '../components/PageHeader/PageHeader'
+import React from 'react';
+import CreateBandForm from '../components/Band/create/CreateBandForm';
+import PageHeader from '../components/PageHeader/PageHeader';
 
-export default class CreateBandPage extends Component {
-  render() {
-    return (
-      <div>
-        <PageHeader />
-        <CreateBandForm />
-      </div>
-    )
-  }
-}
+const CreateBandPage = () => (
+  <div>
+    <PageHeader />
+    <CreateBandForm />
+  </div>
+);
+
+export default CreateBandPage;

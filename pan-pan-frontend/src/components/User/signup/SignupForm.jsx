@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import './SignupForm.css';
 import InputMask from 'react-input-mask';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
+import React, { Component } from 'react';
+import axios from 'axios';
+import './SignupForm.css';
 import User from '../models/User';
 
 const STATES = [
@@ -38,19 +38,20 @@ const STATES = [
 
 
 const INSTRUMENTS = [
-	{ label: 'Vocal', value: 'singer' },
-	{ label: 'Violão', value: 'guitar' },
-	{ label: 'Guitarra', value: 'eletric_guitar' },
-	{ label: 'Contrabaixo', value: 'eletric_bass' },
-	{ label: 'Bateria', value: 'drums' },
+  { label: 'Vocal', value: 'singer' },
+  { label: 'Violão', value: 'guitar' },
+  { label: 'Guitarra', value: 'eletric_guitar' },
+  { label: 'Contrabaixo', value: 'eletric_bass' },
+  { label: 'Bateria', value: 'drums' },
 ];
 
-export default class SignupForm extends Component {
+class SignupForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {selectedInstrumentsOption: '',
-                  selectedStateOption:'',
-                  };
+    this.state = {
+      selectedInstrumentsOption: '',
+      selectedStateOption: '',
+    };
 
     this.submitForm = this.submitForm.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -68,26 +69,26 @@ export default class SignupForm extends Component {
         let lastName = names.reverse().join(" ");
 
         user_obj.setState({
-          firstName:firstName,
-          lastName:lastName
+          firstName: firstName,
+          lastName: lastName
         });
       }
       else
-      if (key == 'instruments') {
-        let instruments = [];
-        for (let instrument of this.state.selectedInstrumentsOption) {
-          instruments.push(instrument.value);
-        }
-        user_obj.setState({instruments:instruments});
-      }else
-        if (key == 'birthdate') {
-          let date = value.replace(/\//g,'-');
-          let birthdate = new Date(date);
-          user_obj.setState({birthdate:birthdate});
-        }
-        else {
-          user_obj.setState({[key]:value});
-        }
+        if (key == 'instruments') {
+          let instruments = [];
+          for (let instrument of this.state.selectedInstrumentsOption) {
+            instruments.push(instrument.value);
+          }
+          user_obj.setState({ instruments: instruments });
+        } else
+          if (key == 'birthdate') {
+            let date = value.replace(/\//g, '-');
+            let birthdate = new Date(date);
+            user_obj.setState({ birthdate: birthdate });
+          }
+          else {
+            user_obj.setState({ [key]: value });
+          }
     }
 
     console.log(user_obj);
@@ -98,10 +99,10 @@ export default class SignupForm extends Component {
 
   handleChange = (type, selectedOption) => {
     if (type == 'instruments') {
-        this.setState({selectedInstrumentsOption:selectedOption})
+      this.setState({ selectedInstrumentsOption: selectedOption })
     }
     else if (type == 'states') {
-      this.setState({selectedStateOption:selectedOption})
+      this.setState({ selectedStateOption: selectedOption })
     }
   }
 
@@ -118,20 +119,20 @@ export default class SignupForm extends Component {
           <div className="form-group">
             <label>Nome:</label>
             <input type="text" className="form-control" name="name"
-                   id="name" placeholder="Insira seu nome"/>
+              id="name" placeholder="Insira seu nome" />
           </div>
 
           <div className="form-group">
             <label>E-mail:</label>
             <input type="text" className="form-control" name="email"
-                   id="email" placeholder="Insira seu e-mail"/>
+              id="email" placeholder="Insira seu e-mail" />
           </div>
 
           <div className="form-group">
             <label>Data de nascimento:</label>
             <InputMask className="form-control" name="birthdate"
-                       id="birthdate" placeholder="  /  /    "
-                       mask="99/99/9999" maskChar=" "/>
+              id="birthdate" placeholder="  /  /    "
+              mask="99/99/9999" maskChar=" " />
           </div>
 
           <div className="form-group">
@@ -141,7 +142,7 @@ export default class SignupForm extends Component {
               multi
               placeholder="Selecione seus instrumentos"
               value={selectedInstrumentsOption}
-              onChange={(value) => this.handleChange('instruments',value)}
+              onChange={(value) => this.handleChange('instruments', value)}
               options={INSTRUMENTS}
             />
           </div>
@@ -152,29 +153,29 @@ export default class SignupForm extends Component {
               name="state"
               placeholder="Selecioe seu Estado"
               value={selectedStateOption}
-              onChange={(value) => this.handleChange('states',value)}
+              onChange={(value) => this.handleChange('states', value)}
               options={STATES}
             />
           </div>
 
           <div className="form-group">
             <label>Cidade:</label>
-            <input type="text" className="form-control" name="city" id="city" placeholder="Insira sua cidade"/>
+            <input type="text" className="form-control" name="city" id="city" placeholder="Insira sua cidade" />
           </div>
 
           <div className="form-group">
             <label>Username:</label>
-            <input type="text" className="form-control" name="username" id="username" placeholder="Escolha um username"/>
+            <input type="text" className="form-control" name="username" id="username" placeholder="Escolha um username" />
           </div>
 
           <div className="form-group">
             <label>Senha:</label>
-          <input type="text" className="form-control" name="password" id="password" placeholder="Insira uma senha"/>
+            <input type="text" className="form-control" name="password" id="password" placeholder="Insira uma senha" />
           </div>
 
           <div className="form-group">
             <label>Confirme a senha:</label>
-            <input type="password" className="form-control" name="repeat-password" id="repeat-password" placeholder="Sua senha novamente"/>
+            <input type="password" className="form-control" name="repeat-password" id="repeat-password" placeholder="Sua senha novamente" />
           </div>
 
 
@@ -188,3 +189,5 @@ export default class SignupForm extends Component {
     return html;
   }
 }
+
+export default SignupForm;
