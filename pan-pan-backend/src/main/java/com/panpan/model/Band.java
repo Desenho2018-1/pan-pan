@@ -8,12 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.*;
 import java.util.Date;
 import lombok.Data;
 
-import com.panpan.controller.NotificationController;
+import com.panpan.Observer;
 import com.panpan.model.User;
 
 @Data
@@ -23,12 +22,16 @@ public class Band {
     @GeneratedValue
     private Long id;
 
+    @OneToMany(targetEntity=User.class)
+	List<Observer> observers = new ArrayList<Observer>();
+	
+	@OneToMany(mappedBy="band", cascade=CascadeType.ALL)
+	List<Notification> notifications = new ArrayList<Notification>();
+
     @NotNull
     @OneToMany(mappedBy = "band")
     private List<User> members;
-    
-    @OneToOne(cascade=CascadeType.ALL)
-    private BandActivity activity;
+
     
     @NotNull
     @Size(min=2, max=50)
@@ -42,18 +45,39 @@ public class Band {
     private String name;
 
     public Band(){
-    	activity = new BandActivity();
     }
 
     public Band(User u,String name, String genre){
         ArrayList<User> members = new ArrayList<User>();
         members.add(u);
-        activity = new BandActivity();
-        activity.addObserver(u);
+        addObserver(u);
         setMembers(members);
         setName(name);
         setGenre(genre);
         setCreationDate(new Date());
     }
+    
+    public void addObserver(Observer o) {
+		observers.add(o);
+	}
+	public void removeObserver(Observer o) {
+		observers.remove(o);
+	}
+	public ArrayList<Notification> notifyObservers(Notification n) {
+		ArrayList<Notification> notifications = new ArrayList<Notification>();
+		for(Observer o:observers) {
+			notifications.add(o.update(n));
+		}
+		return notifications;
+	}
+	public ArrayList<Notification> createNotification(User creator, String text, String url) {
+		Notification n = new Notification(this,creator, text, url);
+		notifications.add(n);
+		
+		ArrayList<Notification> newNotifications = notifyObservers(n);
+		newNotifications.add(n);
+		
+		return newNotifications;
+	}
 
 }
