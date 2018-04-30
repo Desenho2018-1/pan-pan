@@ -20,7 +20,7 @@ public class Setlist {
     
     @Id
     @GeneratedValue
-    public Long Id;
+    public Long id;
     private String name;
     private ArrayList<Song> songs;
 

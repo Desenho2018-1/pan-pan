@@ -3,6 +3,8 @@ package com.panpan.controller;
 import java.net.URI;
 import java.util.Collection;
 
+import javax.transaction.Transactional;
+
 import com.panpan.model.Setlist;
 import com.panpan.repository.BandRepository;
 import com.panpan.repository.SetlistRepository;
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping("/{bandId}/setlists")
+@RequestMapping("/api/bands/{bandId}/setlists")
 class SetlistRestController {
     private final SetlistRepository setlistRepository;
     private final BandRepository bandRepository;
@@ -47,5 +49,11 @@ class SetlistRestController {
                 return ResponseEntity.created(location).build();
             }
         ).orElse(ResponseEntity.noContent().build());
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{setlistId}")
+    ResponseEntity<?> add(@PathVariable("bandId") Long bandId, @PathVariable("setlistId") Long setlistId) {
+        this.setlistRepository.deleteById(setlistId);
+        return ResponseEntity.accepted().build();
     }
 }
