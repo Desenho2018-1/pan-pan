@@ -16,19 +16,27 @@ export default class AddMemberForm extends Component{
       this.setMemberOnBand = this.setMemberOnBand.bind(this);
     }
     submitForm(event) {
+
       event.preventDefault();
       this.getUserName();
+
     }
 
     setUserName(event){
+
       this.setState({nameUser: event.target.value})
+
     }
 
+    //frodo is only member register on system
     getUserName(){
+
       console.log(this.state.nameUser);
-      axios.get('http://localhost:8080/user/'+this.state.nameUser)
+      axios.get('http://localhost:8080/api/users/search/findByFirstName?name='+this.state.nameUser)
       .then(response => this.setState({currentUsers: response.data}))
    }
+
+   //Set 3 here because just have 1 band in system
    setMemberOnBand(){
      axios.get('http://localhost:8080/addMember/'+3+'/'+this.state.nameUser)
               .then(response => console.log(response.data));
@@ -37,12 +45,12 @@ export default class AddMemberForm extends Component{
     showUserName(){
         var html='';
         if(this.state.currentUsers.firstName != null){
-           html = <div>{this.state.currentUsers.firstName} <button onClick={this.setMemberOnBand} type="button" class="btn btn-success">Adicionar</button>
+          return html = <div>{this.state.currentUsers.firstName} <button onClick={this.setMemberOnBand} type="button" class="btn btn-success">Adicionar</button>
                     </div>
         }else{
-            html =''
+          return  html =''
         }
-        return html;
+
     }
   render (){
     var html =
