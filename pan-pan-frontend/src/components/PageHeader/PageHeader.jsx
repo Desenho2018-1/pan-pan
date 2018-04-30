@@ -1,33 +1,47 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
+import { logout } from '../../actions/User/LoginAction.js'
 import './PageHeader.css'
+
 
 import User from '../User/models/User'
 
 
-export default class PageHeader extends Component{
+class PageHeader extends Component{
     constructor(props) {
         super(props);
         this.state = {};
 
-        this.isLogged = this.isLogged.bind(this);
     }
 
-    isLogged(){
-        let sessionUser = sessionStorage.getItem('user');
+    isAuthenticated(){
+        const { isAuthenticated, user } = this.props.permission;
+        const logout = this.props.logout
 
-        if (sessionUser) {
-            let user = new User(JSON.parse(sessionUser))
-            return 'Welcome ' + user.name + ' !';
-        }else{
-            return <Link to="/user/login">Login</Link>;
+        if (isAuthenticated) {
+            return (<div>
+
+                        <p className="navbar-text">Oi, {user.firstName}!</p>
+                        <button className="navbar-text btn-link" onClick={logout}>Logout</button>
+                    </div>
+            );
+        } else {
+            return (
+                    <div>
+                        <button className="navbar-text btn-link">
+                            <Link to="/user/login">Login</Link>
+                        </button>
+                    </div>
+            );
         }
     }
 
     render(){
         return (
-            <nav className="navbar navbar-inverse">
+            <nav className="navbar navbar-inverse header-container">
                 <div className="container-fluid">
                     <div className="navbar-header">
                         <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
@@ -35,22 +49,36 @@ export default class PageHeader extends Component{
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <div class="head">
+                        <div className="head">
                           <Link to="/">
                             <img src={require("../../assets/imgs/pan_pan_minimal_white.png")} alt="logo" />
                           </Link>
                           <a className="navbar-brand" href="/"> <font color="white">Pan-Pan</font></a>
                         </div>
                     </div>
-
                     <div className="collapse navbar-collapse" id="navbar-menu">
-                        <ul className="nav navbar-nav">
-                            <li className="active">{this.isLogged()}</li>
+                        <ul className="nav navbar-nav navbar-right">
+                            <li className="active">
+                            {this.isAuthenticated()}
+                            </li>
                         </ul>
                     </div>
-
                 </div>
             </nav>
         )
     }
 }
+
+PageHeader.propTypes = {
+    permission: PropTypes.object.isRequired,
+    logout: PropTypes.func.isRequired
+
+}
+
+function mapStateToProps(state) {
+    return {
+        permission: state.login
+    }
+}
+
+export default connect(mapStateToProps, { logout })(PageHeader);

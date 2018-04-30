@@ -2,16 +2,9 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 
 import '../assets/static/homepage.css'
-import PermissionRequired from '../components/Utils/permission/PermissionRequired'
 import PageHeader from '../components/PageHeader/PageHeader'
 
 export default class HomePage extends Component{
-    constructor(props){
-        super(props);
-
-    }
-
-
     render(){
         return (
             <div className="home-page">
@@ -22,21 +15,21 @@ export default class HomePage extends Component{
                         </div>
                         <div className="bottom-center">
                           <Link to="/user/signup">
-                            <button  class="btn btn-transparent" type="submit" size="large">Cadastre-se</button>
+                            <button  className="btn btn-transparent" type="submit" size="large">Cadastre-se</button>
                           </Link>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-3">
-                                 <span class="glyphicon glyphicon-list"></span>
+                        <div className="row">
+                            <div className="col-md-3">
+                                 <span className="glyphicon glyphicon-list"></span>
                                  <p font-color="white">Organize sua setlist</p>
                             </div>
-                            <div class="col-md-3">
-                                 <span class="glyphicon glyphicon-user"></span>
+                            <div className="col-md-3">
+                                 <span className="glyphicon glyphicon-user"></span>
                                  <p font-color="white">Gerencie sua banda</p>
                             </div>
-                            <div class="col-md-3">
-                                 <span class="glyphicon glyphicon-music"></span>
+                            <div className="col-md-3">
+                                 <span className="glyphicon glyphicon-music"></span>
                                  <p font-color="white">Compartilhe arquivos</p>
                             </div>
                         </div>
