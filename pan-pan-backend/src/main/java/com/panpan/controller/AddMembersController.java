@@ -22,22 +22,20 @@ import antlr.collections.List;
 @RequestMapping("/addMember")
 public class AddMembersController {
 
-	
+
 	@Autowired
     private BandRepository bandRepository;
 
-	
+
     @CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/{idBand}/{name}")
 	public Band findBandById(@PathVariable long idBand, @PathVariable String name) {
-		
-    	User user = new User(name,"test");
+
+    User user = new User(name,"test");
 		Band band = bandRepository.findBandById(idBand);
 		band.getMembers().add(user);
-		//System.out.println(idBand);
 		System.out.println(band.getId());
-		//band.setName(name);
 		return band;
-	
+
 	}
 }
