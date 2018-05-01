@@ -12,7 +12,7 @@ class CreateSetlistPage extends React.Component {
     };
   }
 
-  createSetlist = async (setlistName) => {
+  handleSubmit = async (setlistName) => {
     const request = {
       name: setlistName,
     };
@@ -39,7 +39,7 @@ class CreateSetlistPage extends React.Component {
         <button onClick={() => this.toggleModal()} >
           Click here to open the modal
         </button>
-        <Setlistmodal isOpen={isOpen} askToClose={this.toggleModal} />
+        <Setlistmodal isOpen={isOpen} askToClose={this.toggleModal} onSubmit={this.handleSubmit} />
       </div>
     );
   }
