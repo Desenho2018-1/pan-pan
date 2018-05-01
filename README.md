@@ -35,7 +35,49 @@ _please see the instructions in CODE_OF_CONDUCT.md file_
 
 4. Execute the following command: 
 
-`$ sudo docker-compose up --build`
+`$ make run`
+
+NOTE: If you haven't followed the [post-installation steps](https://docs.docker.com/install/linux/linux-postinstall/) for docker you need to use `sudo` along with the `make` instructions, such as:
+
+`$ sudo make run`
+
+#### Other Useful commands
+
+- Builds the entire environment including database, api and frontend
+
+`$ make build`
+- Starts the application's database
+
+`$ make start-db`
+- Starts the application's api/backend
+
+`$ make start-back`
+- Starts the application's frontend
+
+`$ make start-front`
+- Drops the application's entire environment
+
+`$ make drop`
+- Install the application's frontend dependencies
+
+`$ make front-install`
+- Executes the application's backend tests
+
+`$ make back test`
+- Executes the application's frontend tests
+
+`$ make front test`
+- Removes the application's shared network
+
+`$ make rm-network`
+- Removes the application's shared virtual volumes
+
+`$ make rm-volume`
+- Lists your running services
+
+`$ make ps`
+
+------------------------------------------------------------------------------------------------------
 
 For now, the containers are taking too much time to up on the first time (around 15 minutes), so don't worry!
 
