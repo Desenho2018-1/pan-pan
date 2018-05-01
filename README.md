@@ -76,6 +76,9 @@ NOTE: If you haven't followed the [post-installation steps](https://docs.docker.
 - Lists your running services
 
 `$ make ps`
+- Lists every possible make command
+
+`$ make list`
 
 ------------------------------------------------------------------------------------------------------
 
