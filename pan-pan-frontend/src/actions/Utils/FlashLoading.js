@@ -8,7 +8,7 @@ export function addFlashLoading() {
     }
 }
 
-export function deleteFlashLoading(id) {
+export function deleteFlashLoading() {
     const value = false;
     return {
         type: DELETE_FLASH_LOADING,

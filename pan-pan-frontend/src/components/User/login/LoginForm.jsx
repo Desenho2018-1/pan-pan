@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
-import User from '../models/User';
-
 
 export default class LoginForm extends Component {
     constructor(props) {
@@ -18,17 +14,23 @@ export default class LoginForm extends Component {
         event.preventDefault();
         const loginForm = new FormData(event.target);
 
-        var result = {
+        var loginInformations = {
             username:loginForm.get('username'),
             password:loginForm.get('password')
         }
 
-        console.log(result);
 
-        axios.post('http://localhost:8080/api/users/login', result)
-        .then(function (response) {
-            this.props.login()
-        });
+        this.props.userLoginRequest(loginInformations)
+        .then(
+            (success) => {
+                this.props.deleteFlashLoading();
+                this.props.login(success.data);
+            },
+            (error) => {
+                console.log(error);
+                this.props.deleteFlashLoading();
+            }
+        );
     }
 
 
@@ -65,4 +67,6 @@ export default class LoginForm extends Component {
 
 LoginForm.propTypes = {
     login: PropTypes.func.isRequired,
+    userLoginRequest: PropTypes.func.isRequired,
+    deleteFlashLoading: PropTypes.func.isRequired,
 }

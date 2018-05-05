@@ -3,7 +3,6 @@ import axios from 'axios'
 
 import './CreateBandForm.css'
 
-
 export default class CreateBandForm extends Component {
     constructor(props) {
         super(props)
@@ -58,8 +57,8 @@ export default class CreateBandForm extends Component {
                         <label>Imagem:</label>
                         <input type="file" className="btn btn-priamry" accept="image/*" onChange={this.handleFileChange}/>
                     </div>
-                    <div className="form-group" className="submit-btn">
-                        <input type="submit" className="btn btn-primary" value="Cadastrar"/>
+                    <div className="form-group submit-btn">
+                        <button type="submit" className="btn btn-primary">Cadastrar</button>
                     </div>
                 </form>
             </div>
