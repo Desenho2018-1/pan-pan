@@ -3,6 +3,7 @@ package com.panpan.loader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import java.util.Calendar;
 
 import com.panpan.model.*;
 import com.panpan.repository.*;
@@ -12,9 +13,8 @@ public class DatabaseLoader implements CommandLineRunner {
 
 	private final UserRepository repository;
 	private final VerificationTokenRepository repository2;
-	private final BandRepository repository3;	
-	private final NotificationRepository repository4;
-	
+	private final BandRepository repository3;
+
 	@Autowired
 	public DatabaseLoader(UserRepository repository, VerificationTokenRepository repository2, BandRepository repository3, NotificationRepository repository4) {
 		this.repository = repository;
@@ -25,13 +25,20 @@ public class DatabaseLoader implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-		User user1 = new User("Teste", "pablodiegoss@hotmail.com");
-		Band band1 = new Band(user1,"TestName", "TestGenre");
-		Notification n1 = new Notification(band1,user1, "A", "B");
-		n1.setOwner(user1);
+
+		User user1 = new User("Frodo", "frodo@gmail.com", "password");
+
+		Calendar cal = Calendar.getInstance();
+    int daysToIncrement = -5;
+    cal.add(Calendar.DATE, daysToIncrement);
+		user1.setBirthDate(cal.getTime());
+
+		user1.setLastName("Baggins");
+		user1.setUserName("frodo1");
+		user1.setState("Idk");
+		user1.setCity("Where palm trees grow");
 		this.repository.save(user1);
-		//this.repository3.save(band1);
-		//this.repository2.save(new VerificationToken(user1));
-		//this.repository4.save(n1);
+		this.repository2.save(new VerificationToken(user1));
+		this.repository3.save(new Band("TestName", "TestGenre", user1));
 	}
 }
