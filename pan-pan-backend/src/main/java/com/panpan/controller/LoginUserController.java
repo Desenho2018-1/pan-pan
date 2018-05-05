@@ -19,7 +19,7 @@ public class LoginUserController{
         String username = request.get("username").asText();
         String password = request.get("password").asText();
 
-        User user = userRepository.findByUsernameAndPassword(username, password);
+        User user = userRepository.findByUserNameAndPassword(username, password);
         user.setPassword("");
 
         return user;

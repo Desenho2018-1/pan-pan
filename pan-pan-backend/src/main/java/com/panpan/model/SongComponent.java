@@ -10,12 +10,12 @@ import java.util.List;
 @Data
 @Entity
 public abstract class SongComponent {
-    @Id
-    @GeneratedValue
-    private Long songId;
+	@Id
+	@GeneratedValue
+	private Long id;
 
-    private String songName;
+	private String name;
 
-    @ManyToMany(mappedBy = "bands")
-    private List<Band> bands;
+	@ManyToMany(mappedBy = "songs")
+	private List<Band> bands;
 }

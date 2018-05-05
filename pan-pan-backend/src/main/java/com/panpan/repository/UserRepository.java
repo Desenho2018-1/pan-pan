@@ -10,6 +10,6 @@ import com.panpan.model.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
 	User findByFirstName(@Param("name") String name);
-	User findByUsernameAndPassword(String username, String password);
+	User findByUserNameAndPassword(String username, String password);
 
 }

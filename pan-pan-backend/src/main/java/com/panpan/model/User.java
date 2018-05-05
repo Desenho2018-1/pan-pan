@@ -26,41 +26,41 @@ import com.panpan.model.Band;
 @Entity
 public class User implements Observer {
 
-    private @Id @GeneratedValue Long id;
+	private @Id @GeneratedValue Long id;
 
-    @NotNull
-    @Size(min=2, max=30)
-    private String firstName;
+	@NotNull
+	@Size(min = 2, max = 30)
+	private String firstName;
 
-    @NotNull
-    @Size(min=2, max=30)
-    private String lastName;
+	@NotNull
+	@Size(min = 2, max = 30)
+	private String lastName;
 
-    @NotNull
-    @Size(min=2, max=30)
-    private String userName;
+	@NotNull
+	@Size(min = 2, max = 30)
+	private String userName;
 
-    @NotNull
-    @Past
-    private Date birthDate;
+	@NotNull
+	@Past
+	private Date birthDate;
 
-    @Email
-    private String email;
+	@Email
+	private String email;
 
-    @NotNull
-    private String password;
+	@NotNull
+	private String password;
 
-    @NotNull
-    private String state;
+	@NotNull
+	private String state;
 
-    @NotNull
-    private String city;
+	@NotNull
+	private String city;
 
-    private ArrayList<String> instruments;
+	private ArrayList<String> instruments;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
 	private List<Notification> notifications = new ArrayList<Notification>();
-    private String role;
+	private String role;
 
 	@ManyToOne
 	@JoinColumn(name = "band_id")

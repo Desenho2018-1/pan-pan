@@ -16,11 +16,11 @@ public class DatabaseLoader implements CommandLineRunner {
 	private final BandRepository repository3;
 
 	@Autowired
-	public DatabaseLoader(UserRepository repository, VerificationTokenRepository repository2, BandRepository repository3, NotificationRepository repository4) {
+	public DatabaseLoader(UserRepository repository, VerificationTokenRepository repository2,
+			BandRepository repository3, NotificationRepository repository4) {
 		this.repository = repository;
 		this.repository2 = repository2;
 		this.repository3 = repository3;
-		this.repository4 = repository4;
 	}
 
 	@Override
@@ -29,8 +29,8 @@ public class DatabaseLoader implements CommandLineRunner {
 		User user1 = new User("Frodo", "frodo@gmail.com", "password");
 
 		Calendar cal = Calendar.getInstance();
-    int daysToIncrement = -5;
-    cal.add(Calendar.DATE, daysToIncrement);
+		int daysToIncrement = -5;
+		cal.add(Calendar.DATE, daysToIncrement);
 		user1.setBirthDate(cal.getTime());
 
 		user1.setLastName("Baggins");
@@ -39,6 +39,6 @@ public class DatabaseLoader implements CommandLineRunner {
 		user1.setCity("Where palm trees grow");
 		this.repository.save(user1);
 		this.repository2.save(new VerificationToken(user1));
-		this.repository3.save(new Band("TestName", "TestGenre", user1));
+		this.repository3.save(new Band(user1, "TestName", "TestGenre"));
 	}
 }
