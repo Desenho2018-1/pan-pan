@@ -1,29 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter} from 'react-router-dom';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, compose } from 'redux';
 import registerServiceWorker from './registerServiceWorker';
-
-// Insert here the new pages
-import CreateBandPage from './pages/CreateBandPage';
-import SignupPage from './pages/SignupPage';
-import HomePage from './pages/HomePage';
-import CreateSetlistPage from './pages/CreateSetlistPage';
+import routes from './routes.js'
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
 
-const Routes = () => (
-  <div>
-    <Route exact path="/" component={HomePage} />
-    <Route exact path="/band/create" component={CreateBandPage} />
-    <Route path="/user/signup" component={SignupPage} />
-    <Route path="/setlist/create" component={CreateSetlistPage} />
-  </div>
+import rootReducer from './rootReducer'
+
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+const store = createStore(
+    persistedReducer,
+    compose(
+        applyMiddleware(thunk),
+        window.devToolsExtension ? window.devToolsExtension() : f => f
+    )
 );
+
+let persistor = persistStore(store)
 
 const Router = () => (
-  <BrowserRouter>
-    <Routes />
-  </BrowserRouter>
+    <BrowserRouter>
+        {routes}
+    </BrowserRouter>
 );
 
-ReactDOM.render(<Router />, document.getElementById('content'));
+ReactDOM.render(
+    <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+            <Router />
+        </PersistGate>
+    </Provider>, document.getElementById('content'));
 registerServiceWorker();

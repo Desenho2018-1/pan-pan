@@ -1,5 +1,5 @@
 package com.panpan.model;
 
-public class Song {
-    public Song(){};
+public class Song extends SongComponent {
+
 }

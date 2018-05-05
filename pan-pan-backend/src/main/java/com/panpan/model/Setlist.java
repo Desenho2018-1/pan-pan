@@ -29,6 +29,10 @@ public class Setlist {
     @NotNull
     private Band band;
 
+    @ManyToOne
+	@JoinColumn(name = "rehearsal_id")
+	private Rehearsal rehearsal;
+
     public Setlist() {}
 
     public Setlist(Band band, String name, ArrayList<Song> songs) {

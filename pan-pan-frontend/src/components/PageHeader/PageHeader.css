@@ -1,1 +1,22 @@
+.head img {
+  float: left;
+  width: 40px;
+  height: 50px;
+}
 
+.active{
+  float: right;
+  position: right;
+}
+
+.head a {
+  float:inherit;
+  position: relative;
+  top: 18px;
+  left: 10px;
+}
+
+.header-container .navbar-text {
+    font-size: 1.5em;
+    font-weight: bold;
+}

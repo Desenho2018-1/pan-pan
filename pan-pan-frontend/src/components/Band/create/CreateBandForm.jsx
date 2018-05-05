@@ -3,7 +3,6 @@ import axios from 'axios'
 
 import './CreateBandForm.css'
 
-
 export default class CreateBandForm extends Component {
     constructor(props) {
         super(props)
@@ -12,17 +11,18 @@ export default class CreateBandForm extends Component {
             file: null,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleFileChange = this.handleFileChange.bind(this);        
+        this.handleFileChange = this.handleFileChange.bind(this);
     }
 
     handleSubmit(event){
+      event.preventDefault();
 	const formData = new FormData(event.target);
         const data = {
             name: formData.get('band-name'),
             genre: formData.get('band-style'),
 	        members: [],
 	        creationDate: new Date(),
-            //image: this.state.file,                       
+            //image: this.state.file,
         }
         axios.post('http://localhost:8080/api/bands/', data)
         .then(response =>{
@@ -44,7 +44,7 @@ export default class CreateBandForm extends Component {
         return (
             <div className="container">
                 <h1 className="page-title">Cadastre sua banda</h1>
-                <form id="form-container" onSubmit={this.handleSubmit}>
+                <form className="form-container" onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label>Nome:</label>
                         <input type="text" className="form-control" name="band-name" required="required" placeholder="Sua banda"/>
@@ -57,8 +57,8 @@ export default class CreateBandForm extends Component {
                         <label>Imagem:</label>
                         <input type="file" className="btn btn-priamry" accept="image/*" onChange={this.handleFileChange}/>
                     </div>
-                    <div className="form-group" className="submit-btn">
-                        <input type="submit" className="btn btn-primary" value="Cadastrar"/>
+                    <div className="form-group submit-btn">
+                        <button type="submit" className="btn btn-primary">Cadastrar</button>
                     </div>
                 </form>
             </div>

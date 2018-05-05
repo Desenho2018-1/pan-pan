@@ -4,8 +4,11 @@ import java.util.Optional;
 
 import com.panpan.model.Band;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.webmvc.RepositoryRestController;
 
-
+@RepositoryRestController
 public interface BandRepository extends JpaRepository<Band, Long>{
-    Optional<Band> findById(Long id);
+
+  Band findBandById(long id);
+
 }

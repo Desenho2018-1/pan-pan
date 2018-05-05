@@ -1,31 +1,29 @@
 package com.panpan.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.panpan.model.User;
-
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PostMapping;
+import com.panpan.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value="/login")
-@SessionAttributes("user")
 public class LoginUserController{
 
-    @ModelAttribute("user")
-    public User setUserOnSession(){
-        return new User();
-    }
+    private final String baseURL = "${spring.data.rest.base-path}";
+    @Autowired
+    private UserRepository userRepository;
 
-    @PostMapping(value = "/login")
-    public User Login(@ModelAttribute("user")  User userForSession,
-                      @RequestBody User user) {
+    @PostMapping(value = baseURL + "/users/login")
+    public User login(@RequestBody JsonNode request) {
+        System.out.println(request);
+        String username = request.get("username").asText();
+        String password = request.get("password").asText();
 
-        userForSession.setEmail(user.getEmail());
-        userForSession.setPassword(user.getPassword());
+        User user = userRepository.findByUserNameAndPassword(username, password);
+        user.setPassword("");
+
         return user;
 
     }
 }
+
