@@ -44,7 +44,7 @@ export default class CreateBandForm extends Component {
         return (
             <div className="container">
                 <h1 className="page-title">Cadastre sua banda</h1>
-                <form id="form-container" onSubmit={this.handleSubmit}>
+                <form className="form-container" onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label>Nome:</label>
                         <input type="text" className="form-control" name="band-name" required="required" placeholder="Sua banda"/>
