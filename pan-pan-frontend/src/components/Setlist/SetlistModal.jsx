@@ -3,16 +3,7 @@ import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import Button from '../Utils/button/Button';
 
-const style = {
-  content: {
-    width: '30%',
-    height: '30%',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
+import './SetlistModal.css';
 
 class Setlistmodal extends React.Component {
   constructor(props) {
@@ -35,9 +26,9 @@ class Setlistmodal extends React.Component {
         isOpen={isOpen}
         shouldCloseOnOverlayClick
         onRequestClose={askToClose}
-        style={style}
+        className="Modal"
       >
-        <div>
+        <div className="content">
           <h1>Adicionar Setlist</h1>
           <form onSubmit={() => onSubmit(this.state.setlistName)} >
             <label htmlFor="setlist_name" >
