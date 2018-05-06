@@ -26,24 +26,29 @@ const ShowSetlistSongs = (props) => {
   );
 };
 
-const Setlist = name => (
-  <div style={{ display: 'inline-block' }}>
-    <div style={{ marginLeft: '2rem' }}>
-      <FontAwesome
-        name="file"
-        size="5x"
-        style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
-      />
-      <br />
-      <text >{name.name}</text>
-    </div>
+class Setlist extends React.Component {
 
-    <br />
-    <br />
-    <br />
+  render() {
+    return (
+      <div style={{ display: 'inline-block' }}>
+        <div style={{ marginLeft: '2rem' }}>
+          <FontAwesome
+            name="file"
+            size="5x"
+            style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+          />
+          <br />
+          <text >{this.props.name}</text>
+        </div>
 
-  </div>
-);
+        <br />
+        <br />
+        <br />
+
+      </div>
+    );
+  }
+};
 
 ShowSetlistSongs.propTypes = {
   setlists: PropTypes.shape([
