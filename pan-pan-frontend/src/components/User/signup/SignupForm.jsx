@@ -47,7 +47,7 @@ class SignupForm extends Component {
             if (key === 'birthdate') {
                 let date = value.split("/").reverse().join('-');
                 let birthdate = new Date(date);
-                user.setState({birthdate:birthdate});
+                user.setState({birthDate:birthdate});
             }else {
                 user.setState({[key]:value});
             }
@@ -123,7 +123,7 @@ class SignupForm extends Component {
                         <label>Estado:</label>
                         <Select
                             name="state"
-                            placeholder="Selecioe seu Estado"
+                            placeholder="Selecione seu Estado"
                             value={selectedStateOption}
                             onChange={(value) => this.handleChange('states',value)}
                             options={STATES} />
@@ -136,7 +136,7 @@ class SignupForm extends Component {
 
                     <div className="form-group">
                         <label>Username:</label>
-                        <input type="text" className="form-control" name="username" id="username" placeholder="Escolha um username"/>
+                        <input type="text" className="form-control" name="userName" id="userName" placeholder="Escolha um username"/>
                     </div>
 
                     <div className="form-group">
