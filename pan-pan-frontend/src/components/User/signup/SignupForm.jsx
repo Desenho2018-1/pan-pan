@@ -69,6 +69,8 @@ class SignupForm extends Component {
                         type: 'success',
                         text: 'Cadastro realizado com sucesso. Bem vindo!'
                     });
+                    this.context.router.history.push("/user/login");
+
                 }
             );
     }
@@ -164,6 +166,10 @@ SignupForm.propTypes = {
     userSignupRequest: PropTypes.func.isRequired,
     addFlashMessage: PropTypes.func.isRequired,
     deleteFlashLoading: PropTypes.func.isRequired,
+}
+
+SignupForm.contextTypes = {
+    router: PropTypes.object.isRequired
 }
 
 export default SignupForm;

@@ -25,6 +25,7 @@ export default class LoginForm extends Component {
             (success) => {
                 this.props.deleteFlashLoading();
                 this.props.login(success.data);
+                this.context.router.history.push("/user/home");
             },
             (error) => {
                 console.log(error);
@@ -69,4 +70,8 @@ LoginForm.propTypes = {
     login: PropTypes.func.isRequired,
     userLoginRequest: PropTypes.func.isRequired,
     deleteFlashLoading: PropTypes.func.isRequired,
+}
+
+LoginForm.contextTypes = {
+    router: PropTypes.object.isRequired
 }
