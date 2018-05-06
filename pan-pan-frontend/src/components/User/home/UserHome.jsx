@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import './view.css'
+import './UserHome.css'
 
 
-export default class CreateBandForm extends Component {
+export default class UserHomepage extends Component {
     constructor(props) {
       super(props)
     }
@@ -18,7 +18,7 @@ export default class CreateBandForm extends Component {
                 <Link to='/band/create'>cria uma banda</Link>
               </div>
           </div>
-        
+
         )
     }
 }
