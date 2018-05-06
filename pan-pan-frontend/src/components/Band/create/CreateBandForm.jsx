@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './CreateBandForm.css'
 
-export default class CreateBandForm extends Component {
+class CreateBandForm extends Component {
     constructor(props) {
         super(props)
 
@@ -20,7 +22,7 @@ export default class CreateBandForm extends Component {
         const data = {
             name: formData.get('band-name'),
             genre: formData.get('band-style'),
-	        members: [],
+	        members: ["http://localhost:8080/api/users/"+this.props.permission.user.id],
 	        creationDate: new Date(),
             //image: this.state.file,
         }
@@ -28,6 +30,7 @@ export default class CreateBandForm extends Component {
         .then(response =>{
             alert("CADASTROU")
         }).catch(function(error){
+            console.log(error)
             if(error.response){
                 console.log(error.status)
                 console.log(error.data)
@@ -65,3 +68,15 @@ export default class CreateBandForm extends Component {
         )
     }
 }
+
+CreateBandForm.propTypes = {
+    permission: PropTypes.object.isRequired,
+}
+
+function mapStateToProps(state) {
+    return {
+        permission: state.login
+    }
+}
+
+export default connect(mapStateToProps, { })(CreateBandForm);

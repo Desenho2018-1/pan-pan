@@ -39,6 +39,6 @@ public class DatabaseLoader implements CommandLineRunner {
 		user1.setCity("Where palm trees grow");
 		this.repository.save(user1);
 		this.repository2.save(new VerificationToken(user1));
-		this.repository3.save(new Band(user1, "TestName", "TestGenre"));
+		//this.repository3.save(new Band(user1, "TestName", "TestGenre"));
 	}
 }
