@@ -22,7 +22,7 @@ export default class CreateMusicForm extends Component {
             genre: formData.get('music-style'),
             band: formData.get('band-name'),
         }
-        axios.post('http://localhost:8080/api/music/', data)
+        axios.post('http://localhost:8080/song/create', data)
         .then(response =>{
             alert("CADASTROU")
         }).catch(function(error){
