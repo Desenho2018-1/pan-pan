@@ -18,4 +18,14 @@ public abstract class SongComponent {
 
 	@ManyToMany(mappedBy = "songs")
 	private List<Band> bands;
+
+	public SongComponent(Long id, String name) {
+	
+		this.id = id;
+		this.name = name;
+	}
+	
+	public SongComponent() {}
+
+	
 }
