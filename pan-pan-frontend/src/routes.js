@@ -7,8 +7,8 @@ import CreateMusicPage from './pages/CreateMusicPage';
 import SignupPage from './pages/SignupPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import PreCreateBand from './pages/PreCreateBand';
-import CreateRehearsalPage from './pages/CreateRehearsalPage'; 
+import UserHomePage from './pages/UserHomePage';
+import CreateRehearsalPage from './pages/CreateRehearsalPage';
 import AddMemberPage from './pages/AddMemberPage'
 
 export default (
@@ -19,7 +19,7 @@ export default (
     <Route path="/user/signup" component={SignupPage} />
     <Route exact path="/band/addMember" component={AddMemberPage}/>
     <Route path="/user/login" component={LoginPage} />
-    <Route path ="/user/view" component={PreCreateBand} />
+    <Route path ="/user/home" component={UserHomePage} />
 	<Route exact path="/rehearsal/create" component={CreateRehearsalPage}/>
   </div>
 )
