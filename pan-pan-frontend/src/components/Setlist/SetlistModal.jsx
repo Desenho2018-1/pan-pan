@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
+import Button from '../Utils/button/Button';
 
 const style = {
   content: {
@@ -36,16 +37,18 @@ class Setlistmodal extends React.Component {
         onRequestClose={askToClose}
         style={style}
       >
-        <h1>Adicionar Setlist</h1>
-        <form onSubmit={() => onSubmit(this.state.setlistName)} >
-          <label htmlFor="setlist_name" >
-            Nome do setlist
+        <div>
+          <h1>Adicionar Setlist</h1>
+          <form onSubmit={() => onSubmit(this.state.setlistName)} >
+            <label htmlFor="setlist_name" >
+              Nome do setlist
+              <br />
+              <input type="text" onChange={this.handleChange} />
+            </label>
             <br />
-            <input type="text" onChange={this.handleChange} />
-          </label>
-          <br />
-          <input type="submit" className="btn btn-primary" value="Criar setlist" />
-        </form >
+            <Button value="Criar setlist" />
+          </form >
+        </div>
       </Modal >
     );
   }
