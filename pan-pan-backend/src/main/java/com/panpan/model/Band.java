@@ -65,7 +65,15 @@ public class Band {
 	}
 
 	public void addObserver(Observer o) {
-		observers.add(o);
+		boolean flag = true;
+		for (Observer observer : observers) {
+			if(o.getId() == observer.getId()) {
+				flag = false;
+			}
+		}
+		if(flag) {
+			observers.add(o);
+		}
 	}
 
 	public void removeObserver(Observer o) {
