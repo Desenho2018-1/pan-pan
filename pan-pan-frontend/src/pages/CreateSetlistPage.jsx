@@ -4,6 +4,13 @@ import FontAwesome from 'react-fontawesome';
 import PageHeader from '../components/PageHeader/PageHeader';
 import Setlistmodal from '../components/Setlist/SetlistModal';
 
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+};
+
 class CreateSetlistPage extends React.Component {
   constructor(props) {
     super(props);
@@ -37,12 +44,14 @@ class CreateSetlistPage extends React.Component {
     return (
       <div>
         <PageHeader />
-        <FontAwesome
-          name="plus"
-          size="5x"
-          style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
-          onClick={() => this.toggleModal()}
-        />
+        <div style={style}>
+          <FontAwesome
+            name="plus"
+            size="5x"
+            style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+            onClick={() => this.toggleModal()}
+          />
+        </div>
         <Setlistmodal isOpen={isOpen} askToClose={this.toggleModal} onSubmit={this.handleSubmit} />
       </div>
     );
