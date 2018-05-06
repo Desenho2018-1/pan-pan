@@ -7,9 +7,6 @@ import { logout } from '../../actions/User/LoginAction.js'
 import './PageHeader.css'
 
 
-import User from '../User/models/User'
-
-
 class PageHeader extends Component{
     constructor(props) {
         super(props);

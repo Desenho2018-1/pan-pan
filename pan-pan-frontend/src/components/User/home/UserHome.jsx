@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 import './UserHome.css'
 
 
 export default class UserHomepage extends Component {
-    constructor(props) {
-      super(props)
-    }
     render() {
         return (
           <div>

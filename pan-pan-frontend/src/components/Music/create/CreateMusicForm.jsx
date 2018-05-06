@@ -49,7 +49,7 @@ export default class CreateMusicForm extends Component {
                         <label>Banda:</label>
                         <input type="text" className="form-control" name="band-name" required="required" placeholder="Nome da banda"/>
                     </div>
-                    <div className="form-group" className="submit-btn">
+                    <div className="form-group submit-btn">
                         <input type="submit" className="btn btn-primary" value="Cadastrar"/>
                     </div>
                 </form>

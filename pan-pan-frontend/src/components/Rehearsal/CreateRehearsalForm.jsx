@@ -14,7 +14,7 @@ export default class componentName extends Component {
     constructor(props) {
         super(props);
         this.state = {selectedSetlistsOption: '',};
-    
+
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -30,9 +30,9 @@ export default class componentName extends Component {
 
         const data = {
             date: new Date(formData.get('rehearsal-date')),
-            setlists: formData.get('setlists'),               
+            setlists: formData.get('setlists'),
         }
-        
+
         axios.post('http://localhost:8080/api/rehearsals', data)
         .then(response => console.log(response.data))
     }
@@ -65,7 +65,7 @@ export default class componentName extends Component {
                         options={FAKE_SETLISTS}
                     />
                 </div>
-                <div className="form-group" className="submit-btn">
+                <div className="form-group submit-btn">
                     <button type="submit" className="btn btn-primary">Cadastrar</button>
                 </div>
             </form>
