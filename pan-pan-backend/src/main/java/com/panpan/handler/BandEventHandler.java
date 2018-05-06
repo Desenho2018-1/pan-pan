@@ -21,7 +21,9 @@ public class BandEventHandler {
 	private final String BASE_URL = "http://localhost:8080/api/bands/";
 	@Autowired
 	private NotificationRepository rep;
-
+	@Autowired
+	private UserRepository userRep;
+	
 	@HandleBeforeCreate
 	public void beforeCreate(Band band) {
 		User creator = (User) band.getMembers().toArray()[0];
@@ -36,6 +38,8 @@ public class BandEventHandler {
 		for (Notification n : notifications) {
 			rep.save(n);
 		}
+		creator.setBand(band);
+		userRep.save(creator);
 	}
 
 }
