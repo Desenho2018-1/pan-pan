@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { LOG_IN , LOG_OUT } from '../Types';
 import { addFlashLoading } from '../Utils/FlashLoading.js';
+import createHistory from "history/createBrowserHistory"
 
 export function userLoginRequest(userData) {
     return dispatch => {
@@ -17,7 +18,11 @@ export function login(user) {
 }
 
 export function logout() {
-    let user = {}
+    const user = {}
+    const history = createHistory({forceRefresh: true})
+
+    history.push('/')
+
     return {
         type: LOG_OUT,
         user
