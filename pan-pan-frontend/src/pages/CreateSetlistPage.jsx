@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import FontAwesome from 'react-fontawesome';
 import PageHeader from '../components/PageHeader/PageHeader';
 import Setlistmodal from '../components/Setlist/SetlistModal';
 
@@ -36,6 +37,13 @@ class CreateSetlistPage extends React.Component {
     return (
       <div>
         <PageHeader />
+        <FontAwesome
+          className="super-crazy-colors"
+          name="rocket"
+          size="2x"
+          spin
+          style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+        />
         <button onClick={() => this.toggleModal()} >
           Click here to open the modal
         </button>
