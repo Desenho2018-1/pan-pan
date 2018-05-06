@@ -3,6 +3,7 @@ import axios from 'axios';
 import FontAwesome from 'react-fontawesome';
 import PageHeader from '../components/PageHeader/PageHeader';
 import Setlistmodal from '../components/Setlist/SetlistModal';
+import ShowSetlistSongs from '../components/Setlist/ShowSetlistSongs';
 
 const style = {
   position: 'absolute',
@@ -17,7 +18,18 @@ class CreateSetlistPage extends React.Component {
 
     this.state = {
       isOpen: false,
+      setlists: [{}],
     };
+  }
+
+  componentWillMount = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/bands/3/setlists/');
+      console.log(response.data);
+      this.setState({ setlists: response.data });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   handleSubmit = async (setlistName) => {
@@ -39,12 +51,19 @@ class CreateSetlistPage extends React.Component {
   }
 
   render() {
-    const { isOpen } = this.state;
+    const { isOpen, setlists } = this.state;
+
+    let showSetlistSongs = null;
+
+    if (setlists.length > 0) {
+      showSetlistSongs = <ShowSetlistSongs setlists={setlists} />;
+    }
 
     return (
       <div>
         <PageHeader />
         <div style={style}>
+          {showSetlistSongs}
           <FontAwesome
             name="plus"
             size="5x"
