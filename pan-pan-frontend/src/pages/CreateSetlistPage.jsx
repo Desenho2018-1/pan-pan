@@ -38,15 +38,11 @@ class CreateSetlistPage extends React.Component {
       <div>
         <PageHeader />
         <FontAwesome
-          className="super-crazy-colors"
-          name="rocket"
-          size="2x"
-          spin
+          name="plus"
+          size="5x"
           style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+          onClick={() => this.toggleModal()}
         />
-        <button onClick={() => this.toggleModal()} >
-          Click here to open the modal
-        </button>
         <Setlistmodal isOpen={isOpen} askToClose={this.toggleModal} onSubmit={this.handleSubmit} />
       </div>
     );
