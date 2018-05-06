@@ -14,7 +14,9 @@ export default class CreateMusicForm extends Component {
     }
 
     handleSubmit(event){
-	const formData = new FormData(event.target);
+      event.preventDefault();
+
+	      const formData = new FormData(event.target);
         const data = {
             name: formData.get('music-name'),
             genre: formData.get('music-style'),

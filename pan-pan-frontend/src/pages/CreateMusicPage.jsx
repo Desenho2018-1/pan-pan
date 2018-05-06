@@ -8,7 +8,7 @@ import PermissionRequired from '../components/Utils/permission/PermissionRequire
 
 class CreateMusicPage extends Component {
   render() {
-      const isLoggedIn = this.props.permission.isLoggedIn
+      const isLoggedIn = true
       console.log(isLoggedIn);
 
       return (
