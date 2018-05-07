@@ -10,8 +10,24 @@ export function userLoginRequest(userData) {
     }
 }
 
-export function login(user) {
-    return{
+export function login(user){
+    return function (dispatch){
+        return axios.get('http://localhost:8080/api/users/'+user.id+'/band')
+            .then(
+                response => {
+                    user.band = []
+                    user.band.push(response.data)
+                    dispatch(setUserSession(user))
+                }
+            )
+            .catch(
+                dispatch(setUserSession(user))
+            )
+    }
+}
+
+export function setUserSession(user) {
+    return {
         type: LOG_IN,
         user
     }
@@ -21,7 +37,7 @@ export function logout() {
     const user = {}
     const history = createHistory({forceRefresh: true})
 
-    history.push('/')
+    history.push('/user/login')
 
     return {
         type: LOG_OUT,

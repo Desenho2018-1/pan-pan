@@ -15,7 +15,7 @@ class PageHeader extends Component{
     }
 
     isAuthenticated(){
-        const { isAuthenticated, user } = this.props.permission;
+        const { isAuthenticated, user } = this.props.login;
         const logout = this.props.logout
 
         if (isAuthenticated) {
@@ -67,14 +67,14 @@ class PageHeader extends Component{
 }
 
 PageHeader.propTypes = {
-    permission: PropTypes.object.isRequired,
+    login: PropTypes.object.isRequired,
     logout: PropTypes.func.isRequired
 
 }
 
 function mapStateToProps(state) {
     return {
-        permission: state.login
+        login: state.login
     }
 }
 
