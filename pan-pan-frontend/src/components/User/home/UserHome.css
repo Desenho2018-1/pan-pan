@@ -1,9 +1,36 @@
-
-#buttonCreateBand {
-  margin-top: 40%;
-  margin-left: 20%;
+.page-header{
+    text-align: center;
 }
 
-#initialText{
-  margin-left: 28%;
+.page-header h1{
+    display: inline;
+    margin: 30px;
+}
+
+
+.band-container span{
+    color: black !important;
+    font-size: 4em;
+}
+
+.band-container .create-band{
+    color: black !important;
+    text-align: center;
+    display: table;
+}
+
+.band-container .create-band button{
+    background-color: transparent;
+    border: 0px;
+    font-size: 2em;
+}
+
+.band-container .create-band p{
+    font-size: 2em;
+    text-decoration: none;
+}
+
+.band-container .create-band a:hover, a:visited, a:link, a:active{
+    color: black;
+    text-decoration: none;
 }

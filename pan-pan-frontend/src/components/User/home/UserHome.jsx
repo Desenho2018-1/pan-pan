@@ -19,23 +19,33 @@ class UserHome extends Component {
             }
         }
 
-        return <h1>Ainda em nenhuma banda?</h1>
+        return <div>
+                    <div className="page-header">
+                        <span className="glyphicon glyphicon-music" aria-hidden="true"></span>
+                        <h1>"Dancing with myself"</h1>
+                        <span className="glyphicon glyphicon-music" aria-hidden="true"></span>
+                        <h4>Você ainda não está em nenhuma banda. Tá esperando o que?</h4>
+                    </div>
+               </div>
+
     }
 
     render() {
         const user = this.props.login.user;
         console.log(user);
         return (
-            <div className="container">
-                <h1 className="page-header"> Bem-vindo! </h1>
-                {this.renderBand(user.band)}
-                <Link to="/band/create">
-                    <button type="submit" className="btn btn-primary">
-                        Crie sua banda!
-                    </button>
-                </Link>
-
-
+            <div className="container user-home">
+                <div className="band-container">
+                    {this.renderBand(user.band)}
+                    <div className="create-band">
+                        <Link to="/band/create">
+                            <button type="submit">
+                                <span className="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                            </button>
+                            <p>Criar Banda</p>
+                        </Link>
+                    </div>
+                </div>
             </div>
 
 
