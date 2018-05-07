@@ -54,7 +54,6 @@ class UserHome extends Component {
     }
 
     renderHeaderBand(bands){
-        let content = [];
         if (!bands) {
             return  <div className="page-header">
                         <span className="glyphicon glyphicon-music" aria-hidden="true"></span>

@@ -1,0 +1,38 @@
+.band-home{
+    color: black;
+    text-align: center;
+}
+
+.band-home .band-container .elements{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.glyphicon, .fas{
+    color: black;
+    font-size: 6em;
+    margin-top: 10px;
+}
+
+.band-home .band-container button{
+    background-color: transparent;
+    border: 0px solid;
+}
+
+.band-home .band-container .btn-text{
+    color: black;
+    font-size: 1.5em;
+    margin-top: 3%;
+}
+
+a:hover, a:visited, a:link, a:active{
+    text-decoration: none;
+}
+
+.band-home .band-container .element{
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 1%;
+
+}
