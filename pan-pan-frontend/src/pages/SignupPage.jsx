@@ -19,7 +19,7 @@ class SignupPage extends Component{
             <div>
                 <LoadingContainer />
                 <PageHeader />
-                <FlashMessagesList />
+                <FlashMessagesList redirectTo="/user/login"/>
                 <SignupForm
                     userSignupRequest={userSignupRequest}
                     addFlashMessage={addFlashMessage}

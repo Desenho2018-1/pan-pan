@@ -61,18 +61,16 @@ class SignupForm extends Component {
         const signupForm = new FormData(event.target);
         let user = this.createUser(signupForm);
 
-            this.props.userSignupRequest(user.state)
-            .then(
-                () => {
-                    this.props.deleteFlashLoading()
-                    this.props.addFlashMessage({
-                        type: 'success',
-                        text: 'Cadastro realizado com sucesso. Bem vindo!'
-                    });
-                    this.context.router.history.push("/user/login");
-
-                }
-            );
+        this.props.userSignupRequest(user.state)
+        .then(
+            () => {
+                this.props.deleteFlashLoading()
+                this.props.addFlashMessage({
+                    type: 'success',
+                    text: 'Cadastro realizado com sucesso. Bem vindo!'
+                });
+            }
+        );
     }
 
     handleChange(type, selectedOption){
@@ -166,10 +164,6 @@ SignupForm.propTypes = {
     userSignupRequest: PropTypes.func.isRequired,
     addFlashMessage: PropTypes.func.isRequired,
     deleteFlashLoading: PropTypes.func.isRequired,
-}
-
-SignupForm.contextTypes = {
-    router: PropTypes.object.isRequired
 }
 
 export default SignupForm;
