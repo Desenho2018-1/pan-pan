@@ -56,11 +56,6 @@ export default class LoginForm extends Component {
                     </div>
 
                 </form>
-
-                <Link to="/band/create">
-                    <button type="submit">Banda</button>
-                </Link>
-
             </div>
         )
     }
