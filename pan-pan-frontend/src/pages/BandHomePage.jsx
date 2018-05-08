@@ -8,6 +8,7 @@ import PermissionRequired from '../components/Utils/permission/PermissionRequire
 
 
 class BandHomePage extends Component {
+
     render() {
         const band = this.props.location.state.band;
         const isAuthenticated = this.props.login.isAuthenticated

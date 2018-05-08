@@ -27,7 +27,7 @@ class BandHome extends Component {
                             </div>
 
                             <div className="element">
-                                <Link to="#">
+                                <Link to="/music/create">
                                     <button type="submit">
                                         <span className="glyphicon glyphicon-music" aria-hidden="true"></span>
                                     </button>
