@@ -10,6 +10,7 @@ class CreateMusicPage extends Component {
   render() {
       const band = this.props.location.state.band;
       const isAuthenticated = this.props.login.isAuthenticated
+      console.log(band);
       return (
           <PermissionRequired loggedIn={isAuthenticated}>
                 <PageHeader />

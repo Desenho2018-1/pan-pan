@@ -9,7 +9,7 @@ class BandHome extends Component {
     render() {
         const user = this.props.login.user;
         const band = this.props.band;
-
+        console.log(this.props.band);
         return  <div className="container band-home">
                     <div className="band-container">
                         <div className="page-header">
@@ -75,23 +75,11 @@ class BandHome extends Component {
                 </div>
     }
 }
-sendObjesct(){
-  let content = []
-      content.push(
-        <div className="element">
-            <Link to= {{pathname:'/music/create',  state: {band : band}}}>
-                <button type="submit">
-                    <span className="glyphicon glyphicon-music" aria-hidden="true"></span>
-                </button>
-                <p className="btn-text">Músicas</p>
-            </Link>
-        </div>
-      )
-}
 
-function mapStateToProps(state) {
+function mapStateToProps(state,props) {
     return {
-        login: state.login
+        login: state.login,
+        band: props.band
     }
 }
 
