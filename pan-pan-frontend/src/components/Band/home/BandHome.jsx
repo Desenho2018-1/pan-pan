@@ -8,7 +8,7 @@ class BandHome extends Component {
 
     render() {
         const user = this.props.login.user;
-        const band = this.props.band
+        const band = this.props.band;
 
         return  <div className="container band-home">
                     <div className="band-container">
@@ -27,7 +27,7 @@ class BandHome extends Component {
                             </div>
 
                             <div className="element">
-                                <Link to="/music/create">
+                                <Link to= {{pathname:'/music/create',  state: {band : band}}}>
                                     <button type="submit">
                                         <span className="glyphicon glyphicon-music" aria-hidden="true"></span>
                                     </button>
@@ -74,6 +74,19 @@ class BandHome extends Component {
                     </div>
                 </div>
     }
+}
+sendObjesct(){
+  let content = []
+      content.push(
+        <div className="element">
+            <Link to= {{pathname:'/music/create',  state: {band : band}}}>
+                <button type="submit">
+                    <span className="glyphicon glyphicon-music" aria-hidden="true"></span>
+                </button>
+                <p className="btn-text">Músicas</p>
+            </Link>
+        </div>
+      )
 }
 
 function mapStateToProps(state) {

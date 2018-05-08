@@ -11,7 +11,7 @@ class BandHomePage extends Component {
 
     render() {
         const band = this.props.location.state.band;
-        const isAuthenticated = this.props.login.isAuthenticated
+        const isAuthenticated = this.props.login.isAuthenticated;
         return (
             <PermissionRequired loggedIn={isAuthenticated}>
                 <PageHeader />
