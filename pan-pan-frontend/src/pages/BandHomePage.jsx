@@ -1,28 +1,27 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import AddMemberForm from '../components/Band/addMember/AddMemberForm'
+
 import PageHeader from '../components/PageHeader/PageHeader'
+import BandHome from '../components/Band/home/BandHome'
 import PermissionRequired from '../components/Utils/permission/PermissionRequired'
 
 
-class AddMemberPage extends Component {
-  render() {
-    const isAuthenticated = this.props.login.isAuthenticated
-
-    return (
-        <div>
+class BandHomePage extends Component {
+    render() {
+        const band = this.props.location.state.band;
+        const isAuthenticated = this.props.login.isAuthenticated
+        return (
             <PermissionRequired loggedIn={isAuthenticated}>
                 <PageHeader />
-                <AddMemberForm />
+                <BandHome band={band}/>
             </ PermissionRequired>
-        </div>
-    )
-  }
+        )
+    }
 }
 
-AddMemberPage.propTypes = {
-    login: PropTypes.object.isRequired,
+BandHomePage.propTypes = {
+    login: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {
@@ -31,5 +30,4 @@ function mapStateToProps(state) {
     }
 }
 
-
-export default connect(mapStateToProps, { })(AddMemberPage);
+export default connect(mapStateToProps, { })(BandHomePage);

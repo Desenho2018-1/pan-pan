@@ -1,27 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import AddMemberForm from '../components/Band/addMember/AddMemberForm'
+
 import PageHeader from '../components/PageHeader/PageHeader'
+import UserHome from '../components/User/home/UserHome'
 import PermissionRequired from '../components/Utils/permission/PermissionRequired'
 
 
-class AddMemberPage extends Component {
-  render() {
-    const isAuthenticated = this.props.login.isAuthenticated
+class UserHomePage extends Component {
+    render() {
+        const isAuthenticated = this.props.login.isAuthenticated
 
-    return (
-        <div>
+        return (
             <PermissionRequired loggedIn={isAuthenticated}>
                 <PageHeader />
-                <AddMemberForm />
+                <UserHome />
             </ PermissionRequired>
-        </div>
-    )
-  }
+        )
+    }
 }
 
-AddMemberPage.propTypes = {
+UserHomePage.propTypes = {
     login: PropTypes.object.isRequired,
 }
 
@@ -31,5 +30,4 @@ function mapStateToProps(state) {
     }
 }
 
-
-export default connect(mapStateToProps, { })(AddMemberPage);
+export default connect(mapStateToProps, { })(UserHomePage);

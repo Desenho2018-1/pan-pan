@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
 import axios from "axios";
 
 export default class AddMemberForm extends Component{
@@ -43,17 +42,21 @@ export default class AddMemberForm extends Component{
 
    }
     showUserName(){
-        var html='';
         if(this.state.currentUsers.firstName != null){
-          return html = <div>{this.state.currentUsers.firstName} <button onClick={this.setMemberOnBand} type="button" class="btn btn-success">Adicionar</button>
+            return  <div>
+                        {this.state.currentUsers.firstName}
+                        <button onClick={this.setMemberOnBand} type="button" class="btn btn-success">
+                            Adicionar
+                        </button>
                     </div>
         }else{
-          return  html =''
+          return ''
         }
 
     }
-  render (){
-    var html =
+
+    render (){
+        var html =
               <div className="container">
                   <h1 className="page-title">Procure o Membro para adicionar a banda</h1>
                   <form id="form-container" onSubmit={this.submitForm} >

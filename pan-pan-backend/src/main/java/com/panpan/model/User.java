@@ -16,6 +16,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Email;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -59,12 +61,12 @@ public class User implements Observer {
 	private ArrayList<String> instruments;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
-	private List<Notification> notifications = new ArrayList<Notification>();
+	private @JsonIgnore List<Notification> notifications = new ArrayList<Notification>();
 	private String role;
 
 	@ManyToOne
 	@JoinColumn(name = "band_id")
-	private Band band;
+	private @JsonIgnore Band band;
 
 	@JsonProperty
 	private Boolean active;

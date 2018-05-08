@@ -1,0 +1,68 @@
+.user-home{
+    color: black;
+    text-align: center;
+}
+
+.user-home .page-header h1{
+    display: inline;
+    margin: 2%;
+}
+
+.user-home .band-container .elements{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.glyphicon, .fas, .far{
+    color: black;
+    font-size: 8em;
+    margin-top: 10px;
+}
+
+.user-home .band-container .page-header .glyphicon{
+    font-size: 3em;
+}
+
+.user-home .band-container button{
+    background-color: transparent;
+    border: 0px solid;
+}
+
+.user-home .band-container .btn-text{
+    color: black;
+    font-size: 1em;
+    margin-top: 3%;
+}
+
+a:hover, a:visited, a:link, a:active{
+    text-decoration: none;
+}
+
+.user-home .band-container .element{
+    margin-left: 2%;
+    margin-top: 1%;
+
+}
+
+@media (max-width: 767px) {
+    .user-home .page-header{
+        margin: 0px;
+    }
+
+    .user-home .page-header h1{
+        display: inline;
+        font-size: 1.9em;
+    }
+
+    .user-home .page-header h4{
+        font-size: 1em;
+    }
+
+    .user-home .band-container .page-header .glyphicon{
+        font-size: 1.7em;
+    }
+
+
+
+}
