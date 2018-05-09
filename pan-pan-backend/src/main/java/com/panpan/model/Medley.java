@@ -1,9 +1,16 @@
 package com.panpan.model;
 
 import java.util.List;
+
+import javax.persistence.Entity;
+
 import java.util.ArrayList;
 import com.panpan.model.SongComponent;
 
+import lombok.Data;
+
+@Data
+@Entity
 public class Medley extends SongComponent {
   
    private  List<SongComponent> childrenSong = new ArrayList<SongComponent>();
