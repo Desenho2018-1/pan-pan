@@ -1,0 +1,14 @@
+.Modal {
+  width: 40%;
+  height: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-style: groove
+}
+
+.content {
+  margin-left: 30%
+}
