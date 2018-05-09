@@ -16,27 +16,26 @@ public abstract class SongComponent {
 
 	private String name;
 
-	private String bandName;
+	private String bandNAme;
 	
 	private String style;
 	@ManyToMany(mappedBy = "songs")
 	private List<Band> bands;
 
-	public SongComponent(Long id, String name,String bandName) {
+	public SongComponent(Long id, String name,String bandNAme) {
 	
 		this.id = id;
 		this.name = name;
-		this.bandName = bandName;
+		this.bandName = bandNAme;
 	}
 	
 	public SongComponent() {}
 
-	public SongComponent(String name, String bandName, String style) {
+	public SongComponent(String name, String bandNAme, String style) {
 		super();
 		this.name = name;
-		this.bandName = bandName;
+		this.bandName = bandNAme;
 		this.style = style;
 	}
-	
 	
 }
