@@ -1,33 +1,40 @@
-import React, { Component } from 'react'
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import PageHeader from '../components/PageHeader/PageHeader'
-import BandHome from '../components/Band/home/BandHome'
-import PermissionRequired from '../components/Utils/permission/PermissionRequired'
+import PageHeader from '../components/PageHeader/PageHeader';
+import BandHome from '../components/Band/home/BandHome';
+import PermissionRequired from '../components/Utils/permission/PermissionRequired';
 
 
-class BandHomePage extends Component {
-    render() {
-        const band = this.props.location.state.band;
-        const isAuthenticated = this.props.login.isAuthenticated
-        return (
-            <PermissionRequired loggedIn={isAuthenticated}>
-                <PageHeader />
-                <BandHome band={band}/>
-            </ PermissionRequired>
-        )
-    }
-}
+const BandHomePage = (props) => {
+  const { band } = props.location.state;
+  const { isAuthenticated } = props.login;
+
+  console.log(props);
+
+  return (
+    <PermissionRequired loggedIn={isAuthenticated}>
+      <PageHeader />
+      <BandHome band={band} />
+    </PermissionRequired>
+  );
+};
 
 BandHomePage.propTypes = {
-    login: PropTypes.object.isRequired
-}
+  login: PropTypes.shape({
+    isAuthenticated: PropTypes.bool.isRequired,
+    user: PropTypes.shape({}).isRequired,
+  }).isRequired,
+  location: PropTypes.shape({
+    state: PropTypes.shape({}).isRequired,
+  }).isRequired,
+};
 
-function mapStateToProps(state) {
-    return {
-        login: state.login
-    }
-}
+const mapStateToProps = state => (
+  {
+    login: state.login,
+  }
+);
 
-export default connect(mapStateToProps, { })(BandHomePage);
+export default connect(mapStateToProps, {})(BandHomePage);

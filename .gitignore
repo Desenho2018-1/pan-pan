@@ -30,5 +30,7 @@ pan-pan-backend/assas2/
 mysql/
 
 #Text editor files
-
 .vscode/
+
+#Node modules
+node_modules/
