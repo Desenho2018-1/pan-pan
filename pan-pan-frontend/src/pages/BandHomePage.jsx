@@ -8,33 +8,42 @@ import PermissionRequired from '../components/Utils/permission/PermissionRequire
 
 
 const BandHomePage = (props) => {
-  const { band } = props.location.state;
-  const { isAuthenticated } = props.login;
+    const { isAuthenticated, user } = props.login;
 
-  console.log(props);
+    const byBandName = (band) => {
+        return band.name === props.match.params.name;
+    }
 
-  return (
-    <PermissionRequired loggedIn={isAuthenticated}>
-      <PageHeader />
-      <BandHome band={band} />
-    </PermissionRequired>
-  );
+    const getBand = () =>{
+        if (isAuthenticated) {
+            let band = null;
+            band = user.band.find(byBandName);
+            return band;
+        }
+    }
+
+    return (
+        <PermissionRequired loggedIn={isAuthenticated}>
+            <PageHeader />
+            <BandHome band={getBand()} />
+        </PermissionRequired>
+    );
 };
 
 BandHomePage.propTypes = {
-  login: PropTypes.shape({
-    isAuthenticated: PropTypes.bool.isRequired,
-    user: PropTypes.shape({}).isRequired,
-  }).isRequired,
-  location: PropTypes.shape({
-    state: PropTypes.shape({}).isRequired,
-  }).isRequired,
+    login: PropTypes.shape({
+        isAuthenticated: PropTypes.bool.isRequired,
+        user: PropTypes.shape({}).isRequired,
+    }).isRequired,
+    match: PropTypes.shape({
+        params: PropTypes.shape({}).isRequired,
+    }).isRequired,
 };
 
 const mapStateToProps = state => (
-  {
-    login: state.login,
-  }
+    {
+        login: state.login,
+    }
 );
 
 export default connect(mapStateToProps, {})(BandHomePage);

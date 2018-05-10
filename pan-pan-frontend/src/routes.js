@@ -19,7 +19,7 @@ export default (
     <Route exact path="/user/signup" component={SignupPage} />
     <Route exact path="/user/login" component={LoginPage} />
     <Route exact path="/user/home" component={UserHomePage} />
-    <Route exact path="/band/home" component={BandHomePage} />
+    <Route exact path="/band/home/:name" component={BandHomePage} />
     <Route exact path="/band/create" component={CreateBandPage} />
     <Route exact path="/band/addMember" component={AddMemberPage} />
     <Route exact path="/music/create" component={CreateMusicPage} />

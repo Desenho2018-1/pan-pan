@@ -8,7 +8,10 @@ import './BandHome.css';
 const BandHome = (props) => {
   // const { user } = props.login;
   const { band } = props;
-  console.log(props);
+
+  if(band === null){
+    return "404 FIOTE";
+  }
 
   return (
     <div className="container band-home">
