@@ -1,9 +1,12 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import FontAwesome from 'react-fontawesome';
 import PageHeader from '../components/PageHeader/PageHeader';
 import Setlistmodal from '../components/Setlist/SetlistModal';
 import ShowSetlistSongs from '../components/Setlist/ShowSetlistSongs';
+
 
 const style = {
   position: 'absolute',
@@ -24,7 +27,8 @@ class CreateSetlistPage extends React.Component {
 
   componentWillMount = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/bands/3/setlists/');
+      // TODO (Roger): Correct this screen so we can access any band.
+      const response = await axios.get(this.props.login.user.band[0]._links.setlists.href);
       console.log(response.data);
       this.setState({ setlists: response.data });
     } catch (error) {
@@ -38,7 +42,8 @@ class CreateSetlistPage extends React.Component {
     };
 
     try {
-      const response = await axios.post('http://localhost:8080/api/bands/3/setlists/', request);
+      const response =
+        await axios.post(this.props.login.user.band[0]._links.setlists.href, request);
       console.log(response.status);
     } catch (error) {
       console.log(error);
@@ -77,4 +82,20 @@ class CreateSetlistPage extends React.Component {
   }
 }
 
-export default CreateSetlistPage;
+CreateSetlistPage.propTypes = {
+  login: PropTypes.shape({
+    user: PropTypes.shape({
+      band: PropTypes.shape([
+        {
+          _links: PropTypes.string.isRequired,
+        },
+      ]).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
+const mapStateToProps = state => ({
+  login: state.login,
+});
+
+export default connect(mapStateToProps, {})(CreateSetlistPage);
