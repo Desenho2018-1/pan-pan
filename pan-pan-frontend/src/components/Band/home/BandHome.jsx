@@ -9,7 +9,7 @@ const BandHome = (props) => {
   // const { user } = props.login;
   const { band } = props;
 
-  if(band === null){
+  if(band.name === ""){
     return "404 FIOTE";
   }
 

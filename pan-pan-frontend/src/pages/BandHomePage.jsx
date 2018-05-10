@@ -15,11 +15,16 @@ const BandHomePage = (props) => {
     }
 
     const getBand = () =>{
-        if (isAuthenticated) {
-            let band = null;
+        let band = {name: ""}
+        if (isAuthenticated && user.band) {
             band = user.band.find(byBandName);
-            return band;
         }
+
+        if (typeof band === 'undefined') {
+            band = {name: ""}
+        }
+
+        return band;
     }
 
     return (
