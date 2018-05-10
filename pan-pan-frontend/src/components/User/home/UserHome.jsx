@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
+import shortid from 'shortid';
 
 import './UserHome.css'
 
@@ -8,7 +9,8 @@ import './UserHome.css'
 class UserHome extends Component {
 
     renderNewBandOption(){
-        return  <div className="element">
+        let key = shortid.generate()
+        return  <div className="element" key={key}>
                     <Link to="/band/create">
                         <button type="submit">
                             <span className="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
@@ -20,7 +22,8 @@ class UserHome extends Component {
 
 
     renderJoinBandOption(){
-        return  <div className="element">
+        let key = shortid.generate()
+        return  <div className="element" key={key}>
                     <Link to="#">
                         <button type="submit">
                             <span className="far fa-handshake" aria-hidden="true"></span>
@@ -36,8 +39,9 @@ class UserHome extends Component {
         let content = [];
         if (bands) {
             for (let band of bands) {
-                content.push(<div className="element">
-                                <Link to={{ pathname: '/band/home', state: { band: band} }}>
+                let key = shortid.generate()
+                content.push(<div className="element" key={key}>
+                                <Link to={{ pathname: '/band/home/'+ band.name }}>
                                     <button type="submit">
                                         <span className="fas fa-people-carry" aria-hidden="true"></span>
                                     </button>
