@@ -14,6 +14,7 @@ export default class FlashMessage extends Component{
 
     onClick(){
         this.props.deleteFlashMessage(this.props.message.id);
+        this.context.router.history.push(this.props.redirectTo);
     }
 
     render(){
@@ -50,5 +51,10 @@ export default class FlashMessage extends Component{
 
 FlashMessage.propTypes = {
     message: PropTypes.object.isRequired,
+    redirectTo: PropTypes.string.isRequired,
     deleteFlashMessage: PropTypes.func.isRequired
+}
+
+FlashMessage.contextTypes = {
+    router: PropTypes.object.isRequired
 }

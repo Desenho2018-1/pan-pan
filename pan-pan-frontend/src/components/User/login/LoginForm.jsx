@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 export default class LoginForm extends Component {
     constructor(props) {
@@ -25,6 +24,7 @@ export default class LoginForm extends Component {
             (success) => {
                 this.props.deleteFlashLoading();
                 this.props.login(success.data);
+                this.context.router.history.push("/user/home");
             },
             (error) => {
                 console.log(error);
@@ -55,11 +55,6 @@ export default class LoginForm extends Component {
                     </div>
 
                 </form>
-
-                <Link to="/band/create">
-                    <button type="submit">Banda</button>
-                </Link>
-
             </div>
         )
     }
@@ -69,4 +64,8 @@ LoginForm.propTypes = {
     login: PropTypes.func.isRequired,
     userLoginRequest: PropTypes.func.isRequired,
     deleteFlashLoading: PropTypes.func.isRequired,
+}
+
+LoginForm.contextTypes = {
+    router: PropTypes.object.isRequired
 }

@@ -8,7 +8,8 @@ import { deleteFlashMessage } from '../../../actions/Utils/FlashMessages.js'
 class FlashMessagesList extends Component{
     render(){
         const messages = this.props.messages.map(message =>
-            <FlashMessage key={message.id} message={message} deleteFlashMessage={ this.props.deleteFlashMessage }/>
+            <FlashMessage key={message.id} message={message} deleteFlashMessage={ this.props.deleteFlashMessage}
+                          redirectTo={this.props.redirectTo}/>
         );
 
         return (
@@ -19,6 +20,7 @@ class FlashMessagesList extends Component{
 
 FlashMessagesList.propTypes = {
     messages: PropTypes.array.isRequired,
+    redirectTo: PropTypes.string.isRequired,
     deleteFlashMessage: PropTypes.func.isRequired
 }
 

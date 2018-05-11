@@ -18,17 +18,27 @@ class CreateBandForm extends Component {
 
     handleSubmit(event){
       event.preventDefault();
-	const formData = new FormData(event.target);
-        const data = {
-            name: formData.get('band-name'),
-            genre: formData.get('band-style'),
-	        members: ["http://localhost:8080/api/users/"+this.props.permission.user.id],
-	        creationDate: new Date(),
-            //image: this.state.file,
-        }
-        axios.post('http://localhost:8080/api/bands/', data)
+      const formData = new FormData(event.target);
+      const user = this.props.permission.user
+      user.band = []
+
+      const data = {
+          name: formData.get('band-name'),
+          genre: formData.get('band-style'),
+          members: ["http://localhost:8080/api/users/"+user.id],
+          creationDate: new Date(),
+          //image: this.state.file,
+      }
+
+    axios.post('http://localhost:8080/api/bands/', data)
         .then(response =>{
-            alert("CADASTROU")
+            console.log(response);
+            user.band.push(response.data)
+            this.props.addFlashMessage({
+                type: 'success',
+                text: 'Sua Banda foi criada com sucesso. You Rock!'
+            });
+            this.props.setUserSession(user);
         }).catch(function(error){
             console.log(error)
             if(error.response){
@@ -71,6 +81,8 @@ class CreateBandForm extends Component {
 
 CreateBandForm.propTypes = {
     permission: PropTypes.object.isRequired,
+    addFlashMessage: PropTypes.func.isRequired,
+    setUserSession: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

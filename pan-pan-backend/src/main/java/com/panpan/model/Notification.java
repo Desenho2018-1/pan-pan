@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.Data;
@@ -23,10 +24,10 @@ public class Notification implements Cloneable {
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "creator_id")
-	private User creator;
+	private @JsonIgnore User creator;
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "owner_id")
-	private User owner;
+	private @JsonIgnore User owner;
 
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "band_id")
