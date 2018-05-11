@@ -9,7 +9,6 @@ import './SignupForm.css';
 import User from '../models/User';
 import { STATES } from '../../Utils/consts/States.js';
 import { INSTRUMENTS } from '../../Utils/consts/Instruments.js';
-import Loading from '../../Utils/loading/Loading';
 
 
 class SignupForm extends Component {
@@ -48,7 +47,7 @@ class SignupForm extends Component {
             if (key === 'birthdate') {
                 let date = value.split("/").reverse().join('-');
                 let birthdate = new Date(date);
-                user.setState({birthdate:birthdate});
+                user.setState({birthDate:birthdate});
             }else {
                 user.setState({[key]:value});
             }
@@ -62,16 +61,16 @@ class SignupForm extends Component {
         const signupForm = new FormData(event.target);
         let user = this.createUser(signupForm);
 
-        this.props.userSignupRequest(user.state)
-        .then(
-            () => {
-                this.props.deleteFlashLoading()
-                this.props.addFlashMessage({
-                    type: 'success',
-                    text: 'Cadastro realizado com sucesso. Bem vindo!'
-                });
-            }
-        );
+            this.props.userSignupRequest(user.state)
+            .then(
+                () => {
+                    this.props.deleteFlashLoading()
+                    this.props.addFlashMessage({
+                        type: 'success',
+                        text: 'Cadastro realizado com sucesso. Bem vindo!'
+                    });
+                }
+            );
     }
 
     handleChange(type, selectedOption){
@@ -124,7 +123,7 @@ class SignupForm extends Component {
                         <label>Estado:</label>
                         <Select
                             name="state"
-                            placeholder="Selecioe seu Estado"
+                            placeholder="Selecione seu Estado"
                             value={selectedStateOption}
                             onChange={(value) => this.handleChange('states',value)}
                             options={STATES} />
@@ -137,7 +136,7 @@ class SignupForm extends Component {
 
                     <div className="form-group">
                         <label>Username:</label>
-                        <input type="text" className="form-control" name="username" id="username" placeholder="Escolha um username"/>
+                        <input type="text" className="form-control" name="userName" id="userName" placeholder="Escolha um username"/>
                     </div>
 
                     <div className="form-group">

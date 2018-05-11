@@ -8,11 +8,10 @@ import PermissionRequired from '../components/Utils/permission/PermissionRequire
 
 class CreateBandPage extends Component {
   render() {
-      const isLoggedIn = this.props.permission.isLoggedIn
-      console.log(isLoggedIn);
+      const isAuthenticated = this.props.login.isAuthenticated
 
       return (
-          <PermissionRequired loggedIn={isLoggedIn}>
+          <PermissionRequired loggedIn={isAuthenticated}>
                 <PageHeader />
                 <CreateBandForm />
           </ PermissionRequired>
@@ -21,12 +20,12 @@ class CreateBandPage extends Component {
 }
 
 CreateBandPage.propTypes = {
-    permission: PropTypes.object.isRequired,
+    login: PropTypes.object.isRequired,
 }
 
 function mapStateToProps(state) {
     return {
-        permission: state.permissionRequired
+        login: state.login
     }
 }
 

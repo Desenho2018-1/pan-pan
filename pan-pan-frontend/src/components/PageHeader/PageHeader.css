@@ -15,3 +15,8 @@
   top: 18px;
   left: 10px;
 }
+
+.header-container .navbar-text {
+    font-size: 1.5em;
+    font-weight: bold;
+}

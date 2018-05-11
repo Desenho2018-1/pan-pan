@@ -7,11 +7,11 @@ export default class User extends Model {
             firstName: '',
             lastName: '',
             email: '',
-            birthdate: '',
+            birthDate: '',
             instruments:[],
             state: '',
             city: '',
-            username: '',
+            userName: '',
             password: '',
             role: 'User',
             active: false
