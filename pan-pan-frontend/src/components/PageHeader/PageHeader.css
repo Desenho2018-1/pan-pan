@@ -20,3 +20,13 @@
     font-size: 1.5em;
     font-weight: bold;
 }
+
+.active .btn-link, a{
+    color: #9d9d9d;
+    text-decoration: none;
+    cursor:pointer;
+}
+
+.active a:hover{
+    color: white;
+}

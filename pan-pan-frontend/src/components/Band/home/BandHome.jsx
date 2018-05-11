@@ -22,7 +22,7 @@ const BandHome = (props) => {
         <div className="elements">
 
           <div className="element">
-            <Link to="#">
+            <Link to="/band/addMember">
               <button type="submit">
                 <span className="fas fa-users" aria-hidden="true" />
               </button>
@@ -31,7 +31,7 @@ const BandHome = (props) => {
           </div>
 
           <div className="element">
-            <Link to="#">
+            <Link to="/music/create">
               <button type="submit">
                 <span className="glyphicon glyphicon-music" aria-hidden="true" />
               </button>
@@ -49,7 +49,7 @@ const BandHome = (props) => {
           </div>
 
           <div className="element">
-            <Link to="#">
+            <Link to="/rehearsal/create">
               <button type="submit">
                 <span className="glyphicon glyphicon-calendar" aria-hidden="true" />
               </button>

@@ -14,29 +14,43 @@ class PageHeader extends Component{
 
     }
 
-    isAuthenticated(){
-        const { isAuthenticated, user } = this.props.login;
-        const logout = this.props.logout
+    defineHome(){
+        const { isAuthenticated} = this.props.login;
+        let home = "/"
 
         if (isAuthenticated) {
-            return (<div>
-
-                        <p className="navbar-text">Oi, {user.firstName}!</p>
-                        <button className="navbar-text btn-link" onClick={logout}>Logout</button>
-                    </div>
-            );
-        } else {
-            return (
-                    <div>
-                        <button className="navbar-text btn-link">
-                            <Link to="/user/login">Login</Link>
-                        </button>
-                    </div>
-            );
+            return "/user/home";
+        }else {
+            return home;
         }
     }
 
+
+    isAuthenticated(){
+        const { isAuthenticated, user } = this.props.login;
+        const logout = this.props.logout
+        let navbar = <div></div>
+
+        if (isAuthenticated) {
+            navbar =    <div>
+                            <p className="navbar-text">Oi, {user.firstName}!</p>
+                            <p className="navbar-text btn-link" onClick={logout}>Logout</p>
+                        </div>
+        } else {
+            navbar =    <div>
+                            <p className="navbar-text btn-link">
+                                <Link to="/user/login">Login</Link>
+                            </p>
+                        </div>
+        }
+
+        return(
+            <li className="active">{navbar}</li>
+        )
+    }
+
     render(){
+        const home = this.defineHome()
         return (
             <nav className="navbar navbar-inverse header-container">
                 <div className="container-fluid">
@@ -47,17 +61,15 @@ class PageHeader extends Component{
                             <span className="icon-bar"></span>
                         </button>
                         <div className="head">
-                          <Link to="/">
+                          <Link to={home}>
                             <img src={require("../../assets/imgs/pan_pan_minimal_white.png")} alt="logo" />
                           </Link>
-                          <a className="navbar-brand" href="/"> <font color="white">Pan-Pan</font></a>
+                          <a className="navbar-brand" href={home}> <font color="white">Pan-Pan</font></a>
                         </div>
                     </div>
                     <div className="collapse navbar-collapse" id="navbar-menu">
                         <ul className="nav navbar-nav navbar-right">
-                            <li className="active">
                             {this.isAuthenticated()}
-                            </li>
                         </ul>
                     </div>
                 </div>
