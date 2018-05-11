@@ -28,3 +28,51 @@ pan-pan-backend/node_modules/
 pan-pan-backend/assas/
 pan-pan-backend/assas2/
 mysql/
+
+pan-pan-backend/target/
+! n-pan-backend/.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+*.apt_generated
+*.classpath
+*.factorypath
+*.project
+*.settings
+*.springBeans
+*.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+pan-pan-backend/nbproject/private/
+pan-pan-backend/build/
+pan-pan-backend/nbbuild/
+pan-pan-backend/dist/
+pan-pan-backend/nbdist/
+pan-pan-backend/.nb-gradle/
+
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+pan-pan-frontend/node_modules
+
+# testing
+pan-pan-frontend/coverage
+
+# production
+pan-pan-frontend/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+pan-pan-frontend/npm-debug.log*
+pan-pan-frontend/yarn-debug.log*
+pan-pan-frontend/yarn-error.log*
