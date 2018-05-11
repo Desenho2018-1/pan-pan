@@ -23,9 +23,9 @@ before_script:
 script:
    - docker-compose exec api bash -c "mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
    - docker-compose exec api bash -c "mvn cobertura:cobertura"
-   - docker-compose exec front npm install
+   - docker-compose exec front yarn install
    - docker-compose exec api mvn test -B
-   - docker-compose exec front npm test
+   - docker-compose exec front yarn test
 
 after_success:
   - docker-compose exec api bash -c "bash <(curl -s https://codecov.io/bash)"

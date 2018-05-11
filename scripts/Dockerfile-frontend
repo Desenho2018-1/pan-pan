@@ -1,5 +1,5 @@
 FROM node:9
 WORKDIR /code
 COPY ./pan-pan-frontend /code
-RUN npm install -g create-react-app
-RUN npm install
+RUN yarn add global create-react-app
+RUN yarn install
