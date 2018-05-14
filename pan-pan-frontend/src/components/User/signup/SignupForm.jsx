@@ -16,11 +16,15 @@ class SignupForm extends Component {
         super(props);
         this.state = { selectedInstrumentsOption: '',
                        selectedStateOption:'',
+                       password:'',
+                       hasError:'',
                      };
 
         this.submitForm = this.submitForm.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.createUser = this.createUser.bind(this);
+        this.setPassword = this.setPassword.bind(this);
+        this.checkPasswords = this.checkPasswords.bind(this);
     }
 
     createUser(signupForm) {
@@ -61,16 +65,27 @@ class SignupForm extends Component {
         const signupForm = new FormData(event.target);
         let user = this.createUser(signupForm);
 
-        this.props.userSignupRequest(user.state)
-        .then(
-            () => {
-                this.props.deleteFlashLoading()
-                this.props.addFlashMessage({
-                    type: 'success',
-                    text: 'Cadastro realizado com sucesso. Bem vindo!'
-                });
-            }
-        );
+        if (!this.state.hasError) {
+            this.props.userSignupRequest(user.state)
+            .then(
+                () => {
+                    this.props.deleteFlashLoading()
+                    this.props.addFlashMessage({
+                        type: 'success',
+                        text: 'Cadastro realizado com sucesso. Bem vindo!'
+                    });
+                }
+            )
+            .catch(
+                () => {
+                    this.props.deleteFlashLoading()
+                    this.props.addFlashMessage({
+                        type: 'error',
+                        text: 'Ocorreu erro no seu cadastro. Tente novamente!'
+                    });
+                }
+            );
+        }
     }
 
     handleChange(type, selectedOption){
@@ -79,6 +94,28 @@ class SignupForm extends Component {
         }else
         if (type === 'states') {
             this.setState({selectedStateOption:selectedOption})
+        }
+    }
+
+    setPassword(event){
+        this.setState({password: event.target.value});
+    }
+
+    checkPasswords(event){
+        if (this.state.password === event.target.value) {
+            this.setState({hasError: false})
+        }else {
+            this.setState({hasError: true})
+        }
+    }
+
+    setPasswordError(){
+        if (this.state.hasError) {
+            return(
+                <div className="form-group has-error">
+                    <span className="help-block">Senhas não conferem</span>
+                </div>
+            );
         }
     }
 
@@ -92,20 +129,20 @@ class SignupForm extends Component {
                     <div className="form-group">
                         <label>Nome:</label>
                         <input type="text" className="form-control" name="name"
-                           id="name" placeholder="Insira seu nome"/>
+                           id="name" placeholder="Insira seu nome" required/>
                     </div>
 
                     <div className="form-group">
                         <label>E-mail:</label>
                         <input type="text" className="form-control" name="email"
-                           id="email" placeholder="Insira seu e-mail"/>
+                           id="email" placeholder="Insira seu e-mail" required/>
                     </div>
 
                     <div className="form-group">
                         <label>Data de nascimento:</label>
                         <InputMask className="form-control" name="birthdate"
                                id="birthdate" placeholder="  /  /    "
-                               mask="99/99/9999" maskChar=" "/>
+                               mask="99/99/9999" maskChar=" " required/>
                     </div>
 
                     <div className="form-group">
@@ -116,7 +153,8 @@ class SignupForm extends Component {
                             placeholder="Selecione seus instrumentos"
                             value={selectedInstrumentsOption}
                             onChange={(value) => this.handleChange('instruments',value)}
-                            options={INSTRUMENTS} />
+                            options={INSTRUMENTS}
+                            required/>
                     </div>
 
                     <div className="form-group">
@@ -126,27 +164,39 @@ class SignupForm extends Component {
                             placeholder="Selecione seu Estado"
                             value={selectedStateOption}
                             onChange={(value) => this.handleChange('states',value)}
-                            options={STATES} />
+                            options={STATES}
+                            required/>
                     </div>
 
                     <div className="form-group">
                         <label>Cidade:</label>
-                        <input type="text" className="form-control" name="city" id="city" placeholder="Insira sua cidade"/>
+                        <input type="text" className="form-control" name="city"
+                               id="city" placeholder="Insira sua cidade" required/>
                     </div>
 
                     <div className="form-group">
                         <label>Username:</label>
-                        <input type="text" className="form-control" name="userName" id="userName" placeholder="Escolha um username"/>
+                        <input type="text" className="form-control" name="userName"
+                               id="userName" placeholder="Escolha um username" required/>
                     </div>
 
                     <div className="form-group">
                         <label>Senha:</label>
-                        <input type="password" className="form-control" name="password" id="password" placeholder="Insira uma senha"/>
+                        <input type="password" className="form-control"
+                                name="password" id="password"
+                                placeholder="Insira uma senha"
+                                onChange={this.setPassword}
+                                required/>
                     </div>
 
                     <div className="form-group">
                         <label>Confirme a senha:</label>
-                        <input type="password" className="form-control" name="repeat-password" id="repeat-password" placeholder="Sua senha novamente"/>
+                        <input type="password" className="form-control"
+                                name="repeat-password" id="repeat-password"
+                                placeholder="Sua senha novamente"
+                                onChange={this.checkPasswords}
+                                required/>
+                        {this.setPasswordError()}
                     </div>
 
                     <div className="form-group submit-btn" >
@@ -155,7 +205,6 @@ class SignupForm extends Component {
 
                 </form>
             </div>
-
         )
     }
 }
