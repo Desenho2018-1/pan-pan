@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import NotFoundError from '../../Utils/errors/404_ERROR';
 
 import './BandHome.css';
 
@@ -10,7 +11,7 @@ const BandHome = (props) => {
   const { band } = props;
 
   if(band.name === ""){
-    return "404 FIOTE";
+    return <NotFoundError />;
   }
 
   return (
