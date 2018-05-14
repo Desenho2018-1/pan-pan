@@ -76,3 +76,9 @@ pan-pan-frontend/build
 pan-pan-frontend/npm-debug.log*
 pan-pan-frontend/yarn-debug.log*
 pan-pan-frontend/yarn-error.log*
+
+#Text editor files
+.vscode/
+
+#Node modules
+node_modules/

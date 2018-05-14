@@ -61,16 +61,16 @@ class SignupForm extends Component {
         const signupForm = new FormData(event.target);
         let user = this.createUser(signupForm);
 
-            this.props.userSignupRequest(user.state)
-            .then(
-                () => {
-                    this.props.deleteFlashLoading()
-                    this.props.addFlashMessage({
-                        type: 'success',
-                        text: 'Cadastro realizado com sucesso. Bem vindo!'
-                    });
-                }
-            );
+        this.props.userSignupRequest(user.state)
+        .then(
+            () => {
+                this.props.deleteFlashLoading()
+                this.props.addFlashMessage({
+                    type: 'success',
+                    text: 'Cadastro realizado com sucesso. Bem vindo!'
+                });
+            }
+        );
     }
 
     handleChange(type, selectedOption){

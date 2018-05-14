@@ -30,7 +30,10 @@ public class Band {
 	List<Observer> observers = new ArrayList<Observer>();
 
 	@OneToMany(mappedBy = "band", cascade = CascadeType.ALL)
-	List<Notification> notifications = new ArrayList<Notification>();
+    List<Notification> notifications = new ArrayList<Notification>();
+    
+    @OneToMany(mappedBy = "band")
+    private List<Setlist> setlists;
 
 	@NotNull
 	@OneToMany(mappedBy = "band")
