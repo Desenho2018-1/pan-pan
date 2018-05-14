@@ -21,8 +21,8 @@ before_script:
    - docker-compose up -d --build
 
 script:
-   - docker-compose exec api bash -c "mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
-   - docker-compose exec api bash -c "mvn cobertura:cobertura"
+   - docker-compose exec -d api bash -c "mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
+   - docker-compose exec -d api bash -c "mvn cobertura:cobertura"
    - docker-compose exec front yarn install
    - docker-compose exec api mvn test -B
 
