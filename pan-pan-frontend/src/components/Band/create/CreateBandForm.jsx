@@ -66,10 +66,6 @@ class CreateBandForm extends Component {
                         <label>Estilo:</label>
                         <input type="text" className="form-control" name="band-style" required="required" placeholder="Estilo musical"/>
                     </div>
-                    <div className="form-group">
-                        <label>Imagem:</label>
-                        <input type="file" className="btn btn-priamry" accept="image/*" onChange={this.handleFileChange}/>
-                    </div>
                     <div className="form-group submit-btn">
                         <button type="submit" className="btn btn-primary">Cadastrar</button>
                     </div>
