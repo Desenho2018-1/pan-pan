@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -13,7 +13,7 @@ import { addFlashMessage } from '../actions/Utils/FlashMessages';
 
 class LoginPage extends Component{
     render(){
-        const {login, userLoginRequest, deleteFlashLoading, addFlashMessage} = this.props;
+        const { login, userLoginRequest, deleteFlashLoading, addFlashMessage } = this.props;
 
         return (
             <div>

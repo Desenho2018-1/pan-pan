@@ -28,10 +28,10 @@ export default class LoginForm extends Component {
             })
         .catch(
             () => {
-                this.props.deleteFlashLoading()
+                this.props.deleteFlashLoading();
                 this.props.addFlashMessage({
                     type: 'error',
-                    text: 'Seu login está incorreto. Tente novamente!'
+                    text: 'Seu login está incorreto. Tente novamente!',
                 });
             }
         );

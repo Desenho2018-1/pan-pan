@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -13,9 +13,9 @@ export default class FlashMessage extends Component{
     }
 
     onClick(event){
-        const {type} = this.props.message;
+        const { type } = this.props.message;
         event.preventDefault();
-        if(type === "success"){
+        if (type === 'success'){
             this.props.deleteFlashMessage(this.props.message.id);
             this.context.router.history.push(this.props.redirectTo);
         }else{
