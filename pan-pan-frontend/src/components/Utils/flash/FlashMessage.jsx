@@ -12,10 +12,18 @@ export default class FlashMessage extends Component{
         this.onClick = this.onClick.bind(this);
     }
 
-    onClick(){
-        this.props.deleteFlashMessage(this.props.message.id);
-        this.context.router.history.push(this.props.redirectTo);
+    onClick(event){
+        const {type} = this.props.message;
+        event.preventDefault();
+        if(type === "success"){
+            this.props.deleteFlashMessage(this.props.message.id);
+            this.context.router.history.push(this.props.redirectTo);
+        }else{
+            this.props.deleteFlashMessage(this.props.message.id);
+        }
+
     }
+
 
     render(){
         const {type, text } = this.props.message;
@@ -39,7 +47,12 @@ export default class FlashMessage extends Component{
                             </div>
 
                             <div className="modal-footer">
-                                <button type="button" onClick={this.onClick} className="btn btn-primary" data-dismiss="modal">Ok</button>
+                                <button type="button" onClick={this.onClick}
+                                        data-dismiss="modal"
+                                        className={classnames('btn',{
+                                                                'btn-primary': type === 'success',
+                                                                'btn-danger': type === 'error'
+                                                   })}>Ok</button>
                             </div>
                         </div>
                     </div>
