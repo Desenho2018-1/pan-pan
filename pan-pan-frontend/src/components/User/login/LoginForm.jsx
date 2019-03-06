@@ -25,10 +25,14 @@ export default class LoginForm extends Component {
                 this.props.deleteFlashLoading();
                 this.props.login(success.data);
                 this.context.router.history.push("/user/home");
-            },
-            (error) => {
-                console.log(error);
+            })
+        .catch(
+            () => {
                 this.props.deleteFlashLoading();
+                this.props.addFlashMessage({
+                    type: 'error',
+                    text: 'Seu login está incorreto. Tente novamente!',
+                });
             }
         );
     }
@@ -42,12 +46,15 @@ export default class LoginForm extends Component {
                 <form className="form-container" onSubmit={this.submitForm}>
                     <div className="form-group">
                         <label>Username:</label>
-                        <input type="text" className="form-control" name="username" id="username" placeholder="Seu username"/>
+                        <input type="text" className="form-control" name="username"
+                               id="username" placeholder="Seu username" required/>
                     </div>
 
                     <div className="form-group">
                         <label>Senha:</label>
-                        <input type="password" className="form-control" name="password" id="password" placeholder="Sua senha"/>
+                        <input type="password" className="form-control"
+                                name="password" id="password"
+                                placeholder="Sua senha" required/>
                     </div>
 
                     <div className="form-group submit-btn" >
@@ -64,6 +71,7 @@ LoginForm.propTypes = {
     login: PropTypes.func.isRequired,
     userLoginRequest: PropTypes.func.isRequired,
     deleteFlashLoading: PropTypes.func.isRequired,
+    addFlashMessage: PropTypes.func.isRequired,    
 }
 
 LoginForm.contextTypes = {

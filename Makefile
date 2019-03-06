@@ -45,7 +45,7 @@ front-install:
 	@echo "*********************************\n"
 	@echo "Using npm to install dependencies\n"
 	@echo "*********************************\n"
-	@docker-compose exec front npm install
+	@docker-compose exec front yarn install
 
 back-test:
 	@echo "***************************\n"
@@ -57,7 +57,7 @@ front-test:
 	@echo "************************\n"
 	@echo "Executing frontend tests\n"
 	@echo "************************\n"
-	@docker-compose exec front npm test
+	@docker-compose exec front yarn test
 
 rm-network:
 	@echo "**********************************\n"

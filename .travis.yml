@@ -11,20 +11,16 @@ jdk:
 node_js:
    - 9.11.1
 
-env:
-   - MAVEN_VERSION=3.5.3
-   - NODE_VERSION=9
-
 before_script:
    - sudo service mysql stop
    - while sudo lsof -Pi :3306 -sTCP:LISTEN -t; do sleep 1; done
    - docker-compose up -d --build
 
 script:
-   - docker-compose exec api bash -c "mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
-   - docker-compose exec api bash -c "mvn cobertura:cobertura"
-   - docker-compose exec front npm install
-   - docker-compose exec api mvn test -B
+   - docker-compose exec -d api bash -c "mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
+   - docker-compose exec -d api bash -c "mvn cobertura:cobertura"
+   - docker-compose exec front yarn install
+   - docker-compose exec api mvn test
 
 after_success:
   - docker-compose exec api bash -c "bash <(curl -s https://codecov.io/bash)"

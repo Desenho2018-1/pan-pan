@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import PermissionError from '../errors/403_ERROR'
 
-
-export default class PermissionRequired extends Component{
+export default class PermissionRequired extends Component {
     render(){
         const loggedIn = this.props.loggedIn;
 
@@ -14,10 +14,9 @@ export default class PermissionRequired extends Component{
         }else {
             return(
             <div className="permission-denied">
-                <h1> Aqui não neném! </h1>
+                <PermissionError/>
             </div>);
         }
-
     }
 }
 
